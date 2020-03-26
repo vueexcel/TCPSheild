@@ -6,7 +6,7 @@
          </div>
          <div class="d-flex align-items-center mx-4">
              <b-icon icon="bell" font-scale="1" class="rounded-circle themeGrey"  style="font-weight:bold"></b-icon>
-             <p class="PNR themeGrey px-3">Hello Xenon</p>
+             <p class="PNR themeGrey px-3 m-0 userName">Hello Xenon</p>
              <b-icon icon="chevron-down" font-scale="1" class="rounded-circle themeGrey"  style="font-weight:bold"></b-icon>
          </div>
     </div>
@@ -15,5 +15,8 @@
 .selection{
     font-size:16px;
     font-weight: lighter;
+}
+.userName{
+    font-size:15px;
 }
 </style>
