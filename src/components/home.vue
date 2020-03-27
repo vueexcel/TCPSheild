@@ -6,29 +6,24 @@
     </div>
     <b-container-fluid class="bv-example-row">
       <b-row>
-        <b-col lg="9">
+        <b-col lg="9" >
           <b-row>
-            <b-col lg="4">
+            <b-col lg="4" class="py-2" v-for="(chart,index) in charts" :key="index">
               <div class="d-flex justify-content-between px-2">
-                <p class="themeVoilet PNB">MineSuperior</p>
-                <p>
+                <p class="themeVoilet PNB m-0">{{chart.title}}</p>
+                <p class="m-0">
                   <b-icon icon="person" font-scale="1" class="rounded-circle themeGrey"></b-icon>
-                  <span class="themeGrey PNR pl-2 players">2300 Players</span>
+                  <span class="themeGrey PNR m-0 pl-2 players">{{chart.player}} Players</span>
                 </p>
               </div>
-              <apexcharts width="350" height="180" type="line" :options="options" :series="series"></apexcharts>
+              <apexcharts
+                height="180"
+                type="line"
+                :options="options"
+                :series="chart.series"
+              ></apexcharts>
             </b-col>
-            <b-col lg="4">
-              <div class="d-flex justify-content-between px-2">
-                <p class="themeVoilet PNB">BreakingMC</p>
-                <p>
-                  <b-icon icon="person" font-scale="1" class="rounded-circle themeGrey"></b-icon>
-                  <span class="themeGrey PNR pl-2 players">900 Players</span>
-                </p>
-              </div>
-              <apexcharts width="350" height="180" type="line" :options="options" :series="series"></apexcharts>
-            </b-col>
-            <b-col lg="4">
+            <b-col lg="4" class="py-2">
               <div class="addNewServerBox">
                 <div class="d-flex justify-content-center align-items-center" style="height:210px;">
                   <div class="text-center">
@@ -50,7 +45,7 @@
             <p class="PNB p-3 m-0 sideHeading themeBlack">Support</p>
             <div class="p-3">
               <p
-                class="themeGrey PNR sideDescription"
+                class="themeGrey PNT sideDescription"
               >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
               <p class="PNB sideDescription themeBlack">Documentation</p>
               <p class="PNB sideDescription themeBlack">+180 454 323 777</p>
@@ -63,11 +58,18 @@
             <p class="PNB p-3 m-0 sideHeading themeBlack">API</p>
             <div class="p-3">
               <div class="d-flex justify-content-between">
-                <p class="themeVoilet PNB sideDescription">Client ID</p>
-                <p class="themeBlack PNR sideDescription">view secret</p>
+                <p class="themeVoilet PNB sideDescription m-0">Client ID</p>
+                <p class="themeBlack PNR sideDescription m-0">view secret</p>
+              </div>
+              <div class="d-flex justify-content-between p-1 mt-2 mb-3 apiInputBox">
+                <input type="text" class="apiInput" />
+                <b-button
+                  pill
+                  class="PNB sideDescription text-white m-0 py-2 px-4 circle copyBtn"
+                >COPY</b-button>
               </div>
               <p
-                class="themeGrey PNR sideDescription"
+                class="themeGrey PNT sideDescription"
               >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p>
               <p class="PNB sideDescription themeBlack">Manage API Keys</p>
               <p class="PNB sideDescription themeBlack">API Documentation</p>
@@ -76,7 +78,7 @@
           <div class="bg-light sideBox">
             <p class="PNB p-3 m-0 sideHeading themeBlack">Blog</p>
             <div class="p-3">
-              <p class="themeGrey PNR sideDescription">
+              <p class="themeGrey PNT sideDescription">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
                 At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit.
               </p>
@@ -102,7 +104,8 @@ export default {
     return {
       options: {
         chart: {
-          id: "vuechart-example",
+          id: "serverChart",
+          height:180,
           zoom: {
             enabled: false
           },
@@ -118,17 +121,11 @@ export default {
               enabled: true,
               speed: 350
             }
+          },
+          toolbar: {
+            show: false
           }
         },
-        // title: {
-        //   text: "MineSuperior",
-        //   align: "left",
-        //   style: {
-        //     fontSize: "15px",
-        //     color: "#622fe6",
-        //     fontFamily: "Proxima Nova Bold"
-        //   }
-        // },
         xaxis: {
           categories: [
             "JAN",
@@ -155,20 +152,21 @@ export default {
           show: false
         },
         stroke: {
-          width: 4,
+          width: 3,
           curve: "smooth"
         },
         fill: {
           type: "gradient",
           gradient: {
             shade: "dark",
-            gradientToColors: ["#FDD835"],
+            gradientToColors: ["#FFA41B"],
             shadeIntensity: 1,
             type: "horizontal",
             opacityFrom: 1,
             opacityTo: 1,
             stops: [0, 100, 100, 100]
-          }
+          },
+          colors: ["#2E93fA", "#546E7A", "#000000"]
         },
         responsive: [
           {
@@ -177,15 +175,36 @@ export default {
           }
         ]
       },
-      series: [
+      charts: [
         {
-          data: [0, 3100, 2000, 2700, 3600, 4000, 5500]
+          title: "MineSuperior",
+          player: 2300,
+          series: [
+            {
+              data: [0, 3100, 2000, 2700, 3600, 4000, 5500]
+            },
+            {
+              data: [3100, 2000, 100, 4000, 1000, 3000, 400]
+            },
+            {
+              data: [5765, 4120, 3600, 100, 3200, 5000, 5800]
+            }
+          ]
         },
         {
-          data: [3100, 2000, 100, 2200, 2800, 3000, 4300]
-        },
-        {
-          data: [1765, 1120, 1600, 2500, 3200, 3500, 4000]
+          title: "BreakingMC",
+          player: 900,
+          series: [
+            {
+              data: [0, 4100, 3000, 2700, 600, 1400, 5000]
+            },
+            {
+              data: [3100, 2000, 100, 2200, 2800, 3000, 300]
+            },
+            {
+              data: [1765, 1120, 1600, 5500, 3200, 3500, 4000]
+            }
+          ]
         }
       ]
     };
@@ -209,6 +228,9 @@ export default {
 }
 .PNR {
   font-family: "Proxima Nova Regular";
+}
+.PNT {
+  font-family: "Proxima Nova Thin";
 }
 </style>
 
@@ -243,5 +265,17 @@ export default {
 .sideButton {
   background-color: #27b6fa;
   font-size: 14px;
+}
+.apiInputBox {
+  border: 1px solid #eaeaea;
+  border-radius: 50px;
+}
+.apiInput{
+  border:none;
+  cursor: pointer;
+  width:100%;
+}
+.copyBtn {
+  background-color: #622fe6;
 }
 </style>

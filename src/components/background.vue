@@ -6,7 +6,7 @@
                 <b-col lg="2">         
                     <sideBar/>
                 </b-col>
-                <b-col lg="10" class="">
+                <b-col lg="10" class="p-0">
                     <div class="">
                         <topBar/>
                     </div>
