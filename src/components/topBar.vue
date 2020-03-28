@@ -15,7 +15,7 @@
         rounded="lg"
         size="42px"
         text="AC"
-        src="https://placekitten.com/300/300"
+        v-bind:src="userImg"
       ></b-avatar>
       <p class="PNT themeGrey px-3 m-0 userName">Hello {{user}}</p>
       <font-awesome-icon icon="chevron-down" size="1x" :style="{ color: '#a7aab3' }" class="mt-1" />
@@ -28,7 +28,8 @@ export default {
   name: "topBar",
   data() {
     return {
-      user: "Xenon"
+      user: "Xenon",
+      userImg:"https://placekitten.com/300/300"
     };
   }
 };

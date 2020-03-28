@@ -2,40 +2,46 @@
   <div class>
     <div class="my-4">
       <p class="PNB mb-0 themeBlack wishUser">Good morning, John Smith</p>
-      <p class="PNB mb-0 themeGrey dataHeading">You have 1503 players across 2 networks</p>
+      <p class="PNR mb-0 themeGrey dataHeading">You have 1503 players across 2 networks</p>
     </div>
     <b-container-fluid class="bv-example-row">
       <b-row>
-        <b-col lg="9">
-          <b-row>
-            <b-col lg="4" class="py-2 bg-white" v-for="(chart,index) in charts" :key="index" >
-              <div class="d-flex justify-content-between px-2">
-                <p class="themeVoilet PNB m-0">{{chart.title}}</p>
-                <p class="mb-0 ">
-                  <b-icon icon="person" font-scale="1" class="rounded-circle themeGrey"></b-icon>
-                  <span class="themeGrey PNR m-0 pl-2 players">{{chart.player}} Players</span>
-                </p>
+        <b-col xl="9" lg="8">
+          <b-row class>
+            <b-col xl="4" lg="6" class="p-0" v-for="(chart,index) in charts" :key="index">
+              <div class="my-2 mx-3 bg-white chartBox">
+                <div class="d-flex justify-content-between px-3 py-2">
+                  <p class="themeVoilet PNB m-0">{{chart.title}}</p>
+                  <p class="mb-0">
+                    <b-icon icon="person" font-scale="1" class="rounded-circle themeGrey"></b-icon>
+                    <span class="themeGrey PNR m-0 pl-2 players">{{chart.player}} Players</span>
+                  </p>
+                </div>
+                <apexcharts
+                  height="150"
+                  type="line"
+                  :options="options"
+                  :series="chart.series"
+                  class="mr-2"
+                ></apexcharts>
               </div>
-              <apexcharts height="180" type="line" :options="options" :series="chart.series" class="mr-2"></apexcharts>
             </b-col>
-            <b-col lg="4" class="py-2">
-              <div class="addNewServerBox">
-                <div class="d-flex justify-content-center align-items-center" style="height:200px;">
-                  <div class="text-center">
-                    <b-icon
-                      icon="plus-circle"
-                      font-scale="3.5"
-                      class="rounded-circle p-2"
-                      style="color: #622fe6;"
-                    ></b-icon>
-                    <p class="themeVoilet PNB addNewServer mt-2">ADD NEW SERVER</p>
-                  </div>
+            <b-col xl="4" lg="6" class="py-2">
+              <div class="d-flex justify-content-center align-items-center addNewServerBox">
+                <div class="text-center">
+                  <b-icon
+                    icon="plus-circle"
+                    font-scale="3.5"
+                    class="rounded-circle p-2"
+                    style="color: #622fe6;"
+                  ></b-icon>
+                  <p class="themeVoilet PNB addNewServer mt-2">ADD NEW SERVER</p>
                 </div>
               </div>
             </b-col>
           </b-row>
         </b-col>
-        <b-col lg="3">
+        <b-col xl="3" lg="4">
           <div class="bg-light sideBox">
             <p class="PNB p-3 m-0 sideHeading themeBlack">Support</p>
             <div class="p-3">
@@ -70,7 +76,7 @@
                 <input type="text" class="apiInput" />
                 <b-button
                   pill
-                  class="PNB sideDescription text-white m-0 py-2 px-4 circle copyBtn"
+                  class="PNB sideDescription text-white m-0 circle copyBtn"
                 >COPY</b-button>
               </div>
               <p
@@ -274,7 +280,11 @@ export default {
 .players {
   font-size: 12px;
 }
+.chartBox {
+  border-radius: 10px;
+}
 .addNewServerBox {
+  height: 205px;
   border: 1px solid #dbe2e7;
   border-radius: 10px;
   background-color: #ffffff;
@@ -307,17 +317,17 @@ export default {
 }
 .copyBtn {
   background-color: #622fe6;
+  padding: 6px 15px;
 }
 .documentIcon {
   width: 18px;
   position: relative;
-  left:3px
+  left: 3px;
 }
 .keyIcon {
   width: 25px;
 }
 .phoneIcon {
   width: 25px;
-  
 }
 </style>

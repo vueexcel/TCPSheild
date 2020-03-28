@@ -6,20 +6,26 @@
       </div>
       <ul class="menuList text-white text-uppercase PNB m-0 mt-4 p-0">
         <li class="mb-2">
-          <div class="py-3 ml-4">
+          <div class="py-3 ml-4"  v-bind:class="{ active: isMenuActive}" @click="isMenuActive=true">
             <span class="menuIconBox">
-              <img class="dashboardIcon mx-3" src="./../assets/images/dashboard_white.svg" />
+              <img v-if="!isMenuActive" class="dashboardIcon mx-3" src="./../assets/images/dashboard_white.svg" />
+              <img v-else class="dashboardIcon mx-3" src="./../assets/images/dashboard_voilet.svg" />
             </span>
             <a>dashboard</a>
           </div>
         </li>
-        <li class="mb-2 ">
-          <div class="py-3 active ml-4">
+        <li class="mb-2">
+          <div class="py-3 ml-4" v-bind:class="{ active: !isMenuActive}" @click="isMenuActive=false">
             <span class="menuIconBox">
-              <img class="dashboardIcon mx-3" src="./../assets/images/globe_voilet.svg" />
+              <img v-if="!isMenuActive" class="dashboardIcon mx-3" src="./../assets/images/globe_voilet.svg" />
+              <img v-else class="dashboardIcon mx-3" src="./../assets/images/globe_white.svg" />
             </span>
-            <a>network</a>
+            <a>networks</a>
           </div>
+          <ul v-if="!isMenuActive" class="subList ml-0 mt-3 pl-0">
+            <li class="py-2 mr-3 pr-2 mb-2 text-center" v-bind:class="{ active: isActive}" @click="isActive=true">Backends</li>
+            <li class="py-2 mr-3 pr-2 text-center" v-bind:class="{ active: !isActive}"   @click="isActive=false">Analytics</li>
+          </ul>
         </li>
         <!-- <li
           v-for="(item,index) in menu"
@@ -37,7 +43,9 @@ export default {
   name: "sideBar",
   data() {
     return {
-      menu: ["Dashboard", "Networks"]
+      menu: ["Dashboard", "Networks"],
+      isMenuActive:true,
+      isActive:true
     };
   }
 };
@@ -52,15 +60,16 @@ export default {
 }
 .menuList li {
   font-size: 14px;
+  cursor: pointer;
 }
-.active {
+.menuList li > .active {
   background-color: #ffffff;
   color: #823fdd;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
   position: relative;
 }
-.active::before {
+.menuList li > .active::before {
   content: "";
   width: 30px;
   height: 30px;
@@ -91,10 +100,20 @@ export default {
   right: 0px;
   transform: rotate(270deg);
 }
-.menuIconBox {
-}
 .dashboardIcon {
   width: 25px;
   height: 25px;
+}
+.subList{
+  list-style-type: none;
+}
+.subList li{
+  font-size: 12px;
+  cursor: pointer;
+}
+.subList > .active{
+  background-color: #582acf;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 </style>

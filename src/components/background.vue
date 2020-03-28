@@ -3,10 +3,10 @@
         <img class="triangle" src="./../assets/images/triangle.png">
         <b-container-fluid class="bv-example-row">
             <b-row>
-                <b-col lg="2">         
+                <b-col xl="2" lg="3">         
                     <sideBar/>
                 </b-col>
-                <b-col lg="10" class="p-0">
+                <b-col xl="10" lg="9" class="p-0">
                     <div class="">
                         <topBar/>
                     </div>
@@ -33,9 +33,9 @@ export default {
     .appBackground{
         background: url("./../assets/images/backgroundTCPShield.png");
         background-size: cover;
-        width:100%;
-        height:1110px;
         background-repeat: no-repeat;
+        width:100%;
+        height: inherit;
         position: relative;
     }
     .triangle{
