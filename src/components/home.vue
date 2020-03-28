@@ -7,7 +7,7 @@
     <b-container-fluid class="bv-example-row">
       <b-row>
         <b-col lg="9">
-          <b-row class="mx-1">
+          <b-row>
             <b-col lg="4" class="py-2 bg-white" v-for="(chart,index) in charts" :key="index" >
               <div class="d-flex justify-content-between px-2">
                 <p class="themeVoilet PNB m-0">{{chart.title}}</p>

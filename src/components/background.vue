@@ -32,7 +32,7 @@ export default {
 <style scoped>
     .appBackground{
         background: url("./../assets/images/backgroundTCPShield.png");
-        background-size: contain;
+        background-size: cover;
         width:100%;
         height:1110px;
         background-repeat: no-repeat;
