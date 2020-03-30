@@ -1,30 +1,29 @@
 <template>
     <div class="appBackground p-5" >
         <img class="triangle" src="./../assets/images/triangle.png">
-        <b-container-fluid class="bv-example-row">
+        <b-container fluid class="bv-example-row">
             <b-row>
-                <b-col lg="2">         
+                <b-col xl="2" lg="3">         
                     <sideBar/>
                 </b-col>
-                <b-col lg="10" class="p-0">
+                <b-col xl="10" lg="9" class="p-0">
                     <div class="">
                         <topBar/>
                     </div>
-                   <home />
+                   <router-view></router-view>
                 </b-col>
             </b-row>
-        </b-container-fluid>
+        </b-container>
 
     </div>
 </template>
 <script>
 import sideBar from './sideBar.vue'
 import topBar from './topBar.vue'
-import home from './home.vue'
 export default {
     name:"background",
     components: {
-        sideBar,topBar,home
+        sideBar,topBar
   }
 }
 </script>
@@ -32,10 +31,10 @@ export default {
 <style scoped>
     .appBackground{
         background: url("./../assets/images/backgroundTCPShield.png");
-        background-size: contain;
-        width:100%;
-        height:1110px;
+        background-size: cover;
         background-repeat: no-repeat;
+        width:100%;
+        height: inherit;
         position: relative;
     }
     .triangle{
