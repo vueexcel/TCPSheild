@@ -1,7 +1,7 @@
 <template>
     <div class="appBackground p-5" >
         <img class="triangle" src="./../assets/images/triangle.png">
-        <b-container-fluid class="bv-example-row">
+        <b-container fluid class="bv-example-row">
             <b-row>
                 <b-col xl="2" lg="3">         
                     <sideBar/>
@@ -10,21 +10,20 @@
                     <div class="">
                         <topBar/>
                     </div>
-                   <home />
+                   <router-view></router-view>
                 </b-col>
             </b-row>
-        </b-container-fluid>
+        </b-container>
 
     </div>
 </template>
 <script>
 import sideBar from './sideBar.vue'
 import topBar from './topBar.vue'
-import home from './home.vue'
 export default {
     name:"background",
     components: {
-        sideBar,topBar,home
+        sideBar,topBar
   }
 }
 </script>

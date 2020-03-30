@@ -1,10 +1,6 @@
 <template>
-  <div class>
-    <div class="my-4">
-      <p class="PNB mb-0 themeBlack wishUser">Good morning, John Smith</p>
-      <p class="PNR mb-0 themeGrey dataHeading">You have 1503 players across 2 networks</p>
-    </div>
-    <b-container-fluid class="bv-example-row">
+  <div >
+    <b-container fluid class="">
       <b-row>
         <b-col xl="9" lg="8">
           <b-row class>
@@ -112,14 +108,14 @@
           </div>
         </b-col>
       </b-row>
-    </b-container-fluid>
+    </b-container>
   </div>
 </template>
 
 <script>
 import VueApexCharts from "vue-apexcharts";
 export default {
-  name: "home",
+  name: "dashboard",
   components: {
     apexcharts: VueApexCharts
   },
@@ -271,12 +267,7 @@ export default {
 </style>
 
 <style scoped>
-.wishUser {
-  font-size: 16px;
-}
-.dataHeading {
-  font-size: 14px;
-}
+
 .players {
   font-size: 12px;
 }

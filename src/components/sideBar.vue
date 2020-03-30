@@ -6,26 +6,63 @@
       </div>
       <ul class="menuList text-white text-uppercase PNB m-0 mt-4 p-0">
         <li class="mb-2">
-          <div class="py-3 ml-4"  v-bind:class="{ active: isMenuActive}" @click="isMenuActive=true">
+          <div
+            class="py-3 ml-4"
+            :class="{ active: activeMenu === 'dashboard' }"
+            @click="openDashboard"
+          >
             <span class="menuIconBox">
-              <img v-if="!isMenuActive" class="dashboardIcon mx-3" src="./../assets/images/dashboard_white.svg" />
-              <img v-else class="dashboardIcon mx-3" src="./../assets/images/dashboard_voilet.svg" />
+              <img
+                v-if="(activeMenu === 'dashboard')"
+                class="dashboardIcon mx-3"
+                src="./../assets/images/dashboard_voilet.svg"
+              />
+              <img v-else class="dashboardIcon mx-3" src="./../assets/images/dashboard_white.svg" />
             </span>
             <a>dashboard</a>
           </div>
         </li>
         <li class="mb-2">
-          <div class="py-3 ml-4" v-bind:class="{ active: !isMenuActive}" @click="isMenuActive=false">
+          <div
+            class="py-3 ml-4"
+            :class="{ active: activeMenu === 'networks' }"
+            @click="openNetworks"
+          >
             <span class="menuIconBox">
-              <img v-if="!isMenuActive" class="dashboardIcon mx-3" src="./../assets/images/globe_voilet.svg" />
+              <img
+                v-if="(activeMenu === 'networks')"
+                class="dashboardIcon mx-3"
+                src="./../assets/images/globe_voilet.svg"
+              />
               <img v-else class="dashboardIcon mx-3" src="./../assets/images/globe_white.svg" />
             </span>
             <a>networks</a>
           </div>
-          <ul v-if="!isMenuActive" class="subList ml-0 mt-3 pl-0">
-            <li class="py-2 mr-3 pr-2 mb-2 text-center" v-bind:class="{ active: isActive}" @click="isActive=true">Backends</li>
-            <li class="py-2 mr-3 pr-2 text-center" v-bind:class="{ active: !isActive}"   @click="isActive=false">Analytics</li>
+          <ul v-if="activeMenu === ('networks')" class="subList ml-0 my-3 pl-0">
+            <li
+              class="py-2 mr-3 pr-2 mb-2 text-center"
+              :class="{ active: activeNetwork === 'backends' }"
+              @click="openBackends "
+            >Backends</li>
+            <li
+              class="py-2 mr-3 pr-2 text-center"
+               :class="{ active: activeNetwork === 'analytics' }"
+              @click="openAnalytics"
+            >Analytics</li>
           </ul>
+        </li>
+        <li class="mb-2">
+          <div class="py-3 ml-4" :class="{ active: activeMenu === 'billing' }" @click="openBilling">
+            <span class="menuIconBox">
+              <img
+                v-if="(activeMenu === 'billing')"
+                class="dashboardIcon mx-3"
+                src="./../assets/images/dashboard_voilet.svg"
+              />
+              <img v-else class="dashboardIcon mx-3" src="./../assets/images/dashboard_white.svg" />
+            </span>
+            <a>billing</a>
+          </div>
         </li>
         <!-- <li
           v-for="(item,index) in menu"
@@ -39,14 +76,26 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 export default {
   name: "sideBar",
   data() {
     return {
       menu: ["Dashboard", "Networks"],
-      isMenuActive:true,
-      isActive:true
+      isActive: true
     };
+  },
+  computed: {
+    ...mapState("sidebar", ["activeMenu" , "activeNetwork"])
+  },
+  methods: {
+    ...mapActions({
+      openDashboard: "sidebar/openDashboard",
+      openNetworks: "sidebar/openNetworks",
+      openBackends: "sidebar/openBackends",
+      openAnalytics: "sidebar/openAnalytics",
+      openBilling: "sidebar/openBilling"
+    })
   }
 };
 </script>
@@ -104,14 +153,14 @@ export default {
   width: 25px;
   height: 25px;
 }
-.subList{
+.subList {
   list-style-type: none;
 }
-.subList li{
+.subList li {
   font-size: 12px;
   cursor: pointer;
 }
-.subList > .active{
+.subList > .active {
   background-color: #582acf;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
