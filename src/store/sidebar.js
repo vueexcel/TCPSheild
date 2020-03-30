@@ -2,7 +2,7 @@ import router from "../router";
 
 const state = {
   activeMenu: "dashboard",
-  activeNetwork : "backends"
+  activeNetwork : ""
 };
 
 const mutations = {
