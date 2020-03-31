@@ -1,77 +1,71 @@
 <template>
-  <div class="pr-4">
-    <div class style="background-color:#622fe6;height:100vh;border-radius:10px">
-      <div class="text-center py-3">
-        <img class="logo" src="./../assets/images/logo.png" />
-      </div>
-      <ul class="menuList text-white text-uppercase PNB m-0 mt-4 p-0">
-        <li class="mb-2">
-          <div
-            class="py-3 ml-4"
-            :class="{ active: activeMenu === 'dashboard' }"
-            @click="openDashboard"
-          >
-            <span class="menuIconBox">
-              <img
-                v-if="(activeMenu === 'dashboard')"
-                class="dashboardIcon mx-3"
-                src="./../assets/images/dashboard_voilet.svg"
-              />
-              <img v-else class="dashboardIcon mx-3" src="./../assets/images/dashboard_white.svg" />
-            </span>
-            <a>dashboard</a>
-          </div>
-        </li>
-        <li class="mb-2">
-          <div
-            class="py-3 ml-4"
-            :class="{ active: activeMenu === 'networks' }"
-            @click="openNetworks"
-          >
-            <span class="menuIconBox">
-              <img
-                v-if="(activeMenu === 'networks')"
-                class="dashboardIcon mx-3"
-                src="./../assets/images/globe_voilet.svg"
-              />
-              <img v-else class="dashboardIcon mx-3" src="./../assets/images/globe_white.svg" />
-            </span>
-            <a>networks</a>
-          </div>
-          <ul v-if="activeMenu === ('networks')" class="subList ml-0 my-3 pl-0">
-            <li
-              class="py-2 mr-3 pr-2 mb-2 text-center"
-              :class="{ active: activeNetwork === 'backends' }"
-              @click="openBackends "
-            >Backends</li>
-            <li
-              class="py-2 mr-3 pr-2 text-center"
-               :class="{ active: activeNetwork === 'analytics' }"
-              @click="openAnalytics"
-            >Analytics</li>
-          </ul>
-        </li>
-        <li class="mb-2">
-          <div class="py-3 ml-4" :class="{ active: activeMenu === 'billing' }" @click="openBilling">
-            <span class="menuIconBox">
-              <img
-                v-if="(activeMenu === 'billing')"
-                class="dashboardIcon mx-3"
-                src="./../assets/images/dashboard_voilet.svg"
-              />
-              <img v-else class="dashboardIcon mx-3" src="./../assets/images/dashboard_white.svg" />
-            </span>
-            <a>billing</a>
-          </div>
-        </li>
-        <!-- <li
+  <div class="mr-4" style="background-color:#622fe6;height:120vh;border-radius:10px">
+    <div class="text-center py-3">
+      <img class="logo" src="./../assets/images/logo.png" />
+    </div>
+    <ul class="menuList text-white text-uppercase PNB m-0 mt-4 p-0">
+      <li class="mb-2">
+        <div
+          class="py-3 ml-4"
+          :class="{ active: activeMenu === 'dashboard' }"
+          @click="openDashboard"
+        >
+          <span class="menuIconBox">
+            <img
+              v-if="(activeMenu === 'dashboard')"
+              class="dashboardIcon mx-3"
+              src="./../assets/images/dashboard_voilet.svg"
+            />
+            <img v-else class="dashboardIcon mx-3" src="./../assets/images/dashboard_white.svg" />
+          </span>
+          <a>dashboard</a>
+        </div>
+      </li>
+      <li class="mb-2">
+        <div class="py-3 ml-4" :class="{ active: activeMenu === 'networks' }" @click="openNetworks">
+          <span class="menuIconBox">
+            <img
+              v-if="(activeMenu === 'networks')"
+              class="dashboardIcon mx-3"
+              src="./../assets/images/globe_voilet.svg"
+            />
+            <img v-else class="dashboardIcon mx-3" src="./../assets/images/globe_white.svg" />
+          </span>
+          <a>networks</a>
+        </div>
+        <ul v-if="activeMenu === ('networks')" class="subList ml-0 my-3 pl-0">
+          <li
+            class="py-2 mr-3 pr-2 mb-2 text-center"
+            :class="{ active: activeNetwork === 'backends' }"
+            @click="openBackends "
+          >Backends</li>
+          <li
+            class="py-2 mr-3 pr-2 text-center"
+            :class="{ active: activeNetwork === 'analytics' }"
+            @click="openAnalytics"
+          >Analytics</li>
+        </ul>
+      </li>
+      <li class="mb-2">
+        <div class="py-3 ml-4" :class="{ active: activeMenu === 'billing' }" @click="openBilling">
+          <span class="menuIconBox">
+            <img
+              v-if="(activeMenu === 'billing')"
+              class="dashboardIcon mx-3"
+              src="./../assets/images/bill_voilet.svg"
+            />
+            <img v-else class="dashboardIcon mx-3" src="./../assets/images/bill_white.svg" />
+          </span>
+          <a>billing</a>
+        </div>
+      </li>
+      <!-- <li
           v-for="(item,index) in menu"
           :key="index"
           class="py-3 mb-2 ml-3 text-center active"
-        >{{item}}</li>-->
-      </ul>
-      <div class="arrow-right"></div>
-    </div>
+      >{{item}}</li>-->
+    </ul>
+    <div class="arrow-right"></div>
   </div>
 </template>
 
@@ -86,7 +80,7 @@ export default {
     };
   },
   computed: {
-    ...mapState("sidebar", ["activeMenu" , "activeNetwork"])
+    ...mapState("sidebar", ["activeMenu", "activeNetwork"])
   },
   methods: {
     ...mapActions({

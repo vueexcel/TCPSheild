@@ -2,7 +2,7 @@
   <div>
     <div class="bg-light d-flex justify-content-between topBar">
       <div class="py-2 px-4 mx-4 my-3 d-flex justify-content-between dropdown">
-        <p class="PNT m-0 themeGrey selection">Selection</p>
+        <p class="PNT m-0 greyText selection">Selection</p>
         <font-awesome-icon
           icon="chevron-down"
           size="1x"
@@ -12,7 +12,7 @@
       </div>
       <div class="d-flex align-items-center mx-5">
         <div class="notificationBox">
-          <b-icon icon="bell" class="rounded-circle themeGrey bell" style="font-weight:bold"></b-icon>
+          <b-icon icon="bell" class="rounded-circle greyText bell" style="font-weight:bold"></b-icon>
           <div class="notificationCircle"></div>
         </div>
         <b-avatar
@@ -23,7 +23,7 @@
           text="AC"
           v-bind:src="userImg"
         ></b-avatar>
-        <p class="PNT themeGrey px-3 m-0 userName">Hello {{user}}</p>
+        <p class="PNT greyText px-3 m-0 userName">Hello {{user}}</p>
         <font-awesome-icon
           icon="chevron-down"
           size="1x"
@@ -34,20 +34,24 @@
     </div>
     <div class="my-4">
       <div v-if="activeMenu === 'dashboard'">
-        <p class="PNB mb-0 themeBlack wishUser">Good morning, John Smith</p>
-        <p class="PNR mb-0 themeGrey dataHeading">You have 1503 players across 2 networks</p>
+        <p class="PNB mb-0 blackText wishUser">Good morning, John Smith</p>
+        <p class="PNR mb-0 greyText dataHeading">You have 1503 players across 2 networks</p>
       </div>
       <div v-if="activeNetwork === 'backends'">
-        <p class="PNB mb-0 themeBlack wishUser">Backend Management</p>
-        <p class="PNR mb-0 themeGrey dataHeading">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+        <p class="PNB mb-0 blackText wishUser">Backend Management</p>
+        <p
+          class="PNR mb-0 greyText dataHeading"
+        >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
       </div>
       <div v-if="activeNetwork === 'analytics'">
-        <p class="PNB mb-0 themeBlack wishUser">Network Statistics</p>
-        <p class="PNR mb-0 themeGrey dataHeading">5 Servers and 60.000 players online</p>
+        <p class="PNB mb-0 blackText wishUser">Network Statistics</p>
+        <p class="PNR mb-0 greyText dataHeading">5 Servers and 60.000 players online</p>
       </div>
       <div v-if="activeMenu === 'billing'">
-        <p class="PNB mb-0 themeBlack wishUser">Billing Dashboard</p>
-        <p class="PNR mb-0 themeGrey dataHeading">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+        <p class="PNB mb-0 blackText wishUser">Billing Dashboard</p>
+        <p
+          class="PNR mb-0 greyText dataHeading"
+        >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
       </div>
     </div>
   </div>
@@ -64,7 +68,7 @@ export default {
     };
   },
   computed: {
-    ...mapState("sidebar", ["activeMenu","activeNetwork"])
+    ...mapState("sidebar", ["activeMenu", "activeNetwork"])
   }
 };
 </script>

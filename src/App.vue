@@ -1,22 +1,21 @@
 <template>
   <div id="app">
-    <background/>
+    <background />
   </div>
 </template>
 
 <script>
-import background from './components/background.vue'
+import background from "./components/background.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     background
   }
-}
+};
 </script>
 
 <style>
 #app {
-  
 }
 </style>
