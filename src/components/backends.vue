@@ -99,7 +99,7 @@
                     icon="x-circle"
                     font-scale="2.8"
                     class="rounded-circle py-2"
-                    style="color: #e72f6c;"
+                    style="color: #d1d3d7;"
                   ></b-icon>
                 </a>
               </td>

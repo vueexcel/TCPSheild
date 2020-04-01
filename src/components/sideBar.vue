@@ -106,7 +106,7 @@ export default {
   cursor: pointer;
 }
 .menuList li > .active {
-  background-color: #ffffff;
+  background-color: #f5f8fa;
   color: #823fdd;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
@@ -116,7 +116,7 @@ export default {
   content: "";
   width: 30px;
   height: 30px;
-  background: #fff;
+  background: #f5f8fa;
   -webkit-mask-image: radial-gradient(
     circle 10px at 0 0,
     transparent 0,
@@ -131,7 +131,7 @@ export default {
   content: "";
   width: 30px;
   height: 30px;
-  background: #fff;
+  background: #f5f8fa;
   -webkit-mask-image: radial-gradient(
     circle 10px at 0 0,
     transparent 0,

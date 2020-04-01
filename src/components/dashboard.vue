@@ -181,7 +181,7 @@ export default {
           curve: "smooth"
         },
         fill: {
-          type: "gradient",
+          type: "solid",
           gradient: {
             shade: "dark",
             gradientToColors: ["#FFA41B"],
