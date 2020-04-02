@@ -8,15 +8,15 @@
               <div>
                 <div class="p-3 stepInnerBox">
                   <p class="mb-0 PNB voiletText stepHeading">Step 1</p>
-                  <p class="mb-0 PNB greyText stepDescription">My protected CNAMEs</p>
+                  <p class="mb-0 PNR greyText stepDescription">My protected CNAMEs</p>
                 </div>
                 <div class="p-3">
                   <p
-                    class="PNB greyText stepDescription"
+                    class="PNR greyText stepDescription"
                   >Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p>
                   <div class="d-flex justify-content-between p-1 copyContainer">
                     <input type="text" class="mx-3 copyInput PNR greyText" />
-                    <b-button pill class="PNB stepDescription text-white m-0 circle copyBtn">COPY</b-button>
+                    <b-button pill class="PNB text-white m-0 circle copyBtn">COPY</b-button>
                   </div>
                 </div>
               </div>
@@ -24,7 +24,7 @@
             <b-col xl="12" lg="12" class="p-0 stepOuterBox bg-white">
               <div class="p-3 stepInnerBox">
                 <p class="mb-0 PNB voiletText stepHeading">Step 2</p>
-                <p class="mb-0 PNB greyText stepDescription">Download Plugins</p>
+                <p class="mb-0 PNR greyText stepDescription">Download Plugins</p>
               </div>
               <b-col xl="6" lg="12" class="p-0">
                 <div class="pt-3 px-3">
@@ -43,7 +43,7 @@
         <b-col xl="6" lg="6" class="p-0 stepOuterBox bg-white">
           <div class="p-3 stepInnerBox">
             <p class="mb-0 PNB voiletText stepHeading">Step 3</p>
-            <p class="mb-0 PNB greyText stepDescription">Point your DNS to TCPShield</p>
+            <p class="mb-0 PNR greyText stepDescription">Point your DNS to TCPShield</p>
           </div>
           <div class="p-3">
             <p class="stepDescription PNR greyText mb-4">
@@ -67,7 +67,7 @@
       </b-row>
     </b-container>
     <div>
-      <p class="PNB mb-0 blackText py-4">Backend IP's</p>
+      <p class="PNB mb-0 blackText BackendHeading py-4">Backend IP's</p>
       <div class="bg-white p-3 tableContainer">
         <table>
           <thead class="bg-light">
@@ -98,8 +98,7 @@
                   <b-icon
                     icon="x-circle"
                     font-scale="2.8"
-                    class="rounded-circle py-2"
-                    style="color: #d1d3d7;"
+                    class="rounded-circle py-2 closeIcon"
                   ></b-icon>
                 </a>
               </td>
@@ -160,10 +159,10 @@ export default {
   border-bottom: 1px solid #eaeaea;
 }
 .stepHeading {
-  font-size: 15px;
+  font-size: 1rem;
 }
 .stepDescription {
-  font-size: 12px;
+  font-size: 0.666rem;
 }
 .copyContainer {
   width: 65%;
@@ -176,12 +175,13 @@ export default {
   font-size: 14px;
 }
 .copyBtn {
+  font-size: 0.75rem;
   background-color: #622fe6;
   padding: 5px 18px;
 }
 .downloadButton {
   background-color: #27b6fa;
-  font-size: 14px;
+  font-size: 0.875rem;
   width: 100%;
   cursor: pointer;
 }
@@ -192,6 +192,9 @@ export default {
 }
 .step3List li {
   padding: 8px 20px;
+}
+.BackendHeading{
+  font-size: 1.125rem;
 }
 .tableContainer {
   border-radius: 10px;
@@ -206,7 +209,7 @@ tr {
 }
 tr .tableData {
   border: 1px solid #eaeaea;
-  font-size: 13px;
+  font-size: 0.75rem;
 }
 tr .tableData:nth-child(1) {
   width: 40%;
@@ -281,5 +284,11 @@ input:checked + .slider:before {
 }
 .slider.round:before {
   border-radius: 30px;
+}
+.closeIcon{
+  color: #d1d3d7;
+}
+.closeIcon:hover{
+  color: #e72f6c;
 }
 </style>

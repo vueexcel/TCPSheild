@@ -96,13 +96,13 @@ export default {
 
 <style scoped>
 .logo {
-  width: 9vw;
+  width: 8vw;
 }
 .menuList {
   list-style-type: none;
 }
 .menuList li {
-  font-size: 14px;
+  font-size: .875rem;
   cursor: pointer;
 }
 .menuList li > .active {
@@ -151,7 +151,7 @@ export default {
   list-style-type: none;
 }
 .subList li {
-  font-size: 12px;
+  font-size: 0.666rem;
   cursor: pointer;
 }
 .subList > .active {

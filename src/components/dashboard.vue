@@ -7,7 +7,7 @@
             <b-col xl="4" lg="6" class="p-0" v-for="(chart,index) in charts" :key="index">
               <div class="my-2 mx-3 bg-white chartBox">
                 <div class="d-flex justify-content-between px-3 py-2">
-                  <p class="voiletText PNB m-0">{{chart.title}}</p>
+                  <p class="voiletText PNB m-0 chartTitle">{{chart.title}}</p>
                   <p class="mb-0">
                     <b-icon icon="person" font-scale="1" class="rounded-circle greyText"></b-icon>
                     <span class="greyText PNR m-0 pl-2 players">{{chart.player}} Players</span>
@@ -25,7 +25,7 @@
             <b-col xl="4" lg="6" class="py-2">
               <div class="d-flex justify-content-center align-items-center addNewServerBox">
                 <div class="text-center">
-                  <b-icon icon="plus-circle" font-scale="3.5" class="rounded-circle p-2 addIcon"></b-icon>
+                  <b-icon icon="plus-circle" font-scale="3" class="rounded-circle p-2 addIcon"></b-icon>
                   <p class="voiletText PNB addNewServer mt-2">ADD NEW SERVER</p>
                 </div>
               </div>
@@ -156,7 +156,7 @@ export default {
           ],
           labels: {
             style: {
-              fontSize: "10px",
+              fontSize: ".583rem",
               colors: "#a7aab3"
             }
           }
@@ -165,7 +165,7 @@ export default {
           tickAmount: 3,
           labels: {
             style: {
-              fontSize: "10px",
+              fontSize: ".583rem",
               colors: "#a7aab3"
             }
           }
@@ -263,8 +263,11 @@ export default {
 </style>
 
 <style scoped>
+.chartTitle{
+  font-size: 1rem;
+}
 .players {
-  font-size: 12px;
+  font-size: 0.666rem;
 }
 .chartBox {
   border-radius: 10px;
@@ -276,21 +279,21 @@ export default {
   background-color: #ffffff;
 }
 .addNewServer {
-  font-size: 13px;
+  font-size: 0.75rem;
 }
 .sideBox {
   border-radius: 10px;
 }
 .sideHeading {
-  font-size: 15px;
+  font-size: 1rem;
   border-bottom: 1px solid #eaeaea;
 }
 .sideDescription {
-  font-size: 13px;
+  font-size: 0.75rem;
 }
 .sideButton {
   background-color: #27b6fa;
-  font-size: 14px;
+  font-size: .875rem;
   cursor: pointer;
 }
 .apiInputBox {

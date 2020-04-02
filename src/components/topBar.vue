@@ -34,21 +34,21 @@
     </div>
     <div class="my-4">
       <div v-if="activeMenu === 'dashboard'">
-        <p class="PNB mb-0 blackText wishUser">Good morning, John Smith</p>
+        <p class="PNB mb-0 blackText mainHeading">Good morning, John Smith</p>
         <p class="PNR mb-0 greyText dataHeading">You have 1503 players across 2 networks</p>
       </div>
       <div v-if="activeNetwork === 'backends'">
-        <p class="PNB mb-0 blackText wishUser">Backend Management</p>
+        <p class="PNB mb-0 blackText mainHeading">Backend Management</p>
         <p
           class="PNR mb-0 greyText dataHeading"
         >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
       </div>
       <div v-if="activeNetwork === 'analytics'">
-        <p class="PNB mb-0 blackText wishUser">Network Statistics</p>
+        <p class="PNB mb-0 blackText mainHeading">Network Statistics</p>
         <p class="PNR mb-0 greyText dataHeading">5 Servers and 60.000 players online</p>
       </div>
       <div v-if="activeMenu === 'billing'">
-        <p class="PNB mb-0 blackText wishUser">Billing Dashboard</p>
+        <p class="PNB mb-0 blackText mainHeading">Billing Dashboard</p>
         <p
           class="PNR mb-0 greyText dataHeading"
         >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
@@ -83,8 +83,7 @@ export default {
   border-radius: 40px;
 }
 .selection {
-  font-size: 15px;
-  font-weight: lighter;
+  font-size: 1rem;
 }
 .chevron-down {
   font-size: 250% !important;
@@ -108,12 +107,12 @@ export default {
   padding: 4px 10px;
 }
 .userName {
-  font-size: 15px;
+  font-size: 1rem;
 }
-.wishUser {
-  font-size: 16px;
+.mainHeading {
+  font-size: 1.125rem;
 }
 .dataHeading {
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 </style>

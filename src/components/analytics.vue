@@ -49,13 +49,16 @@
           </b-row>
         </b-col>
         <b-col xl="3" lg="6" class="p-0">
-          <div class="dataContainer"></div>
+          <div class="dataContainer">
+            <p class="PNB mb-0 blackText p-3 playerLocation">Player Locations</p>
+            <div id="world-map" style="height:225px;"></div>
+          </div>
         </b-col>
       </b-row>
-      <b-row class="mr-4">
+      <b-row class>
         <b-col xl="6" lg="12" class="p-0">
           <div class="mr-3">
-            <p class="PNB mb-0 blackText py-4">Top 10 Players</p>
+            <p class="PNB mb-0 blackText py-4 topHeading">Top 10 Players</p>
             <div class="dataContainer p-3">
               <table class="dataContainer">
                 <thead class="bg-light">
@@ -76,7 +79,7 @@
         </b-col>
         <b-col xl="6" lg="12" class="p-0">
           <div class="ml-2">
-            <p class="PNB mb-0 blackText py-4">Top 10 Countries</p>
+            <p class="PNB mb-0 blackText py-4 topHeading">Top 10 Countries</p>
             <div class="dataContainer p-3">
               <table>
                 <thead class="bg-light">
@@ -101,6 +104,11 @@
 </template>
 
 <script>
+window.jQuery = require("jquery");
+var $ = window.jQuery;
+require("jvectormap");
+require("./../js/lib/world-mill-en.js");
+
 import VueApexCharts from "vue-apexcharts";
 export default {
   name: "analytics",
@@ -134,7 +142,7 @@ export default {
               offsetY: 0,
               floating: false,
               style: {
-                fontSize: "15px",
+                fontSize: "16px",
                 fontFamily: "Proxima Nova Bold",
                 color: "#ff0480"
               }
@@ -178,7 +186,7 @@ export default {
               ],
               labels: {
                 style: {
-                  fontSize: "10px",
+                  fontSize: ".583rem",
                   colors: "#a7aab3"
                 }
               }
@@ -190,7 +198,7 @@ export default {
               tickAmount: 2,
               labels: {
                 style: {
-                  fontSize: "10px",
+                  fontSize: ".583rem",
                   colors: "#a7aab3"
                 },
                 formatter: value => {
@@ -239,7 +247,7 @@ export default {
               offsetY: 0,
               floating: false,
               style: {
-                fontSize: "15px",
+                fontSize: "16px",
                 fontFamily: "Proxima Nova Bold",
                 color: "#27b6fa"
               }
@@ -283,7 +291,7 @@ export default {
               ],
               labels: {
                 style: {
-                  fontSize: "10px",
+                  fontSize: ".583rem",
                   colors: "#a7aab3"
                 }
               }
@@ -295,7 +303,7 @@ export default {
               tickAmount: 2,
               labels: {
                 style: {
-                  fontSize: "10px",
+                  fontSize: ".583rem",
                   colors: "#a7aab3"
                 },
                 formatter: value => {
@@ -344,7 +352,7 @@ export default {
               offsetY: 0,
               floating: false,
               style: {
-                fontSize: "15px",
+                fontSize: "16px",
                 fontFamily: "Proxima Nova Bold",
                 color: "#622fe6"
               }
@@ -388,7 +396,7 @@ export default {
               ],
               labels: {
                 style: {
-                  fontSize: "10px",
+                  fontSize: ".583rem",
                   colors: "#a7aab3"
                 }
               }
@@ -400,7 +408,7 @@ export default {
               tickAmount: 2,
               labels: {
                 style: {
-                  fontSize: "10px",
+                  fontSize: ".583rem",
                   colors: "#a7aab3"
                 },
                 formatter: value => {
@@ -454,7 +462,7 @@ export default {
           offsetY: 0,
           floating: false,
           style: {
-            fontSize: "15px",
+            fontSize: "16px",
             fontFamily: "Proxima Nova Bold",
             color: "#525f6b"
           }
@@ -495,7 +503,7 @@ export default {
           ],
           labels: {
             style: {
-              fontSize: "10px",
+              fontSize: ".583rem",
               colors: "#a7aab3"
             }
           }
@@ -510,7 +518,7 @@ export default {
           tickAmount: 2,
           labels: {
             style: {
-              fontSize: "10px",
+              fontSize: ".583rem",
               colors: "#a7aab3"
             },
             formatter: value => {
@@ -525,7 +533,7 @@ export default {
           show: true,
           position: "top",
           horizontalAlign: "right",
-          fontSize: "10px",
+          fontSize: ".583rem",
           fontFamily: "Proxima Nova Bold",
           labels: {
             useSeriesColors: true
@@ -554,16 +562,87 @@ export default {
   },
   mounted() {
     this.fixedDecimal();
+    this.worldMap();
   },
   methods: {
     fixedDecimal() {
       this.uniqueNewPlayers = this.uniqueNewPlayers.toFixed(3);
+    },
+    worldMap() {
+      $("#world-map").vectorMap({
+        map: "world_mill_en",
+        normalizeFunction: "polynomial",
+        markerStyle: {
+          initial: {
+            fill: "#F8E23B",
+            stroke: "#383f47"
+          }
+        },
+        zoomButtons: false,
+        series: {},
+        backgroundColor: "#fff",
+        regionStyle: {
+          initial: {
+            fill: "#d6dfe4",
+            stroke: "none"
+          }
+        },
+        markers: [
+          {
+            latLng: [35.06737, 116.034738],
+            name: "Asia",
+            style: { r: 8, fill: "#2fe69b" }
+          },
+          {
+            latLng: [3.817963, 30.08030245],
+            name: "Africa",
+            style: { r: 8, fill: "#ce2fe6" }
+          },
+          {
+            latLng: [-22.378094, 140.108203],
+            name: "Australia",
+            style: { r: 8, fill: "#e62f2f" }
+          },
+          {
+            latLng: [51.824713, 38.086025],
+            name: "Eastern Europe",
+            style: { r: 8, fill: "#27b6fa" }
+          },
+          {
+            latLng: [46.092372, 2.945867],
+            name: "Western Europe",
+            style: { r: 8, fill: "#ff2792" }
+          },
+          {
+            latLng: [62.077448, 12.217676],
+            name: "Northern Europe",
+            style: { r: 8, fill: "#622fe6" }
+          },
+          {
+            latLng: [59.582248, -123.624918],
+            name: "North America",
+            style: { r: 8, fill: "#27ffde" }
+          },
+          {
+            latLng: [-15.948465, -53.199599],
+            name: "South America",
+            style: { r: 8, fill: "#fac627" }
+          }
+        ],
+      });
     }
   }
 };
 </script>
 
 <style scoped>
+.jvectormap-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+}
 .chartMargin:nth-child(1) > div {
   margin-right: 0.8vw;
 }
@@ -576,20 +655,26 @@ export default {
 }
 .dataContainer {
   background-color: #ffffff;
-  border-radius: 10px;
+  border-radius: 0.583rem;
 }
 .dataTitle {
-  font-size: 18px;
+  font-size: 1.25rem;
 }
 .averageTimePlayed {
   color: #ff2993;
-  font-size: 40px;
+  font-size: 2.5rem;
   font-family: "Proxima Nova Bold";
 }
 .uniqueNewPlayers {
   color: #27b6fa;
-  font-size: 40px;
+  font-size: 2.5rem;
   font-family: "Proxima Nova Bold";
+}
+.playerLocation {
+  font-size: 1rem;
+}
+.topHeading {
+  font-size: 1.125rem;
 }
 table {
   border: none;
@@ -601,7 +686,7 @@ tr {
 }
 tr .tableData {
   border: 1px solid #eaeaea;
-  font-size: 13px;
+  font-size: 0.75rem;
 }
 tr .tableData:nth-child(1) {
   width: 40%;
@@ -619,6 +704,7 @@ tr .tableData:nth-child(4) {
 }
 thead tr:first-child .tableData {
   border-top: none;
+  color: #525f6b;
 }
 tbody tr:last-child .tableData {
   border-bottom: none;
@@ -628,5 +714,6 @@ tr .tableData:last-child {
 }
 tr .tableData:first-child {
   border-left: none;
+  color: #622fe6;
 }
 </style>
