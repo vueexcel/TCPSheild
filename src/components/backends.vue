@@ -77,7 +77,7 @@
               <th class="PNB blackText py-2 text-center tableData">
                 <span class="mr-2">Forge Support</span>
                 <span>
-                  <b-icon icon="info-circle-fill" font-scale="1.2" class="rounded-circle" style></b-icon>
+                  <b-icon icon="info-circle-fill" font-scale="1.2" class="rounded-circle" ></b-icon>
                 </span>
               </th>
               <th class="PNB blackText py-2 tableData"></th>

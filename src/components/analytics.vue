@@ -2,8 +2,8 @@
   <div>
     <b-container fluid class>
       <b-row>
-        <b-col xl="9" lg="6">
-          <b-row class="mr-4">
+        <b-col xl="9" lg="6" class>
+          <b-row>
             <b-col
               xl="4"
               lg="12"
@@ -13,45 +13,40 @@
             >
               <div class="px-2 pt-2 dataContainer">
                 <apexcharts
-                  height="180"
+                  height="175"
                   type="area"
                   :options="areaChart.options"
                   :series="areaChart.series"
-                  class="mr-2"
+                  class
                 ></apexcharts>
               </div>
             </b-col>
           </b-row>
-          <b-row class="mr-4 mt-4">
+          <b-row class="mt-4">
             <b-col xl="4" lg="12" class="p-0">
-              <div class="text-center py-5 mr-3 dataContainer">
-                <p class="dataTitle PNR greyText">Average Time Played</p>
+              <div class="text-center py-5 mr-3 boxHeight dataContainer">
+                <p class="dataTitle PNR greyText mb-0">Average Time Played</p>
                 <p class="averageTimePlayed m-0">{{averageTimePlayed}}h</p>
               </div>
             </b-col>
             <b-col xl="4" lg="12" class="p-0">
-              <div class="text-center py-5 mx-2 dataContainer">
-                <p class="dataTitle PNR greyText">Unique new players</p>
+              <div class="text-center py-5 mx-2 boxHeight dataContainer">
+                <p class="dataTitle PNR greyText mb-0">Unique new players</p>
                 <p class="uniqueNewPlayers m-0">{{uniqueNewPlayers}}</p>
               </div>
             </b-col>
             <b-col xl="4" lg="12" class="p-0">
-              <div class="text-center ml-3 px-2 pt-2 dataContainer">
-                <apexcharts
-                  height="180"
-                  type="bar"
-                  :options="barOptions"
-                  :series="barSeries"
-                  class="mr-2"
-                ></apexcharts>
+              <div class="text-center ml-3 px-2 pt-2 barChartBox dataContainer">
+                <p class="barChartTitle mb-0">Unique vs. recurring players</p>
+                <apexcharts height="175" type="bar" :options="barOptions" :series="barSeries" class></apexcharts>
               </div>
             </b-col>
           </b-row>
         </b-col>
         <b-col xl="3" lg="6" class="p-0">
-          <div class="dataContainer">
+          <div class="dataContainer ml-4">
             <p class="PNB mb-0 blackText p-3 playerLocation">Player Locations</p>
-            <div id="world-map" style="height:225px;"></div>
+            <div id="world-map" style="height:340px;"></div>
           </div>
         </b-col>
       </b-row>
@@ -60,7 +55,7 @@
           <div class="mr-3">
             <p class="PNB mb-0 blackText py-4 topHeading">Top 10 Players</p>
             <div class="dataContainer p-3">
-              <table class="dataContainer">
+              <table class>
                 <thead class="bg-light">
                   <tr>
                     <th class="PNB blackText py-2 tableData">Position</th>
@@ -78,7 +73,7 @@
           </div>
         </b-col>
         <b-col xl="6" lg="12" class="p-0">
-          <div class="ml-2">
+          <div class="ml-3">
             <p class="PNB mb-0 blackText py-4 topHeading">Top 10 Countries</p>
             <div class="dataContainer p-3">
               <table>
@@ -454,19 +449,6 @@ export default {
         }
       ],
       barOptions: {
-        title: {
-          text: "Unique vs. recurring players",
-          align: "left",
-          margin: 10,
-          offsetX: 0,
-          offsetY: 0,
-          floating: false,
-          style: {
-            fontSize: "16px",
-            fontFamily: "Proxima Nova Bold",
-            color: "#525f6b"
-          }
-        },
         colors: ["#622fe6", "#27b6fa"],
         chart: {
           id: "serverChart",
@@ -533,7 +515,7 @@ export default {
           show: true,
           position: "top",
           horizontalAlign: "right",
-          fontSize: ".583rem",
+          fontSize: "10px",
           fontFamily: "Proxima Nova Bold",
           labels: {
             useSeriesColors: true
@@ -628,7 +610,7 @@ export default {
             name: "South America",
             style: { r: 8, fill: "#fac627" }
           }
-        ],
+        ]
       });
     }
   }
@@ -643,6 +625,12 @@ export default {
   overflow: hidden;
   background-color: transparent;
 }
+.apexcharts-legend {
+  padding: 0;
+}
+.boxHeight {
+  height: 200px;
+}
 .chartMargin:nth-child(1) > div {
   margin-right: 0.8vw;
 }
@@ -652,6 +640,7 @@ export default {
 }
 .chartMargin:nth-child(3) > div {
   margin-left: 0.8vw;
+  margin-right: 0vw;
 }
 .dataContainer {
   background-color: #ffffff;
@@ -669,6 +658,16 @@ export default {
   color: #27b6fa;
   font-size: 2.5rem;
   font-family: "Proxima Nova Bold";
+}
+.barChartBox {
+  position: relative;
+}
+.barChartTitle {
+  position: absolute;
+  font-size: 16px;
+  font-family: "Proxima Nova Bold";
+  color: #525f6b;
+  left: 1vw;
 }
 .playerLocation {
   font-size: 1rem;
@@ -689,18 +688,11 @@ tr .tableData {
   font-size: 0.75rem;
 }
 tr .tableData:nth-child(1) {
-  width: 40%;
+  width: 10%;
 }
 tr .tableData:nth-child(2) {
-  width: 40%;
-  padding: 0px 12px;
-}
-tr .tableData:nth-child(3) {
-  width: 10%;
-  padding: 0px 12px;
-}
-tr .tableData:nth-child(4) {
-  width: 5%;
+  width: 90%;
+  padding: 0px 24px;
 }
 thead tr:first-child .tableData {
   border-top: none;
