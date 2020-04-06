@@ -6,11 +6,13 @@ import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue';
 import VueApexCharts from 'vue-apexcharts'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 
 Vue.use(VueApexCharts)
 library.add(faChevronDown)
+library.add(faSearch)
 
 Vue.component('apexchart', VueApexCharts)
 Vue.component('font-awesome-icon', FontAwesomeIcon)

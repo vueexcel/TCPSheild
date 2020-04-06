@@ -1,16 +1,16 @@
 <template>
-  <div >
-    <b-container fluid class="">
+  <div>
+    <b-container fluid class="px-0">
       <b-row>
         <b-col xl="9" lg="8">
           <b-row class>
             <b-col xl="4" lg="6" class="p-0" v-for="(chart,index) in charts" :key="index">
               <div class="my-2 mx-3 bg-white chartBox">
                 <div class="d-flex justify-content-between px-3 py-2">
-                  <p class="themeVoilet PNB m-0">{{chart.title}}</p>
+                  <p class="voiletText PNB m-0 chartTitle">{{chart.title}}</p>
                   <p class="mb-0">
-                    <b-icon icon="person" font-scale="1" class="rounded-circle themeGrey"></b-icon>
-                    <span class="themeGrey PNR m-0 pl-2 players">{{chart.player}} Players</span>
+                    <b-icon icon="person" font-scale="1" class="rounded-circle greyText"></b-icon>
+                    <span class="greyText PNR m-0 pl-2 players">{{chart.player}} Players</span>
                   </p>
                 </div>
                 <apexcharts
@@ -25,13 +25,8 @@
             <b-col xl="4" lg="6" class="py-2">
               <div class="d-flex justify-content-center align-items-center addNewServerBox">
                 <div class="text-center">
-                  <b-icon
-                    icon="plus-circle"
-                    font-scale="3.5"
-                    class="rounded-circle p-2"
-                    style="color: #622fe6;"
-                  ></b-icon>
-                  <p class="themeVoilet PNB addNewServer mt-2">ADD NEW SERVER</p>
+                  <b-icon icon="plus-circle" font-scale="3" class="rounded-circle p-2 addIcon"></b-icon>
+                  <p class="voiletText PNB addNewServer mt-2">ADD NEW SERVER</p>
                 </div>
               </div>
             </b-col>
@@ -39,22 +34,22 @@
         </b-col>
         <b-col xl="3" lg="4">
           <div class="bg-light sideBox">
-            <p class="PNB p-3 m-0 sideHeading themeBlack">Support</p>
+            <p class="PNB p-3 m-0 sideHeading blackText">Support</p>
             <div class="p-3">
               <p
-                class="themeGrey PNT sideDescription"
+                class="greyText PNT sideDescription"
               >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
               <div>
                 <span>
                   <img class="documentIcon" src="./../assets/images/document.svg" />
                 </span>
-                <span class="PNB sideDescription themeBlack px-3">Documentation</span>
+                <span class="PNB sideDescription blackText px-3">Documentation</span>
               </div>
               <div class="my-3">
                 <span>
                   <img class="phoneIcon" src="./../assets/images/phone.svg" />
                 </span>
-                <span class="PNB sideDescription themeBlack px-2">+180 454 323 777</span>
+                <span class="PNB sideDescription blackText px-2">+180 454 323 777</span>
               </div>
               <div class="p-2 text-center rounded sideButton">
                 <p class="m-0 PNB text-white">SUBMIT TICKET</p>
@@ -62,42 +57,39 @@
             </div>
           </div>
           <div class="bg-light sideBox my-4">
-            <p class="PNB p-3 m-0 sideHeading themeBlack">API</p>
+            <p class="PNB p-3 m-0 sideHeading blackText">API</p>
             <div class="p-3">
               <div class="d-flex justify-content-between">
-                <p class="themeVoilet PNB sideDescription m-0">Client ID</p>
-                <p class="themeBlack PNR sideDescription m-0">view secret</p>
+                <p class="voiletText PNB sideDescription m-0">Client ID</p>
+                <p class="blackText PNR sideDescription m-0">view secret</p>
               </div>
               <div class="d-flex justify-content-between p-1 mt-2 mb-3 apiInputBox">
                 <input type="text" class="apiInput" />
-                <b-button
-                  pill
-                  class="PNB sideDescription text-white m-0 circle copyBtn"
-                >COPY</b-button>
+                <b-button pill class="PNB sideDescription text-white m-0 circle copyBtn">COPY</b-button>
               </div>
               <p
-                class="themeGrey PNT sideDescription"
+                class="greyText PNT sideDescription"
               >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p>
               <div>
                 <div>
                   <span>
                     <img class="keyIcon" src="./../assets/images/key.svg" />
                   </span>
-                  <span class="PNB sideDescription themeBlack px-2">Manage API Keys</span>
+                  <span class="PNB sideDescription blackText px-2">Manage API Keys</span>
                 </div>
                 <div class="mt-3">
                   <span>
                     <img class="phoneIcon" src="./../assets/images/phone.svg" />
                   </span>
-                  <span class="PNB sideDescription themeBlack px-2">API Documentation</span>
+                  <span class="PNB sideDescription blackText px-2">API Documentation</span>
                 </div>
               </div>
             </div>
           </div>
           <div class="bg-light sideBox">
-            <p class="PNB p-3 m-0 sideHeading themeBlack">Blog</p>
+            <p class="PNB p-3 m-0 sideHeading blackText">Blog</p>
             <div class="p-3">
-              <p class="themeGrey PNT sideDescription">
+              <p class="greyText PNT sideDescription">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
                 At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit.
               </p>
@@ -164,7 +156,7 @@ export default {
           ],
           labels: {
             style: {
-              fontSize: "10px",
+              fontSize: ".583rem",
               colors: "#a7aab3"
             }
           }
@@ -173,7 +165,7 @@ export default {
           tickAmount: 3,
           labels: {
             style: {
-              fontSize: "10px",
+              fontSize: ".583rem",
               colors: "#a7aab3"
             }
           }
@@ -189,7 +181,7 @@ export default {
           curve: "smooth"
         },
         fill: {
-          type: "gradient",
+          type: "solid",
           gradient: {
             shade: "dark",
             gradientToColors: ["#FFA41B"],
@@ -246,13 +238,13 @@ export default {
 
 <style >
 @import "./../css/fonts.css";
-.themeVoilet {
+.voiletText {
   color: #622fe6;
 }
-.themeGrey {
+.greyText {
   color: #a7aab3;
 }
-.themeBlack {
+.blackText {
   color: #525f6b;
 }
 .PNB {
@@ -264,12 +256,18 @@ export default {
 .PNT {
   font-family: "Proxima Nova Thin";
 }
+.addIcon {
+  color: #622fe6;
+  cursor: pointer;
+}
 </style>
 
 <style scoped>
-
+.chartTitle{
+  font-size: 1rem;
+}
 .players {
-  font-size: 12px;
+  font-size: 0.666rem;
 }
 .chartBox {
   border-radius: 10px;
@@ -281,21 +279,22 @@ export default {
   background-color: #ffffff;
 }
 .addNewServer {
-  font-size: 13px;
+  font-size: 0.75rem;
 }
 .sideBox {
   border-radius: 10px;
 }
 .sideHeading {
-  font-size: 15px;
+  font-size: 1rem;
   border-bottom: 1px solid #eaeaea;
 }
 .sideDescription {
-  font-size: 13px;
+  font-size: 0.75rem;
 }
 .sideButton {
   background-color: #27b6fa;
-  font-size: 14px;
+  font-size: .875rem;
+  cursor: pointer;
 }
 .apiInputBox {
   border: 1px solid #eaeaea;
@@ -309,6 +308,7 @@ export default {
 .copyBtn {
   background-color: #622fe6;
   padding: 6px 15px;
+  cursor: pointer;
 }
 .documentIcon {
   width: 18px;

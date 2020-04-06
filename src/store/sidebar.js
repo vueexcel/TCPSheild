@@ -2,19 +2,19 @@ import router from "../router";
 
 const state = {
   activeMenu: "dashboard",
-  activeNetwork : ""
+  activeNetwork: ""
 };
 
 const mutations = {
   openDashboard() {
     router.push("/");
     state.activeMenu = "dashboard";
-    state.activeNetwork = ""
+    state.activeNetwork = "";
   },
   openNetworks() {
     router.push("/backends");
     state.activeMenu = "networks";
-    state.activeNetwork = "backends"
+    state.activeNetwork = "backends";
   },
   openBackends() {
     router.push("/backends");
@@ -27,7 +27,7 @@ const mutations = {
   openBilling() {
     router.push("/billing");
     state.activeMenu = "billing";
-    state.activeNetwork = ""
+    state.activeNetwork = "";
   }
 };
 
