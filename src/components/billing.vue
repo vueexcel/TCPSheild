@@ -39,7 +39,12 @@
     <div class="tableContainer">
       <div class="p-3 tableBar d-flex">
         <div class="d-flex justify-content-between py-1 px-3 searchContainer">
-          <input type="text" class="mr-2 px-1 searchInput PNR greyText" placeholder="Search" />
+          <input
+            type="text"
+            class="mr-2 px-1 searchInput PNR greyText"
+            v-model="searchInvoice"
+            placeholder="Search"
+          />
           <font-awesome-icon icon="search" size="xs" :style="{ color: '#525f6b' }" class="my-1" />
         </div>
         <div class="pt-2 d-flex dropdown">
@@ -54,6 +59,14 @@
             />
           </div>-->
         </div>
+        <div class="sortingBox">
+          <select class="py-2 px-3 customSelect PNR greyText" @click="sort('total')">
+            <option @click="sort('invoice')">Invoice</option>
+            <option @click="sort('total')">Total</option>
+            <option @click="sort('balance')">Balance</option>
+            <option @click="sort('date')">Date</option>
+          </select>
+        </div>
       </div>
       <div class="p-3">
         <table>
@@ -67,7 +80,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(invoceData,index) in invocesData" :key="index">
+            <tr v-for="(invoceData,index) in  filterInvoice" :key="index">
               <td class="PNR greyText py-2 tableData">{{invoceData.invoice}}</td>
               <td class="PNR greyText py-2 tableData">$ {{invoceData.total}}</td>
               <td class="PNR greyText py-2 tableData">$ {{invoceData.balance}}</td>
@@ -91,6 +104,42 @@
           </tbody>
         </table>
       </div>
+      <!-- <div class="p-3">
+        <table>
+          <thead class="bg-light">
+            <tr>
+              <th
+                v-for="(invoice,index) in invoicesTitle"
+                :key="index"
+                class="PNB blackText py-2 tableData"
+              >{{invoice}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(invoceData,index) in  sortedInvoice" :key="index">
+              <td class="PNR greyText py-2 tableData">{{invoceData.invoice}}</td>
+              <td class="PNR greyText py-2 tableData">$ {{invoceData.total}}</td>
+              <td class="PNR greyText py-2 tableData">$ {{invoceData.balance}}</td>
+              <td class="PNR greyText py-2 tableData">{{invoceData.dueDate}}</td>
+              <td class="PNR greyText py-2 tableData text-center">
+                <div v-if="invoceData.status=== 'paid' " class="paidInvoice PNR py-1">INVOICE PAID</div>
+                <div v-else class="unpaidInvoice PNR py-1">INVOICE UNPAID</div>
+              </td>
+              <td class="PNR greyText py-2 tableData">
+                <span class>
+                  <b-icon
+                    icon="cloud-download"
+                    font-scale="1.1"
+                    class="rounded-circle cloudIcon"
+                    style
+                  ></b-icon>
+                </span>
+                <span class="pdf PNB px-2">PDF</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div> -->
     </div>
   </div>
 </template>
@@ -104,6 +153,7 @@ export default {
       chargesThisMonth: 23.2,
       remainingCredits: 155.77,
       recentInvoice: 3,
+      currentSort: "invoice",
       invoicesTitle: [
         "invoice",
         "Total",
@@ -121,42 +171,100 @@ export default {
           status: "paid"
         },
         {
-          invoice: "inv0001",
+          invoice: "inv0002",
           total: "805.60",
           balance: "1000.00",
-          dueDate: "March 01,2020",
+          dueDate: "February 08,2020",
           status: "unpaid"
         },
         {
-          invoice: "inv0001",
+          invoice: "inv0003",
           total: "161.05",
           balance: "125.00",
-          dueDate: "March 01,2020",
+          dueDate: "May 22,2020",
           status: "paid"
         },
         {
-          invoice: "inv0001",
+          invoice: "inv0004",
           total: "500.00",
           balance: "250.00",
-          dueDate: "March 01,2020",
+          dueDate: "December 30,2020",
           status: "unpaid"
         }
-      ]
+      ],
+      searchInvoice: ""
     };
+  },
+  methods: {
+    sort(s) {
+      this.currentSort = s;
+      console.log(this.currentSort,"hlkkjhkjh");
+    }
+  },
+  computed: {
+    filterInvoice() {
+      return this.invocesData.filter(invoceData => {
+        return invoceData.invoice.match(this.searchInvoice);
+      });
+    },
+    // sortedInvoice() {
+    //   return this.invocesData.sort((a, b) => {
+    //     a[this.invoceData.currentSort] < b[this.invoceData.currentSort]
+    //   });
+    // }
   }
 };
 </script>
 
 <style scoped>
+.sortingBox {
+  position: relative;
+}
+.sortingBox::before {
+  content: "\f078";
+  position: absolute;
+  top: 10%;
+  right: 3%;
+  width: 20%;
+  height: 80%;
+  display: inline-block;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  text-align: center;
+  font-size: 28px;
+  color: #a7aab3;
+  background-color: #fff;
+  pointer-events: none;
+  border: none;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  z-index: 12;
+}
+
+.customSelect {
+  position: relative;
+  font-size: 0.6rem;
+  width: 120px;
+  border: 1px solid #eaeaea;
+  border-radius: 50px;
+}
+.customSelect:focus {
+  border-color: none;
+  outline: none;
+}
+
+.customSelect > option {
+  padding: 4px 8px;
+}
 .HeadBar {
   font-size: 1rem;
 }
 .HeadBar > span {
-  padding:4px 0px;
+  padding: 4px 0px;
 }
 .HeadBar > .active {
   color: #622fe6;
-  border-bottom:3px solid #622fe6;
+  border-bottom: 3px solid #622fe6;
 }
 .dataContainer {
   background-color: #ffffff;
@@ -198,6 +306,9 @@ export default {
   border: none;
   font-size: 0.6rem;
   background-color: #f5f8fa;
+}
+.searchInput::placeholder {
+  color:#a7aab3;
 }
 .searchInput:focus {
   outline: none;

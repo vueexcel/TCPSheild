@@ -44,9 +44,26 @@
           </b-row>
         </b-col>
         <b-col xl="3" lg="6" class="p-0">
-          <div class="dataContainer ml-4">
+          <div class="dataContainer ml-4" style="height:100%">
             <p class="PNB mb-0 blackText p-3 playerLocation">Player Locations</p>
-            <div id="world-map" style="height:340px;"></div>
+            <div id="world-map" style="height:180px;" class="px-3"></div>
+            <b-row class="mt-4 px-4">
+              <b-col
+                v-for="(playerLocation,index) in playersLocation"
+                :key="index"
+                xl="6"
+                lg="6"
+                class="mb-2"
+              >
+                <div class="">
+                  <p class="mb-1 PNB blackText" style="font-size:0.666rem;">
+                    <span class="text-capitalize ">{{playerLocation.name}}</span>
+                    <span class="float-right">{{playerLocation.value}}%</span>
+                  </p>
+                  <b-progress height=".2rem" :value="playerLocation.value"  :variant="playerLocation.variant" class="mb-2"></b-progress>
+                </div>
+              </b-col>
+            </b-row>
           </div>
         </b-col>
       </b-row>
@@ -102,7 +119,7 @@
 window.jQuery = require("jquery");
 var $ = window.jQuery;
 require("jvectormap");
-require("./../js/lib/world-mill-en.js");
+require("./../js/lib/jquery-jvectormap-continents-mill.js");
 
 import VueApexCharts from "vue-apexcharts";
 export default {
@@ -539,7 +556,42 @@ export default {
             options: {}
           }
         ]
-      }
+      },
+      playersLocation: [
+        {
+          name: "asia",
+          value: 35,
+          variant:"success"
+        },
+        {
+          name: "australia",
+          value: 25
+        },
+        {
+          name: "africa",
+          value: 45
+        },
+        {
+          name: "southernEurope",
+          value: 56
+        },
+        {
+          name: "northAmerica",
+          value: 23
+        },
+        {
+          name: "westernEurope",
+          value: 42
+        },
+        {
+          name: "southAmerica",
+          value: 25
+        },
+        {
+          name: "northernEurope",
+          value: 75
+        }
+      ]
     };
   },
   mounted() {
@@ -552,12 +604,12 @@ export default {
     },
     worldMap() {
       $("#world-map").vectorMap({
-        map: "world_mill_en",
+        map: "continents_mill",
         normalizeFunction: "polynomial",
         markerStyle: {
           initial: {
             fill: "#F8E23B",
-            stroke: "#383f47"
+            stroke: "none"
           }
         },
         zoomButtons: false,
@@ -573,42 +625,42 @@ export default {
           {
             latLng: [35.06737, 116.034738],
             name: "Asia",
-            style: { r: 8, fill: "#2fe69b" }
+            style: { r: 5, fill: "#2fe69b" }
           },
           {
             latLng: [3.817963, 30.08030245],
             name: "Africa",
-            style: { r: 8, fill: "#ce2fe6" }
+            style: { r: 5, fill: "#ce2fe6" }
           },
           {
             latLng: [-22.378094, 140.108203],
             name: "Australia",
-            style: { r: 8, fill: "#e62f2f" }
+            style: { r: 5, fill: "#e62f2f" }
           },
           {
             latLng: [51.824713, 38.086025],
             name: "Eastern Europe",
-            style: { r: 8, fill: "#27b6fa" }
+            style: { r: 5, fill: "#27b6fa" }
           },
           {
             latLng: [46.092372, 2.945867],
             name: "Western Europe",
-            style: { r: 8, fill: "#ff2792" }
+            style: { r: 5, fill: "#ff2792" }
           },
           {
             latLng: [62.077448, 12.217676],
             name: "Northern Europe",
-            style: { r: 8, fill: "#622fe6" }
+            style: { r: 5, fill: "#622fe6" }
           },
           {
             latLng: [59.582248, -123.624918],
             name: "North America",
-            style: { r: 8, fill: "#27ffde" }
+            style: { r: 5, fill: "#27ffde" }
           },
           {
             latLng: [-15.948465, -53.199599],
             name: "South America",
-            style: { r: 8, fill: "#fac627" }
+            style: { r: 5, fill: "#fac627" }
           }
         ]
       });
@@ -625,8 +677,11 @@ export default {
   overflow: hidden;
   background-color: transparent;
 }
+#world-map >>> .jvectormap-container svg {
+  height: 180px !important;
+}
 .apexcharts-legend {
-  padding: 0;
+  padding: 0 !important;
 }
 .boxHeight {
   height: 200px;
