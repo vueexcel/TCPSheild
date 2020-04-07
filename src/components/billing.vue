@@ -26,8 +26,8 @@
         </b-col>
         <b-col xl="3" lg="6" class="p-0">
           <div class="text-center py-5 ml-4 boxHeight dataContainer">
-            <p class="dataTitle PNR greyText mb-0">Payment Methods</p>
-            <p class="remainingCredits PNB m-0">$ {{remainingCredits}}</p>
+            <p class="dataTitle PNR greyText mb-1">Payment Methods</p>
+            <img class="paypalIcon mx-3" src="./../assets/images/paypal.svg" />
           </div>
         </b-col>
       </b-row>
@@ -60,7 +60,7 @@
           </div>-->
         </div>
         <div class="sortingBox">
-          <select class="py-2 px-3 customSelect PNR greyText" @click="sort('total')">
+          <select class="py-2 px-3 customSelect PNR greyText" @click="sort('balance')">
             <option @click="sort('invoice')">Invoice</option>
             <option @click="sort('total')">Total</option>
             <option @click="sort('balance')">Balance</option>
@@ -104,42 +104,6 @@
           </tbody>
         </table>
       </div>
-      <!-- <div class="p-3">
-        <table>
-          <thead class="bg-light">
-            <tr>
-              <th
-                v-for="(invoice,index) in invoicesTitle"
-                :key="index"
-                class="PNB blackText py-2 tableData"
-              >{{invoice}}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(invoceData,index) in  sortedInvoice" :key="index">
-              <td class="PNR greyText py-2 tableData">{{invoceData.invoice}}</td>
-              <td class="PNR greyText py-2 tableData">$ {{invoceData.total}}</td>
-              <td class="PNR greyText py-2 tableData">$ {{invoceData.balance}}</td>
-              <td class="PNR greyText py-2 tableData">{{invoceData.dueDate}}</td>
-              <td class="PNR greyText py-2 tableData text-center">
-                <div v-if="invoceData.status=== 'paid' " class="paidInvoice PNR py-1">INVOICE PAID</div>
-                <div v-else class="unpaidInvoice PNR py-1">INVOICE UNPAID</div>
-              </td>
-              <td class="PNR greyText py-2 tableData">
-                <span class>
-                  <b-icon
-                    icon="cloud-download"
-                    font-scale="1.1"
-                    class="rounded-circle cloudIcon"
-                    style
-                  ></b-icon>
-                </span>
-                <span class="pdf PNB px-2">PDF</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div> -->
     </div>
   </div>
 </template>
@@ -162,56 +126,82 @@ export default {
         "Status",
         "Action"
       ],
-      invocesData: [
+      invoicesData: [
         {
-          invoice: "inv0001",
+          invoice: "inv",
           total: "65.00",
           balance: "0.00",
           dueDate: "March 01,2020",
           status: "paid"
         },
         {
-          invoice: "inv0002",
+          invoice: "kinv",
+          total: "500.00",
+          balance: "250.00",
+          dueDate: "December 30,2020",
+          status: "unpaid"
+        },
+        {
+          invoice: "anv",
           total: "805.60",
           balance: "1000.00",
           dueDate: "February 08,2020",
           status: "unpaid"
         },
         {
-          invoice: "inv0003",
+          invoice: "ifnv",
           total: "161.05",
           balance: "125.00",
           dueDate: "May 22,2020",
           status: "paid"
-        },
-        {
-          invoice: "inv0004",
-          total: "500.00",
-          balance: "250.00",
-          dueDate: "December 30,2020",
-          status: "unpaid"
         }
       ],
       searchInvoice: ""
     };
   },
+  mounted() {
+    this.sortedInvoice();
+  },
   methods: {
     sort(s) {
       this.currentSort = s;
-      console.log(this.currentSort,"hlkkjhkjh");
+      console.log(this.currentSort, "hlkkjhkjh");
+    },
+    sortedInvoice() {
+      if (this.currentSort === "invoice") {
+        console.log(this.currentSort);
+        sortedArr = this.invoicesData.slice().sort(function(a, b) {
+          return a.invoice - b.invoice;
+        });
+        return sortedArr;
+      } else if (this.currentSort === "dueDate") {
+        var sortedArr = this.invoicesData.slice().sort(function(a, b) {
+          return new Date(a.dueDate) - new Date(b.dueDate);
+        });
+        return sortedArr;
+      } else if (this.currentSort === "total") {
+        console.log(this.currentSort);
+        sortedArr = this.invoicesData.slice().sort(function(a, b) {
+          return a.total - b.total;
+        });
+        return sortedArr;
+      } else if (this.currentSort === "balance") {
+        console.log(this.currentSort);
+        sortedArr = this.invoicesData.slice().sort(function(a, b) {
+          return a.balance - b.balance;
+        });
+        return sortedArr;
+      } else {
+        return this.invoicesData;
+      }
     }
   },
   computed: {
     filterInvoice() {
-      return this.invocesData.filter(invoceData => {
-        return invoceData.invoice.match(this.searchInvoice);
+      return this.sortedInvoice().filter(invoiceData => {
+        return invoiceData.invoice.match(this.searchInvoice);
       });
-    },
-    // sortedInvoice() {
-    //   return this.invocesData.sort((a, b) => {
-    //     a[this.invoceData.currentSort] < b[this.invoceData.currentSort]
-    //   });
-    // }
+    }
   }
 };
 </script>
@@ -221,7 +211,7 @@ export default {
   position: relative;
 }
 .sortingBox::before {
-  content: "\f078";
+  content: "\f002";
   position: absolute;
   top: 10%;
   right: 3%;
@@ -286,6 +276,11 @@ export default {
   color: #622fe6;
   font-size: 2.5rem;
 }
+.paypalIcon {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
 .recentInvoice {
   font-size: 1.125rem;
 }
@@ -308,7 +303,7 @@ export default {
   background-color: #f5f8fa;
 }
 .searchInput::placeholder {
-  color:#a7aab3;
+  color: #a7aab3;
 }
 .searchInput:focus {
   outline: none;

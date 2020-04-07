@@ -45,22 +45,22 @@
         </b-col>
         <b-col xl="3" lg="6" class="p-0">
           <div class="dataContainer ml-4" style="height:100%">
-            <p class="PNB mb-0 blackText p-3 playerLocation">Player Locations</p>
-            <div id="world-map" style="height:180px;" class="px-3"></div>
+            <p class="PNB mb-0 blackText px-3 py-2 playerLocation">Player Locations</p>
+            <div id="world-map" style="height:170px;" class="px-3"></div>
             <b-row class="mt-4 px-4">
               <b-col
                 v-for="(playerLocation,index) in playersLocation"
                 :key="index"
                 xl="6"
                 lg="6"
-                class="mb-2"
+                class="mb-2 progressCol"
               >
-                <div class="">
+                <div class>
                   <p class="mb-1 PNB blackText" style="font-size:0.666rem;">
-                    <span class="text-capitalize ">{{playerLocation.name}}</span>
+                    <span class="text-capitalize">{{playerLocation.name}}</span>
                     <span class="float-right">{{playerLocation.value}}%</span>
                   </p>
-                  <b-progress height=".2rem" :value="playerLocation.value"  :variant="playerLocation.variant" class="mb-2"></b-progress>
+                  <b-progress height="4px" :value="playerLocation.value" class="mb-2 progressBar"></b-progress>
                 </div>
               </b-col>
             </b-row>
@@ -185,6 +185,7 @@ export default {
               fontFamily: "Proxima Nova Regular"
             },
             xaxis: {
+              type: "category",
               categories: [
                 "0:55",
                 "0:56",
@@ -559,37 +560,36 @@ export default {
       },
       playersLocation: [
         {
+          name: "northern Europe",
+          value: 75
+        },
+        {
+          name: "eastern Europe",
+          value: 56
+        },
+        {
+          name: "western Europe",
+          value: 42
+        },
+        {
           name: "asia",
-          value: 35,
-          variant:"success"
+          value: 35
         },
         {
           name: "australia",
           value: 25
         },
         {
-          name: "africa",
-          value: 45
-        },
-        {
-          name: "southernEurope",
-          value: 56
-        },
-        {
-          name: "northAmerica",
-          value: 23
-        },
-        {
-          name: "westernEurope",
-          value: 42
-        },
-        {
-          name: "southAmerica",
+          name: "south America",
           value: 25
         },
         {
-          name: "northernEurope",
-          value: 75
+          name: "north America",
+          value: 23
+        },
+        {
+          name: "africa",
+          value: 45
         }
       ]
     };
@@ -608,12 +608,22 @@ export default {
         normalizeFunction: "polynomial",
         markerStyle: {
           initial: {
-            fill: "#F8E23B",
-            stroke: "none"
+            stroke: "none",
+            url: "./../assets/images/yellow.png",
+            offset: [-10, 5]
           }
         },
         zoomButtons: false,
-        series: {},
+        series: {
+          markers: [
+            {
+              attribute: "image",
+              scale: {
+                yellow: "./../assets/images/yellow.png"
+              }
+            }
+          ]
+        },
         backgroundColor: "#fff",
         regionStyle: {
           initial: {
@@ -625,7 +635,8 @@ export default {
           {
             latLng: [35.06737, 116.034738],
             name: "Asia",
-            style: { r: 5, fill: "#2fe69b" }
+            attribute: "image"
+            // style: { r: 5, fill: "#2fe69b" },
           },
           {
             latLng: [3.817963, 30.08030245],
@@ -670,19 +681,6 @@ export default {
 </script>
 
 <style scoped>
-.jvectormap-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  background-color: transparent;
-}
-#world-map >>> .jvectormap-container svg {
-  height: 180px !important;
-}
-.apexcharts-legend {
-  padding: 0 !important;
-}
 .boxHeight {
   height: 200px;
 }
@@ -726,6 +724,48 @@ export default {
 }
 .playerLocation {
   font-size: 1rem;
+  border-bottom: 1px solid #eaeaea;
+}
+#world-map >>> .jvectormap-container svg {
+  height: 180px !important;
+}
+.progressBar {
+  background-color: #dcdcdc;
+}
+.progressCol > div > .progressBar >>> .progress-bar {
+  border-radius: 10px;
+}
+.progressCol:nth-child(1) > div > .progressBar >>> .progress-bar {
+  background-color: #622fe6;
+}
+.progressCol:nth-child(2) > div > .progressBar >>> .progress-bar {
+  background-color: #27b6fa;
+}
+.progressCol:nth-child(3) > div > .progressBar >>> .progress-bar {
+  background-color: #ff2792;
+}
+.progressCol:nth-child(4) > div > .progressBar >>> .progress-bar {
+  background-color: #2fe69b;
+}
+.progressCol:nth-child(5) > div > .progressBar >>> .progress-bar {
+  background-color: #e62f2f;
+}
+.progressCol:nth-child(6) > div > .progressBar >>> .progress-bar {
+  background-color: #fac627;
+}
+.progressCol:nth-child(7) > div > .progressBar >>> .progress-bar {
+  background-color: #27ffde;
+}
+.progressCol:nth-child(8) > div > .progressBar >>> .progress-bar {
+  background-color: #ce2fe6;
+}
+.dataContainer
+  >>> div
+  > .apexcharts-canvas
+  > svg
+  > foreignObject
+  > .apexcharts-legend {
+  padding: 0 !important;
 }
 .topHeading {
   font-size: 1.125rem;
