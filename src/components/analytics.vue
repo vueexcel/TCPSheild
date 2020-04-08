@@ -609,8 +609,8 @@ export default {
         markerStyle: {
           initial: {
             stroke: "none",
-            url: "./../assets/images/yellow.png",
-            offset: [-10, 5]
+            width: 42,
+            height: 58
           }
         },
         zoomButtons: false,
@@ -619,7 +619,7 @@ export default {
             {
               attribute: "image",
               scale: {
-                yellow: "./../assets/images/yellow.png"
+                'marker': "./../assets/images/yellow.png"
               }
             }
           ]
@@ -635,8 +635,7 @@ export default {
           {
             latLng: [35.06737, 116.034738],
             name: "Asia",
-            attribute: "image"
-            // style: { r: 5, fill: "#2fe69b" },
+            status:"marker"
           },
           {
             latLng: [3.817963, 30.08030245],

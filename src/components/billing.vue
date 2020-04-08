@@ -60,11 +60,12 @@
           </div>-->
         </div>
         <div class="sortingBox">
-          <select class="py-2 px-3 customSelect PNR greyText" @click="sort('balance')">
-            <option @click="sort('invoice')">Invoice</option>
-            <option @click="sort('total')">Total</option>
-            <option @click="sort('balance')">Balance</option>
-            <option @click="sort('date')">Date</option>
+          <select
+            class="py-2 px-3 customSelect PNR greyText"
+            v-model="sortType"
+            @change="sortedInvoice(sortType)"
+          >
+            <option v-for="(sortOption , index) in sortOptions" :key="index">{{sortOption}}</option>
           </select>
         </div>
       </div>
@@ -80,7 +81,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(invoceData,index) in  filterInvoice" :key="index">
+            <tr v-for="(invoceData,index) in filterInvoice" :key="index">
               <td class="PNR greyText py-2 tableData">{{invoceData.invoice}}</td>
               <td class="PNR greyText py-2 tableData">$ {{invoceData.total}}</td>
               <td class="PNR greyText py-2 tableData">$ {{invoceData.balance}}</td>
@@ -117,9 +118,10 @@ export default {
       chargesThisMonth: 23.2,
       remainingCredits: 155.77,
       recentInvoice: 3,
-      currentSort: "invoice",
+      sortOptions: ["Invoice", "Total", "Balance", "Date"],
+      sortType: "Invoice",
       invoicesTitle: [
-        "invoice",
+        "Invoice",
         "Total",
         "Balance",
         "Due Date",
@@ -159,34 +161,28 @@ export default {
       searchInvoice: ""
     };
   },
-  mounted() {
-    this.sortedInvoice();
-  },
   methods: {
-    sort(s) {
-      this.currentSort = s;
-      console.log(this.currentSort, "hlkkjhkjh");
-    },
-    sortedInvoice() {
-      if (this.currentSort === "invoice") {
-        console.log(this.currentSort);
-        sortedArr = this.invoicesData.slice().sort(function(a, b) {
-          return a.invoice - b.invoice;
+    sortedInvoice(sortTypes) {
+      // this.sortType = sortTypes;
+      console.log(sortTypes);
+      if (this.sortType === "Invoice") {
+        var sortedArr = this.invoicesData.slice().sort(function(a, b) {
+          if (a.invoice < b.invoice) {
+            return -1;
+          }
         });
         return sortedArr;
-      } else if (this.currentSort === "dueDate") {
-        var sortedArr = this.invoicesData.slice().sort(function(a, b) {
+      } else if (this.sortType === "Date") {
+        sortedArr = this.invoicesData.slice().sort(function(a, b) {
           return new Date(a.dueDate) - new Date(b.dueDate);
         });
         return sortedArr;
-      } else if (this.currentSort === "total") {
-        console.log(this.currentSort);
+      } else if (this.sortOption === "Total") {
         sortedArr = this.invoicesData.slice().sort(function(a, b) {
           return a.total - b.total;
         });
         return sortedArr;
-      } else if (this.currentSort === "balance") {
-        console.log(this.currentSort);
+      } else if (this.sortOption === "Balance") {
         sortedArr = this.invoicesData.slice().sort(function(a, b) {
           return a.balance - b.balance;
         });
@@ -211,7 +207,7 @@ export default {
   position: relative;
 }
 .sortingBox::before {
-  content: "\f002";
+  content: "";
   position: absolute;
   top: 10%;
   right: 3%;
