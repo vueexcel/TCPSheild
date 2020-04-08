@@ -49,16 +49,22 @@
         </div>
         <div class="pt-2 d-flex dropdown">
           <p class="m-0 mx-3 sortHeading greyText">Sort By</p>
-          <!-- <div class="sortContainer d-flex justify-content-between px-3">
-            <p class="PNT m-0 greyText selection">Selection</p>
-            <font-awesome-icon
-              icon="chevron-down"
-              size="1x"
-              :style="{ color: '#a7aab3' }"
-              class="mt-1"
-            />
-          </div>-->
         </div>
+        <!-- <div>
+          <b-dropdown no-caret variant="white">
+            <template v-slot:button-content>
+              <span class="dropDownText PNR greyText pr-3">Invoice</span>
+              <font-awesome-icon
+                icon="chevron-down"
+                size="xs"
+                :style="{ color: '#a7aab3' }"
+                class=""
+              />
+            </template>
+            <b-dropdown-item href="#">An item</b-dropdown-item>
+            <b-dropdown-item href="#">Another item</b-dropdown-item>
+          </b-dropdown>
+        </div> -->
         <div class="sortingBox">
           <select
             class="py-2 px-3 customSelect PNR greyText"
@@ -158,43 +164,45 @@ export default {
           status: "paid"
         }
       ],
-      searchInvoice: ""
+      searchInvoice: "",
+      dataToSHow: []
     };
   },
+  mounted() {
+    this.dataToSHow = this.invoicesData;
+  },
   methods: {
-    sortedInvoice(sortTypes) {
-      // this.sortType = sortTypes;
-      console.log(sortTypes);
-      if (this.sortType === "Invoice") {
+    sortedInvoice(sortType) {
+      if (sortType === "Invoice") {
         var sortedArr = this.invoicesData.slice().sort(function(a, b) {
           if (a.invoice < b.invoice) {
             return -1;
           }
         });
-        return sortedArr;
-      } else if (this.sortType === "Date") {
+        this.dataToSHow = sortedArr;
+      } else if (sortType === "Date") {
         sortedArr = this.invoicesData.slice().sort(function(a, b) {
           return new Date(a.dueDate) - new Date(b.dueDate);
         });
-        return sortedArr;
-      } else if (this.sortOption === "Total") {
+        this.dataToSHow = sortedArr;
+      } else if (sortType === "Total") {
         sortedArr = this.invoicesData.slice().sort(function(a, b) {
           return a.total - b.total;
         });
-        return sortedArr;
-      } else if (this.sortOption === "Balance") {
+        this.dataToSHow = sortedArr;
+      } else if (sortType === "Balance") {
         sortedArr = this.invoicesData.slice().sort(function(a, b) {
           return a.balance - b.balance;
         });
-        return sortedArr;
+        this.dataToSHow = sortedArr;
       } else {
-        return this.invoicesData;
+        this.dataToSHow = this.invoicesData;
       }
     }
   },
   computed: {
     filterInvoice() {
-      return this.sortedInvoice().filter(invoiceData => {
+      return this.dataToSHow.filter(invoiceData => {
         return invoiceData.invoice.match(this.searchInvoice);
       });
     }
@@ -206,15 +214,15 @@ export default {
 .sortingBox {
   position: relative;
 }
-.sortingBox::before {
-  content: "";
+/* .sortingBox::before {
+  content: "\f078";
   position: absolute;
   top: 10%;
   right: 3%;
   width: 20%;
   height: 80%;
   display: inline-block;
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome\ 5 Free";
   font-weight: 900;
   text-align: center;
   font-size: 28px;
@@ -224,9 +232,12 @@ export default {
   border: none;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
-  z-index: 12;
-}
+  z-index: 1;
+} */
 
+.dropDownText {
+  font-size: 0.6rem;
+}
 .customSelect {
   position: relative;
   font-size: 0.6rem;
@@ -238,9 +249,8 @@ export default {
   border-color: none;
   outline: none;
 }
-
-.customSelect > option {
-  padding: 4px 8px;
+ option {
+  padding: 4px 8px !important; 
 }
 .HeadBar {
   font-size: 1rem;

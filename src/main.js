@@ -11,8 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 
 Vue.use(VueApexCharts)
-library.add(faChevronDown)
-library.add(faSearch)
+library.add(faChevronDown , faSearch)
 
 Vue.component('apexchart', VueApexCharts)
 Vue.component('font-awesome-icon', FontAwesomeIcon)

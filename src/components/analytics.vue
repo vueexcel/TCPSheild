@@ -591,7 +591,56 @@ export default {
           name: "africa",
           value: 45
         }
-      ]
+      ],
+      // plants: [
+      //   {
+      //     name: "KBR",
+      //     coords: [35.06737, 116.034738],
+      //     status: "closed",
+      //     offsets: [0, 5]
+      //   },
+      //   {
+      //     name: "MZFR",
+      //     coords: [3.817963, 30.08030245],
+      //     status: "closed",
+      //     offsets: [0, 2]
+      //   },
+      //   {
+      //     name: "KRB",
+      //     coords: [-22.378094, 140.108203],
+      //     status: "activeUntil2018"
+      //   },
+
+      //   {
+      //     name: "KWL",
+      //     coords: [51.824713, 38.086025],
+      //     status: "closed",
+      //     offsets: [0, -2]
+      //   },
+      //   {
+      //     name: "HDR",
+      //     coords: [46.092372, 2.945867],
+      //     status: "closed",
+      //     offsets: [0, -2]
+      //   },
+      //   {
+      //     name: "KKN",
+      //     coords: [62.077448, 12.217676],
+      //     status: "closed",
+      //     offsets: [0, -2]
+      //   },
+      //   {
+      //     name: "GKN",
+      //     coords: [59.582248, -123.624918],
+      //     status: "activeUntil2022"
+      //   },
+      //   {
+      //     name: "KKB",
+      //     coords: [-15.948465, -53.199599],
+      //     status: "closed",
+      //     offsets: [0, -5],
+      //   }
+      // ]
     };
   },
   mounted() {
@@ -608,21 +657,34 @@ export default {
         normalizeFunction: "polynomial",
         markerStyle: {
           initial: {
-            stroke: "none",
-            width: 42,
-            height: 58
+            stroke: "none"
           }
         },
         zoomButtons: false,
         series: {
-          markers: [
-            {
-              attribute: "image",
-              scale: {
-                'marker': "./../assets/images/yellow.png"
-              }
-            }
-          ]
+          // markers: [
+          //   {
+          //     attribute: "image",
+          //     scale: {
+          //       closed: "./../assets/images/yellow.png"
+          //     },
+          //     values: this.plants.reduce(function(p, c, i) {
+          //       p[i] = c.status;
+          //       return p;
+          //     }, {}),
+          //     legend: {
+          //       horizontal: true,
+          //       title: "Nuclear power station status",
+          //       labelRender: function(v) {
+          //         return {
+          //           closed: "Closed",
+          //           activeUntil2018: "Scheduled for shut down<br> before 2018",
+          //           activeUntil2022: "Scheduled for shut down<br> before 2022"
+          //         }[v];
+          //       }
+          //     }
+          //   }
+          // ]
         },
         backgroundColor: "#fff",
         regionStyle: {
@@ -631,11 +693,14 @@ export default {
             stroke: "none"
           }
         },
+        // markers: this.plants.map(function(h) {
+        //   return { name: h.name, latLng: h.coords };
+        // })
         markers: [
           {
             latLng: [35.06737, 116.034738],
             name: "Asia",
-            status:"marker"
+            status: "marker"
           },
           {
             latLng: [3.817963, 30.08030245],
