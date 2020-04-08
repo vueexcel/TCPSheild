@@ -26,8 +26,8 @@
         </b-col>
         <b-col xl="3" lg="6" class="p-0">
           <div class="text-center py-5 ml-4 boxHeight dataContainer">
-            <p class="dataTitle PNR greyText mb-0">Payment Methods</p>
-            <p class="remainingCredits PNB m-0">$ {{remainingCredits}}</p>
+            <p class="dataTitle PNR greyText mb-1">Payment Methods</p>
+            <img class="paypalIcon mx-3" src="./../assets/images/paypal.svg" />
           </div>
         </b-col>
       </b-row>
@@ -49,22 +49,29 @@
         </div>
         <div class="pt-2 d-flex dropdown">
           <p class="m-0 mx-3 sortHeading greyText">Sort By</p>
-          <!-- <div class="sortContainer d-flex justify-content-between px-3">
-            <p class="PNT m-0 greyText selection">Selection</p>
-            <font-awesome-icon
-              icon="chevron-down"
-              size="1x"
-              :style="{ color: '#a7aab3' }"
-              class="mt-1"
-            />
-          </div>-->
         </div>
+        <!-- <div>
+          <b-dropdown no-caret variant="white">
+            <template v-slot:button-content>
+              <span class="dropDownText PNR greyText pr-3">Invoice</span>
+              <font-awesome-icon
+                icon="chevron-down"
+                size="xs"
+                :style="{ color: '#a7aab3' }"
+                class=""
+              />
+            </template>
+            <b-dropdown-item href="#">An item</b-dropdown-item>
+            <b-dropdown-item href="#">Another item</b-dropdown-item>
+          </b-dropdown>
+        </div> -->
         <div class="sortingBox">
-          <select class="py-2 px-3 customSelect PNR greyText" @click="sort('total')">
-            <option @click="sort('invoice')">Invoice</option>
-            <option @click="sort('total')">Total</option>
-            <option @click="sort('balance')">Balance</option>
-            <option @click="sort('date')">Date</option>
+          <select
+            class="py-2 px-3 customSelect PNR greyText"
+            v-model="sortType"
+            @change="sortedInvoice(sortType)"
+          >
+            <option v-for="(sortOption , index) in sortOptions" :key="index">{{sortOption}}</option>
           </select>
         </div>
       </div>
@@ -80,7 +87,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(invoceData,index) in  filterInvoice" :key="index">
+            <tr v-for="(invoceData,index) in filterInvoice" :key="index">
               <td class="PNR greyText py-2 tableData">{{invoceData.invoice}}</td>
               <td class="PNR greyText py-2 tableData">$ {{invoceData.total}}</td>
               <td class="PNR greyText py-2 tableData">$ {{invoceData.balance}}</td>
@@ -104,42 +111,6 @@
           </tbody>
         </table>
       </div>
-      <!-- <div class="p-3">
-        <table>
-          <thead class="bg-light">
-            <tr>
-              <th
-                v-for="(invoice,index) in invoicesTitle"
-                :key="index"
-                class="PNB blackText py-2 tableData"
-              >{{invoice}}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(invoceData,index) in  sortedInvoice" :key="index">
-              <td class="PNR greyText py-2 tableData">{{invoceData.invoice}}</td>
-              <td class="PNR greyText py-2 tableData">$ {{invoceData.total}}</td>
-              <td class="PNR greyText py-2 tableData">$ {{invoceData.balance}}</td>
-              <td class="PNR greyText py-2 tableData">{{invoceData.dueDate}}</td>
-              <td class="PNR greyText py-2 tableData text-center">
-                <div v-if="invoceData.status=== 'paid' " class="paidInvoice PNR py-1">INVOICE PAID</div>
-                <div v-else class="unpaidInvoice PNR py-1">INVOICE UNPAID</div>
-              </td>
-              <td class="PNR greyText py-2 tableData">
-                <span class>
-                  <b-icon
-                    icon="cloud-download"
-                    font-scale="1.1"
-                    class="rounded-circle cloudIcon"
-                    style
-                  ></b-icon>
-                </span>
-                <span class="pdf PNB px-2">PDF</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div> -->
     </div>
   </div>
 </template>
@@ -153,65 +124,88 @@ export default {
       chargesThisMonth: 23.2,
       remainingCredits: 155.77,
       recentInvoice: 3,
-      currentSort: "invoice",
+      sortOptions: ["Invoice", "Total", "Balance", "Date"],
+      sortType: "Invoice",
       invoicesTitle: [
-        "invoice",
+        "Invoice",
         "Total",
         "Balance",
         "Due Date",
         "Status",
         "Action"
       ],
-      invocesData: [
+      invoicesData: [
         {
-          invoice: "inv0001",
+          invoice: "inv",
           total: "65.00",
           balance: "0.00",
           dueDate: "March 01,2020",
           status: "paid"
         },
         {
-          invoice: "inv0002",
+          invoice: "kinv",
+          total: "500.00",
+          balance: "250.00",
+          dueDate: "December 30,2020",
+          status: "unpaid"
+        },
+        {
+          invoice: "anv",
           total: "805.60",
           balance: "1000.00",
           dueDate: "February 08,2020",
           status: "unpaid"
         },
         {
-          invoice: "inv0003",
+          invoice: "ifnv",
           total: "161.05",
           balance: "125.00",
           dueDate: "May 22,2020",
           status: "paid"
-        },
-        {
-          invoice: "inv0004",
-          total: "500.00",
-          balance: "250.00",
-          dueDate: "December 30,2020",
-          status: "unpaid"
         }
       ],
-      searchInvoice: ""
+      searchInvoice: "",
+      dataToSHow: []
     };
   },
+  mounted() {
+    this.dataToSHow = this.invoicesData;
+  },
   methods: {
-    sort(s) {
-      this.currentSort = s;
-      console.log(this.currentSort,"hlkkjhkjh");
+    sortedInvoice(sortType) {
+      if (sortType === "Invoice") {
+        var sortedArr = this.invoicesData.slice().sort(function(a, b) {
+          if (a.invoice < b.invoice) {
+            return -1;
+          }
+        });
+        this.dataToSHow = sortedArr;
+      } else if (sortType === "Date") {
+        sortedArr = this.invoicesData.slice().sort(function(a, b) {
+          return new Date(a.dueDate) - new Date(b.dueDate);
+        });
+        this.dataToSHow = sortedArr;
+      } else if (sortType === "Total") {
+        sortedArr = this.invoicesData.slice().sort(function(a, b) {
+          return a.total - b.total;
+        });
+        this.dataToSHow = sortedArr;
+      } else if (sortType === "Balance") {
+        sortedArr = this.invoicesData.slice().sort(function(a, b) {
+          return a.balance - b.balance;
+        });
+        this.dataToSHow = sortedArr;
+      } else {
+        this.dataToSHow = this.invoicesData;
+      }
     }
   },
   computed: {
     filterInvoice() {
-      return this.invocesData.filter(invoceData => {
-        return invoceData.invoice.match(this.searchInvoice);
+      return this.dataToSHow.filter(invoiceData => {
+        return invoiceData.invoice.match(this.searchInvoice);
       });
-    },
-    // sortedInvoice() {
-    //   return this.invocesData.sort((a, b) => {
-    //     a[this.invoceData.currentSort] < b[this.invoceData.currentSort]
-    //   });
-    // }
+    }
   }
 };
 </script>
@@ -220,7 +214,7 @@ export default {
 .sortingBox {
   position: relative;
 }
-.sortingBox::before {
+/* .sortingBox::before {
   content: "\f078";
   position: absolute;
   top: 10%;
@@ -228,7 +222,7 @@ export default {
   width: 20%;
   height: 80%;
   display: inline-block;
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome\ 5 Free";
   font-weight: 900;
   text-align: center;
   font-size: 28px;
@@ -238,9 +232,12 @@ export default {
   border: none;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
-  z-index: 12;
-}
+  z-index: 1;
+} */
 
+.dropDownText {
+  font-size: 0.6rem;
+}
 .customSelect {
   position: relative;
   font-size: 0.6rem;
@@ -252,9 +249,8 @@ export default {
   border-color: none;
   outline: none;
 }
-
-.customSelect > option {
-  padding: 4px 8px;
+ option {
+  padding: 4px 8px !important; 
 }
 .HeadBar {
   font-size: 1rem;
@@ -286,6 +282,11 @@ export default {
   color: #622fe6;
   font-size: 2.5rem;
 }
+.paypalIcon {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
 .recentInvoice {
   font-size: 1.125rem;
 }
@@ -308,7 +309,7 @@ export default {
   background-color: #f5f8fa;
 }
 .searchInput::placeholder {
-  color:#a7aab3;
+  color: #a7aab3;
 }
 .searchInput:focus {
   outline: none;

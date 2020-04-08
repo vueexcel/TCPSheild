@@ -77,7 +77,7 @@
               <th class="PNB blackText py-2 text-center tableData">
                 <span class="mr-2">Forge Support</span>
                 <span>
-                  <b-icon icon="info-circle-fill" font-scale="1.2" class="rounded-circle" ></b-icon>
+                  <b-icon icon="info-circle-fill" font-scale="1.2" class="rounded-circle"></b-icon>
                 </span>
               </th>
               <th class="PNB blackText py-2 tableData"></th>
@@ -95,11 +95,7 @@
               </td>
               <td class="text-center tableData">
                 <a class="p-2" @click="edit(row,index)">
-                  <b-icon
-                    icon="x-circle"
-                    font-scale="2.8"
-                    class="rounded-circle py-2 closeIcon"
-                  ></b-icon>
+                  <b-icon icon="x-circle" font-scale="2.8" class="rounded-circle py-2 closeIcon"></b-icon>
                 </a>
               </td>
             </tr>
@@ -193,7 +189,7 @@ export default {
 .step3List li {
   padding: 8px 20px;
 }
-.BackendHeading{
+.BackendHeading {
   font-size: 1.125rem;
 }
 .tableContainer {
@@ -285,10 +281,10 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 30px;
 }
-.closeIcon{
+.closeIcon {
   color: #d1d3d7;
 }
-.closeIcon:hover{
+.closeIcon:hover {
   color: #e72f6c;
 }
 </style>
