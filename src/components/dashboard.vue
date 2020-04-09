@@ -5,7 +5,7 @@
         <b-col xl="9" lg="8">
           <b-row class>
             <b-col xl="4" lg="6" class="p-0" v-for="(chart,index) in charts" :key="index">
-              <div class="my-2 mx-3 bg-white chartBox">
+              <div class="mb-2 mx-3 bg-white chartBox">
                 <div class="d-flex justify-content-between px-3 py-2">
                   <p class="voiletText PNB m-0 chartTitle">{{chart.title}}</p>
                   <p class="mb-0">
@@ -22,7 +22,7 @@
                 ></apexcharts>
               </div>
             </b-col>
-            <b-col xl="4" lg="6" class="py-2">
+            <b-col xl="4" lg="6" class>
               <div class="d-flex justify-content-center align-items-center addNewServerBox">
                 <div class="text-center">
                   <b-icon icon="plus-circle" font-scale="3" class="rounded-circle p-2 addIcon"></b-icon>
@@ -33,7 +33,7 @@
           </b-row>
         </b-col>
         <b-col xl="3" lg="4">
-          <div class="bg-light sideBox">
+          <div class="sideBox">
             <p class="PNB p-3 m-0 sideHeading blackText">Support</p>
             <div class="p-3">
               <p
@@ -56,7 +56,7 @@
               </div>
             </div>
           </div>
-          <div class="bg-light sideBox my-4">
+          <div class="sideBox my-4">
             <p class="PNB p-3 m-0 sideHeading blackText">API</p>
             <div class="p-3">
               <div class="d-flex justify-content-between">
@@ -64,7 +64,7 @@
                 <p class="blackText PNR sideDescription m-0">view secret</p>
               </div>
               <div class="d-flex justify-content-between p-1 mt-2 mb-3 apiInputBox">
-                <input type="text" class="apiInput" />
+                <input type="text" class="apiInput greyText mx-3" />
                 <b-button pill class="PNB sideDescription text-white m-0 circle copyBtn">COPY</b-button>
               </div>
               <p
@@ -86,7 +86,7 @@
               </div>
             </div>
           </div>
-          <div class="bg-light sideBox">
+          <div class="sideBox">
             <p class="PNB p-3 m-0 sideHeading blackText">Blog</p>
             <div class="p-3">
               <p class="greyText PNT sideDescription">
@@ -263,7 +263,7 @@ export default {
 </style>
 
 <style scoped>
-.chartTitle{
+.chartTitle {
   font-size: 1rem;
 }
 .players {
@@ -283,6 +283,7 @@ export default {
 }
 .sideBox {
   border-radius: 10px;
+  background-color: #fff;
 }
 .sideHeading {
   font-size: 1rem;
@@ -293,7 +294,7 @@ export default {
 }
 .sideButton {
   background-color: #27b6fa;
-  font-size: .875rem;
+  font-size: 0.875rem;
   cursor: pointer;
 }
 .apiInputBox {
@@ -304,6 +305,11 @@ export default {
   border: none;
   cursor: pointer;
   width: 100%;
+  font-size: 0.75rem;
+}
+.apiInput:focus {
+  border: none;
+  outline: none;
 }
 .copyBtn {
   background-color: #622fe6;

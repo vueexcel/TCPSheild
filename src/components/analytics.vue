@@ -700,7 +700,8 @@ export default {
           {
             latLng: [35.06737, 116.034738],
             name: "Asia",
-            status: "marker"
+            status: "marker",
+            style: { r: 5, fill: "#ce2fe6" }
           },
           {
             latLng: [3.817963, 30.08030245],

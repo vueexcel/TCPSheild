@@ -102,7 +102,7 @@ export default {
   list-style-type: none;
 }
 .menuList li {
-  font-size: .875rem;
+  font-size: 0.875rem;
   cursor: pointer;
 }
 .menuList li > .active {
@@ -127,7 +127,7 @@ export default {
   top: -30px;
   right: 0px;
 }
-.active::after {
+.menuList li > .active::after {
   content: "";
   width: 30px;
   height: 30px;
