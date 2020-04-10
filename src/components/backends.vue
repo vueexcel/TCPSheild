@@ -21,7 +21,7 @@
                 </div>
               </div>
             </b-col>
-            <b-col xl="12" lg="12"  class="p-0 stepOuterBox bg-white mb-4 mb-lg-0">
+            <b-col xl="12" lg="12" class="p-0 stepOuterBox bg-white mb-4 mb-lg-0 mt-lg-3">
               <div class="p-3 stepInnerBox">
                 <p class="mb-0 PNB voiletText stepHeading">Step 2</p>
                 <p class="mb-0 PNR greyText stepDescription">Download Plugins</p>
@@ -286,5 +286,21 @@ input:checked + .slider:before {
 }
 .closeIcon:hover {
   color: #e72f6c;
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+  .copyContainer {
+  width: 100%;
+}
+  tr .tableData:nth-child(1) {
+    width: 35%;
+  }
+  tr .tableData:nth-child(2) {
+    width: 35%;
+    padding: 0px 12px;
+  }
+  tr .tableData:nth-child(3) {
+    width: 20%;
+    padding: 0px 12px;
+  }
 }
 </style>

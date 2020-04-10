@@ -10,7 +10,6 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-Vue.use(VueApexCharts);
 library.add(faChevronDown, faSearch);
 
 Vue.component("apexchart", VueApexCharts);
@@ -21,8 +20,9 @@ Vue.config.productionTip = false;
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
-import 'vue-select/dist/vue-select.css';
+import "vue-select/dist/vue-select.css";
 
+Vue.use(VueApexCharts);
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
 

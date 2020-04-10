@@ -7,25 +7,29 @@
     <b-container fluid class>
       <b-row>
         <b-col xl="3" lg="6" class="p-0">
-          <div class="text-center py-5 mr-4 boxHeight dataContainer">
+          <div class="text-center py-5 mr-4 mb-xl-0 mb-lg-4 boxHeight dataContainer">
             <p class="dataTitle PNR greyText mb-0">Current Usage</p>
             <p class="currentUsage PNB m-0">{{currentUsage}} TB</p>
           </div>
         </b-col>
         <b-col xl="3" lg="6" class="p-0">
-          <div class="text-center py-5 ml-2 mr-3 boxHeight dataContainer">
+          <div
+            class="text-center py-5 ml-xl-2 mr-xl-3 ml-lg-4 mr-lg-0 mb-xl-0 mb-lg-4 boxHeight dataContainer"
+          >
             <p class="dataTitle PNR greyText mb-0">Charges this Month</p>
             <p class="chargesThisMonth PNB m-0">$ {{chargesThisMonth}}</p>
           </div>
         </b-col>
         <b-col xl="3" lg="6" class="p-0">
-          <div class="text-center py-5 ml-3 mr-2 boxHeight dataContainer">
+          <div
+            class="text-center py-5 ml-xl-3 mr-xl-2 ml-lg-0 mr-lg-4 mt-xl-0 mt-lg-4 boxHeight dataContainer"
+          >
             <p class="dataTitle PNR greyText mb-0">Remaining Credits</p>
             <p class="remainingCredits PNB m-0">$ {{remainingCredits}}</p>
           </div>
         </b-col>
         <b-col xl="3" lg="6" class="p-0">
-          <div class="text-center py-5 ml-4 boxHeight dataContainer">
+          <div class="text-center py-5 ml-4 mt-xl-0 mt-lg-4 boxHeight dataContainer">
             <p class="dataTitle PNR greyText mb-1">Payment Methods</p>
             <img class="paypalIcon mx-3" src="./../assets/images/paypal.svg" />
           </div>
@@ -252,7 +256,6 @@ export default {
   border-bottom: 1px solid #eaeaea;
 }
 .searchContainer {
-  width: 11%;
   border: 1px solid #eaeaea;
   border-radius: 50px;
   background-color: #f5f8fa;
@@ -393,5 +396,31 @@ tr .tableData:first-child {
 .pdf {
   color: #622fe6;
   font-size: 0.666rem;
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  tr .tableData:nth-child(1) {
+    width: 10%;
+  }
+  tr .tableData:nth-child(2) {
+    width: 15%;
+    padding: 0px 20px;
+  }
+  tr .tableData:nth-child(3) {
+    width: 15%;
+    padding: 0px 20px;
+  }
+  tr .tableData:nth-child(4) {
+    width: 25%;
+    padding: 0px 20px;
+  }
+  tr .tableData:nth-child(5) {
+    width: 24%;
+    padding: 0px 20px;
+  }
+  tr .tableData:nth-child(6) {
+    width: 11%;
+    padding-left: 20px;
+  }
 }
 </style>

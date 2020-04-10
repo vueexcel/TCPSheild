@@ -1,12 +1,12 @@
 <template>
-  <div class="appBackground p-5">
+  <div class="appBackground p-xl-5 p-lg-4 ">
     <img class="triangle" src="./../assets/images/triangle.png" />
     <b-container fluid class="bv-example-row">
       <b-row>
         <b-col xl="2" lg="3">
           <sideBar />
         </b-col>
-        <b-col xl="10" lg="9" class="p-0">
+        <b-col xl="10" lg="9" class="p-xl-0 p-lg-0 pr-lg-3 col-lg-9 ">
           <div>
             <topBar />
           </div>
@@ -40,6 +40,7 @@ export default {
 <style scoped>
 .appBackground {
   background: url("./../assets/images/backgroundTCPShield.png");
+  /* background-color: black; */
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
