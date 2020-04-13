@@ -2,12 +2,14 @@
   <div>
     <b-container fluid class>
       <b-row>
-        <b-col xl="9" lg="12" class>
+        <b-col xl="9" lg="12" md="12" sm="12" class>
           <b-row>
             <b-col
               xl="4"
               lg="6"
-              class="p-0 chartMargin mb-lg-5 mb-xl-4 "
+              md="6"
+              sm="6"
+              class="p-0 chartMargin mb-xl-4 mb-lg-3 mb-md-4 mb-sm-4 mt-xl-0 mt-lg-3"
               v-for="(areaChart,index) in areaCharts"
               :key="index"
             >
@@ -21,23 +23,29 @@
                 ></apexcharts>
               </div>
             </b-col>
-            <b-col xl="4" lg="6" class="p-0 mb-lg-4 mb-xl-0">
+            <b-col
+              xl="4"
+              lg="6"
+              md="6"
+              sm="6"
+              class="p-0 mb-lg-3 mb-xl-0 mb-md-4 mb-sm-4 mt-xl-0 mt-lg-3"
+            >
               <div
-                class="text-center py-5 mr-xl-3 ml-xl-0 mb-xl-0 mb-lg-4 mr-lg-0 ml-lg-4 boxHeight dataContainer"
+                class="text-center py-5 mr-xl-3 ml-xl-0 mr-lg-0 ml-lg-3 ml-md-2 boxHeight dataContainer"
               >
                 <p class="dataTitle PNR greyText mb-0">Average Time Played</p>
                 <p class="averageTimePlayed m-0">{{averageTimePlayed}}h</p>
               </div>
             </b-col>
-            <b-col xl="4" lg="6" class="p-0 mb-lg-4 mb-xl-0">
-              <div class="text-center py-5 mx-xl-2 ml-lg-0 mr-lg-4 boxHeight dataContainer">
+            <b-col xl="4" lg="6" md="6" sm="6" class="p-0 mb-lg-3 mb-xl-0 mb-md-4 mb-sm-4 mt-xl-0 mt-lg-3">
+              <div class="text-center py-5 mx-xl-2 ml-lg-0 mr-lg-3 mr-md-2 boxHeight dataContainer">
                 <p class="dataTitle PNR greyText mb-0">Unique new players</p>
                 <p class="uniqueNewPlayers m-0">{{uniqueNewPlayers}}</p>
               </div>
             </b-col>
-            <b-col xl="4" lg="6" class="p-0 mb-lg-4 mb-xl-0">
+            <b-col xl="4" lg="6" md="6" sm="6" class="p-0 mb-lg-3 mb-xl-0 mb-md-0 mb-sm-4 mt-xl-0 mt-lg-3">
               <div
-                class="text-center ml-xl-3 ml-lg-4 mr-xl-0 mr-lg-0 px-2 pt-2 barChartBox dataContainer"
+                class="text-center ml-xl-3 ml-lg-3 mr-xl-0 mr-lg-0 ml-md-2 px-2 pt-2 barChartBox dataContainer"
               >
                 <p class="barChartTitle mb-0">Unique vs. recurring players</p>
                 <apexcharts height="175" type="bar" :options="barOptions" :series="barSeries" class></apexcharts>
@@ -45,7 +53,7 @@
             </b-col>
           </b-row>
         </b-col>
-        <b-col xl="3" lg="12" class="p-0 mt-xl-0 mt-lg-4">
+        <b-col xl="3" lg="12" md="12" class="p-0 mt-xl-0 mt-lg-4">
           <div class="dataContainer ml-xl-4 ml-lg-0" style="height:100%">
             <p class="PNB mb-0 blackText px-3 py-2 playerLocation">Player Locations</p>
             <div id="world-map" style="height:170px;" class="px-3"></div>
@@ -55,6 +63,8 @@
                 :key="index"
                 xl="6"
                 lg="6"
+                md="6"
+                sm="6"
                 class="mb-2 progressCol"
               >
                 <div class>
@@ -70,7 +80,7 @@
         </b-col>
       </b-row>
       <b-row class>
-        <b-col xl="6" lg="12" class="p-0">
+        <b-col xl="6" lg="12" md="12" class="p-0">
           <div class="mr-xl-3 mr-lg-0">
             <p class="PNB mb-0 blackText py-4 topHeading">Top 10 Players</p>
             <div class="dataContainer p-3">
@@ -752,14 +762,14 @@ export default {
   height: 200px;
 }
 .chartMargin:nth-child(1) > div {
-  margin-right: 0.8vw;
+  margin-right: 0.9vw;
 }
 .chartMargin:nth-child(2) > div {
-  margin-right: 0.4vw;
-  margin-left: 0.4vw;
+  margin-right: 0.45vw;
+  margin-left: 0.45vw;
 }
 .chartMargin:nth-child(3) > div {
-  margin-left: 0.8vw;
+  margin-left: 0.9vw;
   margin-right: 0vw;
 }
 .dataContainer {
@@ -873,15 +883,28 @@ tr .tableData:first-child {
 
 @media (min-width: 992px) and (max-width: 1200px) {
   .chartMargin:nth-child(1) > div {
-    margin-right: 2.1vw;
+    margin-right: 1.7vw;
   }
   .chartMargin:nth-child(2) > div {
     margin-right: 0vw;
-    margin-left: 2.1vw;
+    margin-left: 1.7vw;
   }
   .chartMargin:nth-child(3) > div {
     margin-left: 0vw;
-    margin-right: 2.1vw;
+    margin-right: 1.7vw;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .chartMargin:nth-child(1) > div {
+    margin-right: 1.1vw;
+  }
+  .chartMargin:nth-child(2) > div {
+    margin-right: 0vw;
+    margin-left: 1.1vw;
+  }
+  .chartMargin:nth-child(3) > div {
+    margin-left: 0vw;
+    margin-right: 1.1vw;
   }
 }
 </style>

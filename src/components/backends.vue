@@ -2,8 +2,8 @@
   <div>
     <b-container fluid class>
       <b-row>
-        <b-col xl="6" lg="6">
-          <b-row class="mr-0 mr-lg-4">
+        <b-col xl="6" lg="6" class="pr-md-0 pr-lg-3">
+          <b-row class="mr-xl-4 mr-lg-4 mr-md-0">
             <b-col xl="12" lg="12" class="p-0 mb-4 stepOuterBox bg-white">
               <div>
                 <div class="p-3 stepInnerBox">
@@ -21,7 +21,7 @@
                 </div>
               </div>
             </b-col>
-            <b-col xl="12" lg="12" class="p-0 stepOuterBox bg-white mb-4 mb-lg-0 mt-lg-3">
+            <b-col xl="12" lg="12" class="p-0 stepOuterBox bg-white mb-4 mb-lg-0 mt-lg-3 mt-md-2">
               <div class="p-3 stepInnerBox">
                 <p class="mb-0 PNB voiletText stepHeading">Step 2</p>
                 <p class="mb-0 PNR greyText stepDescription">Download Plugins</p>
@@ -40,7 +40,7 @@
             </b-col>
           </b-row>
         </b-col>
-        <b-col xl="6" lg="6" class="p-0 stepOuterBox bg-white">
+        <b-col xl="6" lg="6" class="p-0 stepOuterBox bg-white mt-md-2 mt-lg-0">
           <div class="p-3 stepInnerBox">
             <p class="mb-0 PNB voiletText stepHeading">Step 3</p>
             <p class="mb-0 PNR greyText stepDescription">Point your DNS to TCPShield</p>
@@ -52,7 +52,7 @@
               dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
               aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
             </p>
-            <ul class="pl-0 step3List stepDescription PNR greyText">
+            <ul class="pl-0 py-2 step3List stepDescription PNR greyText">
               <li>1. Log into your DNS Manager</li>
               <li>2. Go to DNS Management</li>
               <li>3. Create a new CNAME record where the name is the current subdomain(s) your players log in with</li>
@@ -187,7 +187,7 @@ export default {
   border-radius: 6px;
 }
 .step3List li {
-  padding: 8px 20px;
+  padding: 10px 20px;
 }
 .BackendHeading {
   font-size: 1.125rem;
@@ -291,6 +291,19 @@ input:checked + .slider:before {
   .copyContainer {
   width: 100%;
 }
+  tr .tableData:nth-child(1) {
+    width: 35%;
+  }
+  tr .tableData:nth-child(2) {
+    width: 35%;
+    padding: 0px 12px;
+  }
+  tr .tableData:nth-child(3) {
+    width: 20%;
+    padding: 0px 12px;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
   tr .tableData:nth-child(1) {
     width: 35%;
   }
