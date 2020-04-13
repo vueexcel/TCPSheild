@@ -3,7 +3,7 @@
     <b-container fluid class>
       <b-row>
         <b-col xl="6" lg="6">
-          <b-row class="mr-4">
+          <b-row class="mr-0 mr-lg-4">
             <b-col xl="12" lg="12" class="p-0 mb-4 stepOuterBox bg-white">
               <div>
                 <div class="p-3 stepInnerBox">
@@ -21,12 +21,12 @@
                 </div>
               </div>
             </b-col>
-            <b-col xl="12" lg="12" class="p-0 stepOuterBox bg-white">
+            <b-col xl="12" lg="12" class="p-0 stepOuterBox bg-white mb-4 mb-lg-0 mt-lg-3">
               <div class="p-3 stepInnerBox">
                 <p class="mb-0 PNB voiletText stepHeading">Step 2</p>
                 <p class="mb-0 PNR greyText stepDescription">Download Plugins</p>
               </div>
-              <b-col xl="6" lg="12" class="p-0">
+              <b-col xl="6" lg="12" sm="6" class="p-0">
                 <div class="pt-3 px-3">
                   <div
                     v-for="(downloadItem,index) in downloadItems"
@@ -286,5 +286,21 @@ input:checked + .slider:before {
 }
 .closeIcon:hover {
   color: #e72f6c;
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+  .copyContainer {
+  width: 100%;
+}
+  tr .tableData:nth-child(1) {
+    width: 35%;
+  }
+  tr .tableData:nth-child(2) {
+    width: 35%;
+    padding: 0px 12px;
+  }
+  tr .tableData:nth-child(3) {
+    width: 20%;
+    padding: 0px 12px;
+  }
 }
 </style>

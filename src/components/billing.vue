@@ -7,25 +7,29 @@
     <b-container fluid class>
       <b-row>
         <b-col xl="3" lg="6" class="p-0">
-          <div class="text-center py-5 mr-4 boxHeight dataContainer">
+          <div class="text-center py-5 mr-4 mb-xl-0 mb-lg-4 boxHeight dataContainer">
             <p class="dataTitle PNR greyText mb-0">Current Usage</p>
             <p class="currentUsage PNB m-0">{{currentUsage}} TB</p>
           </div>
         </b-col>
         <b-col xl="3" lg="6" class="p-0">
-          <div class="text-center py-5 ml-2 mr-3 boxHeight dataContainer">
+          <div
+            class="text-center py-5 ml-xl-2 mr-xl-3 ml-lg-4 mr-lg-0 mb-xl-0 mb-lg-4 boxHeight dataContainer"
+          >
             <p class="dataTitle PNR greyText mb-0">Charges this Month</p>
             <p class="chargesThisMonth PNB m-0">$ {{chargesThisMonth}}</p>
           </div>
         </b-col>
         <b-col xl="3" lg="6" class="p-0">
-          <div class="text-center py-5 ml-3 mr-2 boxHeight dataContainer">
+          <div
+            class="text-center py-5 ml-xl-3 mr-xl-2 ml-lg-0 mr-lg-4 mt-xl-0 mt-lg-4 boxHeight dataContainer"
+          >
             <p class="dataTitle PNR greyText mb-0">Remaining Credits</p>
             <p class="remainingCredits PNB m-0">$ {{remainingCredits}}</p>
           </div>
         </b-col>
         <b-col xl="3" lg="6" class="p-0">
-          <div class="text-center py-5 ml-4 boxHeight dataContainer">
+          <div class="text-center py-5 ml-4 mt-xl-0 mt-lg-4 boxHeight dataContainer">
             <p class="dataTitle PNR greyText mb-1">Payment Methods</p>
             <img class="paypalIcon mx-3" src="./../assets/images/paypal.svg" />
           </div>
@@ -50,30 +54,21 @@
         <div class="pt-2 d-flex dropdown">
           <p class="m-0 mx-3 sortHeading greyText">Sort By</p>
         </div>
-        <!-- <div>
-          <b-dropdown no-caret variant="white">
-            <template v-slot:button-content>
-              <span class="dropDownText PNR greyText pr-3">Invoice</span>
-              <font-awesome-icon
-                icon="chevron-down"
-                size="xs"
-                :style="{ color: '#a7aab3' }"
-                class=""
-              />
-            </template>
-            <b-dropdown-item href="#">An item</b-dropdown-item>
-            <b-dropdown-item href="#">Another item</b-dropdown-item>
-          </b-dropdown>
-        </div> -->
-        <div class="sortingBox">
-          <select
-            class="py-2 px-3 customSelect PNR greyText"
-            v-model="sortType"
-            @change="sortedInvoice(sortType)"
-          >
-            <option v-for="(sortOption , index) in sortOptions" :key="index">{{sortOption}}</option>
-          </select>
-        </div>
+        <v-select
+          label="Select"
+          :options="sortOptions"
+          v-model="sortType"
+          @input="sortedInvoice(sortType)"
+          placeholder="Select"
+          class="style-chooser"
+          clearable="false"
+        >
+          <template #open-indicator="{ attributes }">
+            <span v-bind="attributes">
+              <font-awesome-icon icon="chevron-down" size="1" :style="{ color: '#a7aab3' }" class />
+            </span>
+          </template>
+        </v-select>
       </div>
       <div class="p-3">
         <table>
@@ -125,7 +120,7 @@ export default {
       remainingCredits: 155.77,
       recentInvoice: 3,
       sortOptions: ["Invoice", "Total", "Balance", "Date"],
-      sortType: "Invoice",
+      sortType: "",
       invoicesTitle: [
         "Invoice",
         "Total",
@@ -165,7 +160,12 @@ export default {
         }
       ],
       searchInvoice: "",
-      dataToSHow: []
+      dataToSHow: [],
+      attributes: {
+        ref: "openIndicator",
+        role: "presentation",
+        class: "vs__open-indicator"
+      }
     };
   },
   mounted() {
@@ -211,47 +211,6 @@ export default {
 </script>
 
 <style scoped>
-.sortingBox {
-  position: relative;
-}
-/* .sortingBox::before {
-  content: "\f078";
-  position: absolute;
-  top: 10%;
-  right: 3%;
-  width: 20%;
-  height: 80%;
-  display: inline-block;
-  font-family: "Font Awesome\ 5 Free";
-  font-weight: 900;
-  text-align: center;
-  font-size: 28px;
-  color: #a7aab3;
-  background-color: #fff;
-  pointer-events: none;
-  border: none;
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
-  z-index: 1;
-} */
-
-.dropDownText {
-  font-size: 0.6rem;
-}
-.customSelect {
-  position: relative;
-  font-size: 0.6rem;
-  width: 120px;
-  border: 1px solid #eaeaea;
-  border-radius: 50px;
-}
-.customSelect:focus {
-  border-color: none;
-  outline: none;
-}
- option {
-  padding: 4px 8px !important; 
-}
 .HeadBar {
   font-size: 1rem;
 }
@@ -297,7 +256,6 @@ export default {
   border-bottom: 1px solid #eaeaea;
 }
 .searchContainer {
-  width: 11%;
   border: 1px solid #eaeaea;
   border-radius: 50px;
   background-color: #f5f8fa;
@@ -314,14 +272,57 @@ export default {
 .searchInput:focus {
   outline: none;
 }
-.sortContainer {
-  width: 8%;
-  border: 1px solid #000;
-  border-radius: 50px;
-  background-color: #f5f8fa;
-}
 .sortHeading {
   font-size: 0.6rem;
+}
+.style-chooser {
+  width: 115px;
+}
+.style-chooser >>> .vs__search::placeholder {
+  font-size: 0.6rem;
+  color: #a7aab3;
+  background: #fff;
+}
+.style-chooser >>> .vs__selected {
+  padding: 4px 0px;
+  margin: 0px 12px;
+  font-size: 0.6rem;
+  color: #a7aab3;
+}
+.style-chooser >>> .vs__search {
+  margin: 0;
+  padding: 4px 4px 4px 12px;
+  color: #a7aab3;
+}
+.style-chooser >>> .vs__dropdown-toggle {
+  background: #fff;
+  padding: 3px 0px;
+  border: 1px solid #eaeaea;
+  border-radius: 50px;
+  font-size: 0.6rem;
+}
+.style-chooser >>> .vs__dropdown-menu {
+  background: #fff;
+  border-radius: 0px;
+  font-size: 0.6rem;
+  margin-top: 4px;
+  padding: 0;
+}
+.style-chooser >>> .vs__dropdown-option {
+  color: #a7aab3;
+  padding: 4px 8px;
+}
+.style-chooser >>> .vs__dropdown-option:hover {
+  color: #fff;
+}
+.style-chooser >>> .vs__actions {
+  padding: 0px 10px 0px 0px;
+}
+.style-chooser >>> .vs__clear {
+  display: none;
+}
+.style-chooser >>> .vs__open-indicator {
+  fill: #a7aab3;
 }
 .tableContainer {
   background-color: #ffffff;
@@ -395,5 +396,31 @@ tr .tableData:first-child {
 .pdf {
   color: #622fe6;
   font-size: 0.666rem;
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  tr .tableData:nth-child(1) {
+    width: 10%;
+  }
+  tr .tableData:nth-child(2) {
+    width: 15%;
+    padding: 0px 20px;
+  }
+  tr .tableData:nth-child(3) {
+    width: 15%;
+    padding: 0px 20px;
+  }
+  tr .tableData:nth-child(4) {
+    width: 25%;
+    padding: 0px 20px;
+  }
+  tr .tableData:nth-child(5) {
+    width: 24%;
+    padding: 0px 20px;
+  }
+  tr .tableData:nth-child(6) {
+    width: 11%;
+    padding-left: 20px;
+  }
 }
 </style>
