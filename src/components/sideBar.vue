@@ -1,148 +1,78 @@
 <template>
   <div>
-    <b-button class="d-none d-md-block d-lg-none " v-b-toggle.sidebar-footer>Toggle</b-button>
-    <b-sidebar id="sidebar-footer" no-header shadow>
-      <div class="mr-4" style="background-color:#622fe6;border-radius:10px;height:100%;">
-        <div class="text-center py-3">
-          <img class="logo" src="./../assets/images/logo.png" />
-        </div>
-        <ul class="menuList text-white text-uppercase PNB m-0 mt-4 p-0">
-          <li class="mb-2">
-            <div
-              class="py-3 ml-xl-4 ml-lg-3"
-              :class="{ active: activeMenu === 'dashboard' }"
-              @click="openDashboard"
-            >
-              <span class="menuIconBox">
-                <img
-                  v-if="(activeMenu === 'dashboard')"
-                  class="dashboardIcon mx-3"
-                  src="./../assets/images/dashboard_voilet.svg"
-                />
-                <img v-else class="dashboardIcon mx-3" src="./../assets/images/dashboard_white.svg" />
-              </span>
-              <a>dashboard</a>
-            </div>
-          </li>
-          <li class="mb-2">
-            <div
-              class="py-3 ml-xl-4 ml-lg-3"
-              :class="{ active: activeMenu === 'networks' }"
-              @click="openNetworks"
-            >
-              <span class="menuIconBox">
-                <img
-                  v-if="(activeMenu === 'networks')"
-                  class="dashboardIcon mx-3"
-                  src="./../assets/images/globe_voilet.svg"
-                />
-                <img v-else class="dashboardIcon mx-3" src="./../assets/images/globe_white.svg" />
-              </span>
-              <a>networks</a>
-            </div>
-            <ul v-if="activeMenu === ('networks')" class="subList ml-0 my-3 pl-0">
-              <li
-                class="py-2 mr-3 pr-xl-2 pr-lg-0 pl-lg-4 pl-xl-0 mb-2 text-center"
-                :class="{ active: activeNetwork === 'backends' }"
-                @click="openBackends "
-              >Backends</li>
-              <li
-                class="py-2 mr-3 pr-xl-2 pr-lg-0 pl-lg-4 pl-xl-0 text-center"
-                :class="{ active: activeNetwork === 'analytics' }"
-                @click="openAnalytics"
-              >Analytics</li>
-            </ul>
-          </li>
-          <li class="mb-2">
-            <div
-              class="py-3 ml-xl-4 ml-lg-3"
-              :class="{ active: activeMenu === 'billing' }"
-              @click="openBilling"
-            >
-              <span class="menuIconBox">
-                <img
-                  v-if="(activeMenu === 'billing')"
-                  class="dashboardIcon mx-3"
-                  src="./../assets/images/bill_voilet.svg"
-                />
-                <img v-else class="dashboardIcon mx-3" src="./../assets/images/bill_white.svg" />
-              </span>
-              <a>billing</a>
-            </div>
-          </li>
-        </ul>
+    <div
+      class="mr-4 d-lg-block d-md-none d-sm-none d-none"
+      style="background-color:#622fe6;border-radius:10px;height:120vh;"
+    >
+      <div class="text-center py-3">
+        <img class="logo" src="./../assets/images/logo.png" />
       </div>
-    </b-sidebar>
-    <div class="mr-4  d-lg-block d-md-none" style="background-color:#622fe6;border-radius:10px;height:120vh;">
-        <div class="text-center py-3">
-          <img class="logo" src="./../assets/images/logo.png" />
-        </div>
-        <ul class="menuList text-white text-uppercase PNB m-0 mt-4 p-0">
-          <li class="mb-2">
-            <div
-              class="py-3 ml-xl-4 ml-lg-3"
-              :class="{ active: activeMenu === 'dashboard' }"
-              @click="openDashboard"
-            >
-              <span class="menuIconBox">
-                <img
-                  v-if="(activeMenu === 'dashboard')"
-                  class="dashboardIcon mx-3"
-                  src="./../assets/images/dashboard_voilet.svg"
-                />
-                <img v-else class="dashboardIcon mx-3" src="./../assets/images/dashboard_white.svg" />
-              </span>
-              <a>dashboard</a>
-            </div>
-          </li>
-          <li class="mb-2">
-            <div
-              class="py-3 ml-xl-4 ml-lg-3"
-              :class="{ active: activeMenu === 'networks' }"
-              @click="openNetworks"
-            >
-              <span class="menuIconBox">
-                <img
-                  v-if="(activeMenu === 'networks')"
-                  class="dashboardIcon mx-3"
-                  src="./../assets/images/globe_voilet.svg"
-                />
-                <img v-else class="dashboardIcon mx-3" src="./../assets/images/globe_white.svg" />
-              </span>
-              <a>networks</a>
-            </div>
-            <ul v-if="activeMenu === ('networks')" class="subList ml-0 my-3 pl-0">
-              <li
-                class="py-2 mr-3 pr-xl-2 pr-lg-0 pl-lg-4 pl-xl-0 mb-2 text-center"
-                :class="{ active: activeNetwork === 'backends' }"
-                @click="openBackends "
-              >Backends</li>
-              <li
-                class="py-2 mr-3 pr-xl-2 pr-lg-0 pl-lg-4 pl-xl-0 text-center"
-                :class="{ active: activeNetwork === 'analytics' }"
-                @click="openAnalytics"
-              >Analytics</li>
-            </ul>
-          </li>
-          <li class="mb-2">
-            <div
-              class="py-3 ml-xl-4 ml-lg-3"
-              :class="{ active: activeMenu === 'billing' }"
-              @click="openBilling"
-            >
-              <span class="menuIconBox">
-                <img
-                  v-if="(activeMenu === 'billing')"
-                  class="dashboardIcon mx-3"
-                  src="./../assets/images/bill_voilet.svg"
-                />
-                <img v-else class="dashboardIcon mx-3" src="./../assets/images/bill_white.svg" />
-              </span>
-              <a>billing</a>
-            </div>
-          </li>
-        </ul>
-      </div>
+      <ul class="menuList text-white text-uppercase PNB m-0 mt-4 p-0">
+        <li class="mb-2">
+          <div
+            class="py-3 ml-xl-4 ml-lg-3"
+            :class="{ active: activeMenu === 'dashboard' }"
+            @click="openDashboard"
+          >
+            <span class="menuIconBox">
+              <img
+                v-if="(activeMenu === 'dashboard')"
+                class="dashboardIcon mx-3"
+                src="./../assets/images/dashboard_voilet.svg"
+              />
+              <img v-else class="dashboardIcon mx-3" src="./../assets/images/dashboard_white.svg" />
+            </span>
+            <a>dashboard</a>
+          </div>
+        </li>
+        <li class="mb-2">
+          <div
+            class="py-3 ml-xl-4 ml-lg-3"
+            :class="{ active: activeMenu === 'networks' }"
+            @click="openNetworks"
+          >
+            <span class="menuIconBox">
+              <img
+                v-if="(activeMenu === 'networks')"
+                class="dashboardIcon mx-3"
+                src="./../assets/images/globe_voilet.svg"
+              />
+              <img v-else class="dashboardIcon mx-3" src="./../assets/images/globe_white.svg" />
+            </span>
+            <a>networks</a>
+          </div>
+          <ul v-if="activeMenu === ('networks')" class="subList ml-0 my-3 pl-0">
+            <li
+              class="py-2 mr-3 pr-xl-2 pr-lg-3 pl-lg-5 pl-xl-0 mb-2 text-center"
+              :class="{ active: activeNetwork === 'backends' }"
+              @click="openBackends "
+            >Backends</li>
+            <li
+              class="py-2 mr-3 pr-xl-2 pr-lg-3 pl-lg-5 pl-xl-0 text-center"
+              :class="{ active: activeNetwork === 'analytics' }"
+              @click="openAnalytics"
+            >Analytics</li>
+          </ul>
+        </li>
+        <li class="mb-2">
+          <div
+            class="py-3 ml-xl-4 ml-lg-3"
+            :class="{ active: activeMenu === 'billing' }"
+            @click="openBilling"
+          >
+            <span class="menuIconBox">
+              <img
+                v-if="(activeMenu === 'billing')"
+                class="dashboardIcon mx-3"
+                src="./../assets/images/bill_voilet.svg"
+              />
+              <img v-else class="dashboardIcon mx-3" src="./../assets/images/bill_white.svg" />
+            </span>
+            <a>billing</a>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -153,7 +83,6 @@ export default {
   data() {
     return {
       menu: ["Dashboard", "Networks"],
-      isActive: true
     };
   },
   computed: {
@@ -171,9 +100,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
 .logo {
   width: 8vw;
+}
+.sideBarBox {
+  background-color: #622fe6;
+  border-radius: 10px;
+  height: 100%;
 }
 .menuList {
   list-style-type: none;
@@ -239,6 +173,15 @@ export default {
 @media (min-width: 992px) and (max-width: 1200px) {
   .logo {
     width: 13vw;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .logo {
+    width: 20vw;
+  }
+  .sideBarBox {
+    border-radius: 0px;
+    height: 100%;
   }
 }
 </style>

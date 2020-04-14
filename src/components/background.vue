@@ -1,5 +1,5 @@
 <template>
-  <div class="appBackground p-xl-5 p-lg-4 ">
+  <div class="appBackground p-xl-5 p-lg-4 p-md-4  p-sm-0">
     <img class="triangle" src="./../assets/images/triangle.png" />
     <b-container fluid class="bv-example-row">
       <b-row>

@@ -2,9 +2,9 @@
   <div>
     <b-container fluid class="px-0">
       <b-row>
-        <b-col xl="9" lg="12" md="12">
+        <b-col xl="9" lg="12" md="12" sm="12">
           <b-row class>
-            <b-col xl="4" lg="6" class="p-0" v-for="(chart,index) in charts" :key="index">
+            <b-col xl="4" lg="6" sm="6" class="p-0" v-for="(chart,index) in charts" :key="index">
               <div class="mb-2 mx-3 bg-white chartBox">
                 <div class="d-flex justify-content-between px-3 py-2">
                   <p class="voiletText PNB m-0 chartTitle">{{chart.title}}</p>
@@ -22,7 +22,7 @@
                 ></apexcharts>
               </div>
             </b-col>
-            <b-col xl="4" lg="6" class="my-lg-4 my-xl-0">
+            <b-col xl="4" lg="6" md="6" class="my-xl-0 my-lg-4 my-md-4">
               <div class="d-flex justify-content-center align-items-center addNewServerBox">
                 <div class="text-center">
                   <b-icon icon="plus-circle" font-scale="3" class="rounded-circle p-2 addIcon"></b-icon>
@@ -32,10 +32,10 @@
             </b-col>
           </b-row>
         </b-col>
-        <b-col xl="3" lg="12" md="12"  class="mt-xl-0 mt-lg-2">
+        <b-col xl="3" lg="12" md="12" class="mt-xl-0 mt-lg-2">
           <b-row>
-            <b-col xl="12" lg="6" md="12">
-              <div class="sideBox">
+            <b-col xl="12" lg="6" md="6">
+              <div class="sideBox my-md-2 my-lg-0">
                 <p class="PNB p-3 m-0 sideHeading blackText">Support</p>
                 <div class="p-3">
                   <p
@@ -59,8 +59,8 @@
                 </div>
               </div>
             </b-col>
-            <b-col xl="12" lg="6" md="12">
-              <div class="sideBox my-xl-4 mb-lg-4">
+            <b-col xl="12" lg="6" md="6">
+              <div class="sideBox my-xl-4 mb-lg-4 my-md-2 my-lg-0">
                 <p class="PNB p-3 m-0 sideHeading blackText">API</p>
                 <div class="p-3">
                   <div class="d-flex justify-content-between">
@@ -91,18 +91,18 @@
                 </div>
               </div>
             </b-col>
-            <b-col xl="12" lg="12" md="12" >
-              <div class="sideBox">
-              <p class="PNB p-3 m-0 sideHeading blackText">Blog</p>
-              <div class="p-3">
-                <p class="greyText PNT sideDescription">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                  At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit.
-                </p>
-                <div class="p-2 text-center rounded sideButton">
-                  <p class="m-0 PNB text-white">VIEW BLOG</p>
+            <b-col xl="12" lg="16" md="6">
+              <div class="sideBox my-md-2 my-lg-0">
+                <p class="PNB p-3 m-0 sideHeading blackText">Blog</p>
+                <div class="p-3">
+                  <p class="greyText PNT sideDescription">
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                    At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit.
+                  </p>
+                  <div class="p-2 text-center rounded sideButton">
+                    <p class="m-0 PNB text-white">VIEW BLOG</p>
+                  </div>
                 </div>
-              </div>
               </div>
             </b-col>
           </b-row>
@@ -335,6 +335,4 @@ export default {
 .phoneIcon {
   width: 25px;
 }
-
-
 </style>
