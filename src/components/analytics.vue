@@ -2,7 +2,7 @@
   <div>
     <b-container fluid class>
       <b-row>
-        <b-col xl="9" lg="12" md="12" sm="12" class>
+        <b-col sm="12" md="12" lg="12" xl="12" xxl="9">
           <b-row>
             <b-col
               xl="4"
@@ -37,13 +37,25 @@
                 <p class="averageTimePlayed m-0">{{averageTimePlayed}}h</p>
               </div>
             </b-col>
-            <b-col xl="4" lg="6" md="6" sm="6" class="p-0 mb-lg-3 mb-xl-0 mb-md-4 mb-sm-4 mt-xl-0 mt-lg-3">
+            <b-col
+              xl="4"
+              lg="6"
+              md="6"
+              sm="6"
+              class="p-0 mb-lg-3 mb-xl-0 mb-md-4 mb-sm-4 mt-xl-0 mt-lg-3"
+            >
               <div class="text-center py-5 mx-xl-2 ml-lg-0 mr-lg-3 mr-md-2 boxHeight dataContainer">
                 <p class="dataTitle PNR greyText mb-0">Unique new players</p>
                 <p class="uniqueNewPlayers m-0">{{uniqueNewPlayers}}</p>
               </div>
             </b-col>
-            <b-col xl="4" lg="6" md="6" sm="6" class="p-0 mb-lg-3 mb-xl-0 mb-md-0 mb-sm-4 mt-xl-0 mt-lg-3">
+            <b-col
+              xl="4"
+              lg="6"
+              md="6"
+              sm="6"
+              class="p-0 mb-lg-3 mb-xl-0 mb-md-0 mb-sm-4 mt-xl-0 mt-lg-3"
+            >
               <div
                 class="text-center ml-xl-3 ml-lg-3 mr-xl-0 mr-lg-0 ml-md-2 px-2 pt-2 barChartBox dataContainer"
               >
@@ -53,8 +65,8 @@
             </b-col>
           </b-row>
         </b-col>
-        <b-col xl="3" lg="12" md="12" class="p-0 mt-xl-0 mt-lg-4">
-          <div class="dataContainer ml-xl-4 ml-lg-0" style="height:100%">
+        <b-col xxl="3" xl="4" lg="12" md="12" class="p-0 mt-xl-4 mt-lg-4">
+          <div class="dataContainer mr-xl-3 ml-xxl-4 ml-xl-0 ml-lg-0" style="height:100%">
             <p class="PNB mb-0 blackText px-3 py-2 playerLocation">Player Locations</p>
             <div id="world-map" style="height:170px;" class="px-3"></div>
             <b-row class="mt-4 px-4">
@@ -603,56 +615,56 @@ export default {
           name: "africa",
           value: 45
         }
-      ]
-      // plants: [
-      //   {
-      //     name: "KBR",
-      //     coords: [35.06737, 116.034738],
-      //     status: "closed",
-      //     offsets: [0, 5]
-      //   },
-      //   {
-      //     name: "MZFR",
-      //     coords: [3.817963, 30.08030245],
-      //     status: "closed",
-      //     offsets: [0, 2]
-      //   },
-      //   {
-      //     name: "KRB",
-      //     coords: [-22.378094, 140.108203],
-      //     status: "activeUntil2018"
-      //   },
+      ],
+      plants: [
+        {
+          name: "KBR",
+          coords: [35.06737, 116.034738],
+          status: "closed",
+          offsets: [0, 5]
+        },
+        {
+          name: "MZFR",
+          coords: [3.817963, 30.08030245],
+          status: "closed",
+          offsets: [0, 2]
+        },
+        {
+          name: "KRB",
+          coords: [-22.378094, 140.108203],
+          status: "activeUntil2018"
+        },
 
-      //   {
-      //     name: "KWL",
-      //     coords: [51.824713, 38.086025],
-      //     status: "closed",
-      //     offsets: [0, -2]
-      //   },
-      //   {
-      //     name: "HDR",
-      //     coords: [46.092372, 2.945867],
-      //     status: "closed",
-      //     offsets: [0, -2]
-      //   },
-      //   {
-      //     name: "KKN",
-      //     coords: [62.077448, 12.217676],
-      //     status: "closed",
-      //     offsets: [0, -2]
-      //   },
-      //   {
-      //     name: "GKN",
-      //     coords: [59.582248, -123.624918],
-      //     status: "activeUntil2022"
-      //   },
-      //   {
-      //     name: "KKB",
-      //     coords: [-15.948465, -53.199599],
-      //     status: "closed",
-      //     offsets: [0, -5],
-      //   }
-      // ]
+        {
+          name: "KWL",
+          coords: [51.824713, 38.086025],
+          status: "closed",
+          offsets: [0, -2]
+        },
+        {
+          name: "HDR",
+          coords: [46.092372, 2.945867],
+          status: "closed",
+          offsets: [0, -2]
+        },
+        {
+          name: "KKN",
+          coords: [62.077448, 12.217676],
+          status: "closed",
+          offsets: [0, -2]
+        },
+        {
+          name: "GKN",
+          coords: [59.582248, -123.624918],
+          status: "activeUntil2022"
+        },
+        {
+          name: "KKB",
+          coords: [-15.948465, -53.199599],
+          status: "closed",
+          offsets: [0, -5]
+        }
+      ]
     };
   },
   mounted() {
@@ -667,6 +679,9 @@ export default {
       $("#world-map").vectorMap({
         map: "continents_mill",
         normalizeFunction: "polynomial",
+        markers: this.plants.map(function(h) {
+          return { name: h.name, latLng: h.coords };
+        }),
         markerStyle: {
           initial: {
             stroke: "none"
@@ -674,29 +689,32 @@ export default {
         },
         zoomButtons: false,
         series: {
-          // markers: [
-          //   {
-          //     attribute: "image",
-          //     scale: {
-          //       closed: "./../assets/images/yellow.png"
-          //     },
-          //     values: this.plants.reduce(function(p, c, i) {
-          //       p[i] = c.status;
-          //       return p;
-          //     }, {}),
-          //     legend: {
-          //       horizontal: true,
-          //       title: "Nuclear power station status",
-          //       labelRender: function(v) {
-          //         return {
-          //           closed: "Closed",
-          //           activeUntil2018: "Scheduled for shut down<br> before 2018",
-          //           activeUntil2022: "Scheduled for shut down<br> before 2022"
-          //         }[v];
-          //       }
-          //     }
-          //   }
-          // ]
+          markers: [
+            {
+              attribute: "image",
+              scale: {
+                closed: "./../assets/images/yellow.png",
+                activeUntil2018: "http://jvectormap.com/img/icon-np-2.png",
+                activeUntil2022: "http://jvectormap.com/img/icon-np-2.png"
+              },
+              values: this.plants.reduce(function(p, c, i) {
+                p[i] = c.status;
+                console.log(p);
+                return p;
+              }, {}),
+              legend: {
+                horizontal: true,
+                title: "Nuclear power station status",
+                labelRender: function(v) {
+                  return {
+                    closed: "Closed",
+                    activeUntil2018: "Scheduled for shut down<br> before 2018",
+                    activeUntil2022: "Scheduled for shut down<br> before 2022"
+                  }[v];
+                }
+              }
+            }
+          ]
         },
         backgroundColor: "#fff",
         regionStyle: {
@@ -704,53 +722,50 @@ export default {
             fill: "#d6dfe4",
             stroke: "none"
           }
-        },
-        // markers: this.plants.map(function(h) {
-        //   return { name: h.name, latLng: h.coords };
-        // })
-        markers: [
-          {
-            latLng: [35.06737, 116.034738],
-            name: "Asia",
-            status: "marker",
-            style: { r: 5, fill: "#ce2fe6" }
-          },
-          {
-            latLng: [3.817963, 30.08030245],
-            name: "Africa",
-            style: { r: 5, fill: "#ce2fe6" }
-          },
-          {
-            latLng: [-22.378094, 140.108203],
-            name: "Australia",
-            style: { r: 5, fill: "#e62f2f" }
-          },
-          {
-            latLng: [51.824713, 38.086025],
-            name: "Eastern Europe",
-            style: { r: 5, fill: "#27b6fa" }
-          },
-          {
-            latLng: [46.092372, 2.945867],
-            name: "Western Europe",
-            style: { r: 5, fill: "#ff2792" }
-          },
-          {
-            latLng: [62.077448, 12.217676],
-            name: "Northern Europe",
-            style: { r: 5, fill: "#622fe6" }
-          },
-          {
-            latLng: [59.582248, -123.624918],
-            name: "North America",
-            style: { r: 5, fill: "#27ffde" }
-          },
-          {
-            latLng: [-15.948465, -53.199599],
-            name: "South America",
-            style: { r: 5, fill: "#fac627" }
-          }
-        ]
+        }
+        // markers: [
+        //   {
+        //     latLng: [35.06737, 116.034738],
+        //     name: "Asia",
+        //     status: "marker",
+        //     style: { r: 5, fill: "#ce2fe6" }
+        //   },
+        //   {
+        //     latLng: [3.817963, 30.08030245],
+        //     name: "Africa",
+        //     style: { r: 5, fill: "#ce2fe6" }
+        //   },
+        //   {
+        //     latLng: [-22.378094, 140.108203],
+        //     name: "Australia",
+        //     style: { r: 5, fill: "#e62f2f" }
+        //   },
+        //   {
+        //     latLng: [51.824713, 38.086025],
+        //     name: "Eastern Europe",
+        //     style: { r: 5, fill: "#27b6fa" }
+        //   },
+        //   {
+        //     latLng: [46.092372, 2.945867],
+        //     name: "Western Europe",
+        //     style: { r: 5, fill: "#ff2792" }
+        //   },
+        //   {
+        //     latLng: [62.077448, 12.217676],
+        //     name: "Northern Europe",
+        //     style: { r: 5, fill: "#622fe6" }
+        //   },
+        //   {
+        //     latLng: [59.582248, -123.624918],
+        //     name: "North America",
+        //     style: { r: 5, fill: "#27ffde" }
+        //   },
+        //   {
+        //     latLng: [-15.948465, -53.199599],
+        //     name: "South America",
+        //     style: { r: 5, fill: "#fac627" }
+        //   }
+        // ]
       });
     }
   }
@@ -881,6 +896,19 @@ tr .tableData:first-child {
   color: #622fe6;
 }
 
+@media (min-width: 1200px) and (max-width: 1600px) {
+  .chartMargin:nth-child(1) > div {
+    margin-right: 1.1vw;
+  }
+  .chartMargin:nth-child(2) > div {
+    margin-right: 0.45vw;
+    margin-left: 0.45vw;
+  }
+  .chartMargin:nth-child(3) > div {
+    margin-left: 1.1vw;
+    margin-right: 0vw;
+  }
+}
 @media (min-width: 992px) and (max-width: 1200px) {
   .chartMargin:nth-child(1) > div {
     margin-right: 1.7vw;

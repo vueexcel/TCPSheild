@@ -287,10 +287,23 @@ input:checked + .slider:before {
 .closeIcon:hover {
   color: #e72f6c;
 }
+@media (min-width: 1200px) and (max-width: 1600px) {
+  tr .tableData:nth-child(1) {
+    width: 38%;
+  }
+  tr .tableData:nth-child(2) {
+    width: 38%;
+    padding: 0px 12px;
+  }
+  tr .tableData:nth-child(3) {
+    width: 14%;
+    padding: 0px 12px;
+  }
+}
 @media (min-width: 992px) and (max-width: 1200px) {
   .copyContainer {
-  width: 100%;
-}
+    width: 100%;
+  }
   tr .tableData:nth-child(1) {
     width: 35%;
   }

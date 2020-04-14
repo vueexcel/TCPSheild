@@ -21,6 +21,11 @@ Vue.config.productionTip = false;
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import "vue-select/dist/vue-select.css";
+import { LayoutPlugin } from "bootstrap-vue";
+
+Vue.use(LayoutPlugin, {
+  breakpoints: ["xs", "sm", "lg", "xl", "xxl"]
+});
 
 Vue.use(VueApexCharts);
 Vue.use(BootstrapVue);
@@ -29,5 +34,5 @@ Vue.use(BootstrapVueIcons);
 new Vue({
   router,
   store,
-  render: (h) => h(App),
+  render: h => h(App)
 }).$mount("#app");

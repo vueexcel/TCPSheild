@@ -19,6 +19,10 @@ export default {
 #app {
 }
 html {
-  font-size:16px;
+  font-size: 16px;
 }
+</style>
+
+<style lang="scss">
+@import "custom.scss";
 </style>

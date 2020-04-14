@@ -2,7 +2,7 @@
   <div>
     <b-container fluid class="px-0">
       <b-row>
-        <b-col xl="9" lg="12" md="12" sm="12">
+        <b-col xl="12" lg="12" md="12" sm="12">
           <b-row class>
             <b-col xl="4" lg="6" sm="6" class="p-0" v-for="(chart,index) in charts" :key="index">
               <div class="mb-2 mx-3 bg-white chartBox">
@@ -32,10 +32,10 @@
             </b-col>
           </b-row>
         </b-col>
-        <b-col xl="3" lg="12" md="12" class="mt-xl-0 mt-lg-2">
+        <b-col xl="12" lg="12" md="12" class="mt-xl-0 mt-lg-2">
           <b-row>
-            <b-col xl="12" lg="6" md="6">
-              <div class="sideBox my-md-2 my-lg-0">
+            <b-col xl="4" lg="6" md="6">
+              <div class="sideBox my-md-2 my-lg-0 mt-xl-4 ">
                 <p class="PNB p-3 m-0 sideHeading blackText">Support</p>
                 <div class="p-3">
                   <p
@@ -59,8 +59,8 @@
                 </div>
               </div>
             </b-col>
-            <b-col xl="12" lg="6" md="6">
-              <div class="sideBox my-xl-4 mb-lg-4 my-md-2 my-lg-0">
+            <b-col xl="4" lg="6" md="6">
+              <div class="sideBox mt-xl-4 mb-lg-4 my-md-2 my-lg-0">
                 <p class="PNB p-3 m-0 sideHeading blackText">API</p>
                 <div class="p-3">
                   <div class="d-flex justify-content-between">
@@ -91,8 +91,8 @@
                 </div>
               </div>
             </b-col>
-            <b-col xl="12" lg="16" md="6">
-              <div class="sideBox my-md-2 my-lg-0">
+            <b-col xl="4" lg="16" md="6">
+              <div class="sideBox my-md-2 my-lg-0 mt-xl-4 ">
                 <p class="PNB p-3 m-0 sideHeading blackText">Blog</p>
                 <div class="p-3">
                   <p class="greyText PNT sideDescription">
