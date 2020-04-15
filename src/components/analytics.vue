@@ -1,15 +1,15 @@
 <template>
-  <div>
+  <div  data-aos="fade" data-aos-duration="2000" data-aos-delay="300">
     <b-container fluid class>
       <b-row>
-        <b-col sm="12" md="12" lg="12" xl="12" xxl="9">
+        <b-col sms="12" mds="12" lgs="12" xls="12" xxls="9">
           <b-row>
             <b-col
-              xl="4"
-              lg="6"
-              md="6"
-              sm="6"
-              class="p-0 chartMargin mb-xl-4 mb-lg-3 mb-md-4 mb-sm-4 mt-xl-0 mt-lg-3"
+              xls="4"
+              lgs="6"
+              mds="6"
+              sms="6"
+              class="p-0 chartMargin mb-xls-4 mb-lgs-3 mb-mds-4 mb-sms-4 mb-4  mt-xls-0 mt-lgs-3"
               v-for="(areaChart,index) in areaCharts"
               :key="index"
             >
@@ -24,40 +24,40 @@
               </div>
             </b-col>
             <b-col
-              xl="4"
-              lg="6"
-              md="6"
-              sm="6"
-              class="p-0 mb-lg-3 mb-xl-0 mb-md-4 mb-sm-4 mt-xl-0 mt-lg-3"
+              xls="4"
+              lgs="6"
+              mds="6"
+              sms="6"
+              class="p-0 mb-xss-4 mb-xxls-0  mb-sms-0 mb-lgs-3 mb-xls-0 mb-mds-4 mb-sms-4 mt-xls-0 mt-lgs-3"
             >
               <div
-                class="text-center py-5 mr-xl-3 ml-xl-0 mr-lg-0 ml-lg-3 ml-md-2 boxHeight dataContainer"
+                class="text-center py-5 mr-xls-3 ml-xls-0 mr-lgs-0 ml-lgs-3 ml-mds-2 boxHeight dataContainer"
               >
                 <p class="dataTitle PNR greyText mb-0">Average Time Played</p>
                 <p class="averageTimePlayed m-0">{{averageTimePlayed}}h</p>
               </div>
             </b-col>
             <b-col
-              xl="4"
-              lg="6"
-              md="6"
-              sm="6"
-              class="p-0 mb-lg-3 mb-xl-0 mb-md-4 mb-sm-4 mt-xl-0 mt-lg-3"
+              xls="4"
+              lgs="6"
+              mds="6"
+              sms="6"
+              class="p-0 mb-xss-4 mb-xxls-0  mb-sms-0 mb-lgs-3 mb-xls-0 mb-mds-4 mb-sms-4 mt-xls-0 mt-lgs-3"
             >
-              <div class="text-center py-5 mx-xl-2 ml-lg-0 mr-lg-3 mr-md-2 boxHeight dataContainer">
+              <div class="text-center py-5 mx-xls-2 ml-lgs-0 mr-lgs-3 mr-mds-2 boxHeight dataContainer">
                 <p class="dataTitle PNR greyText mb-0">Unique new players</p>
                 <p class="uniqueNewPlayers m-0">{{uniqueNewPlayers}}</p>
               </div>
             </b-col>
             <b-col
-              xl="4"
-              lg="6"
-              md="6"
-              sm="6"
-              class="p-0 mb-lg-3 mb-xl-0 mb-md-0 mb-sm-4 mt-xl-0 mt-lg-3"
+              xls="4"
+              lgs="6"
+              mds="6"
+              sms="6"
+              class="p-0 mb-xss-4 mb-xxls-0  mb-lgs-3 mb-xls-0 mb-mds-0 mb-sms-4 mt-xls-0 mt-lgs-3"
             >
               <div
-                class="text-center ml-xl-3 ml-lg-3 mr-xl-0 mr-lg-0 ml-md-2 px-2 pt-2 barChartBox dataContainer"
+                class="text-center ml-xls-3 ml-lgs-3 mr-xls-0 mr-lgs-0 ml-mds-2 px-2 pt-2 barChartBox dataContainer"
               >
                 <p class="barChartTitle mb-0">Unique vs. recurring players</p>
                 <apexcharts height="175" type="bar" :options="barOptions" :series="barSeries" class></apexcharts>
@@ -65,18 +65,18 @@
             </b-col>
           </b-row>
         </b-col>
-        <b-col xxl="3" xl="4" lg="12" md="12" class="p-0 mt-xl-4 mt-lg-4">
-          <div class="dataContainer mr-xl-3 ml-xxl-4 ml-xl-0 ml-lg-0" style="height:100%">
+        <b-col xxls="3" xls="4" lgs="12" mds="12" class="p-0 mt-xxls-0 mt-xls-4 mt-lgs-4">
+          <div class="dataContainer mr-xls-3 mr-xxls-0 ml-xxls-4 ml-xls-0 ml-lgs-0" style="height:100%">
             <p class="PNB mb-0 blackText px-3 py-2 playerLocation">Player Locations</p>
             <div id="world-map" style="height:170px;" class="px-3"></div>
             <b-row class="mt-4 px-4">
               <b-col
                 v-for="(playerLocation,index) in playersLocation"
                 :key="index"
-                xl="6"
-                lg="6"
-                md="6"
-                sm="6"
+                xls="6"
+                lgs="6"
+                mds="6"
+                sms="6"
                 class="mb-2 progressCol"
               >
                 <div class>
@@ -92,8 +92,8 @@
         </b-col>
       </b-row>
       <b-row class>
-        <b-col xl="6" lg="12" md="12" class="p-0">
-          <div class="mr-xl-3 mr-lg-0">
+        <b-col xls="6" lgs="12" mds="12" class="p-0">
+          <div class="mr-xls-3 mr-lgs-0">
             <p class="PNB mb-0 blackText py-4 topHeading">Top 10 Players</p>
             <div class="dataContainer p-3">
               <table class>
@@ -113,8 +113,8 @@
             </div>
           </div>
         </b-col>
-        <b-col xl="6" lg="12" class="p-0">
-          <div class="ml-xl-3 ml-lg-0">
+        <b-col xls="6" lgs="12" class="p-0">
+          <div class="ml-xls-3 ml-lgs-0 mb-4 mb-sms-0">
             <p class="PNB mb-0 blackText py-4 topHeading">Top 10 Countries</p>
             <div class="dataContainer p-3">
               <table>
@@ -933,6 +933,19 @@ tr .tableData:first-child {
   .chartMargin:nth-child(3) > div {
     margin-left: 0vw;
     margin-right: 1.1vw;
+  }
+}
+@media screen and (max-width: 576px) {
+   .chartMargin:nth-child(1) > div {
+    margin-right: 0vw;
+  }
+  .chartMargin:nth-child(2) > div {
+    margin-right: 0vw;
+    margin-left: 0vw;
+  }
+  .chartMargin:nth-child(3) > div {
+    margin-left: 0vw;
+    margin-right: 0vw;
   }
 }
 </style>

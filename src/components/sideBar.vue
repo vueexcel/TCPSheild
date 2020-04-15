@@ -1,78 +1,73 @@
 <template>
-  <div>
-    <div
-      class="mr-4 mr-xl-3 mr-xxl-4 d-lg-block d-md-none d-sm-none d-none"
-      style="background-color:#622fe6;border-radius:10px;height:120vh;"
-    >
-      <div class="text-center py-3">
-        <img class="logo" src="./../assets/images/logo.png" />
-      </div>
-      <ul class="menuList text-white text-uppercase PNB m-0 mt-4 p-0">
-        <li class="mb-2">
-          <div
-            class="py-3 ml-xl-3 ml-lg-3"
-            :class="{ active: activeMenu === 'dashboard' }"
-            @click="openDashboard"
-          >
-            <span class="menuIconBox">
-              <img
-                v-if="(activeMenu === 'dashboard')"
-                class="dashboardIcon mx-3"
-                src="./../assets/images/dashboard_voilet.svg"
-              />
-              <img v-else class="dashboardIcon mx-3" src="./../assets/images/dashboard_white.svg" />
-            </span>
-            <a>dashboard</a>
-          </div>
-        </li>
-        <li class="mb-2">
-          <div
-            class="py-3 ml-xl-3 ml-lg-3"
-            :class="{ active: activeMenu === 'networks' }"
-            @click="openNetworks"
-          >
-            <span class="menuIconBox">
-              <img
-                v-if="(activeMenu === 'networks')"
-                class="dashboardIcon mx-3"
-                src="./../assets/images/globe_voilet.svg"
-              />
-              <img v-else class="dashboardIcon mx-3" src="./../assets/images/globe_white.svg" />
-            </span>
-            <a>networks</a>
-          </div>
-          <ul v-if="activeMenu === ('networks')" class="subList ml-0 my-3 pl-0">
-            <li
-              class="py-2 mr-3 pr-xl-2 pr-lg-3 pl-lg-5 pl-xl-5 pr-xl-4 mb-2 text-center"
-              :class="{ active: activeNetwork === 'backends' }"
-              @click="openBackends "
-            >Backends</li>
-            <li
-              class="py-2 mr-3 pr-xl-2 pr-lg-3 pl-lg-5 pl-xl-5 pr-xl-4 text-center"
-              :class="{ active: activeNetwork === 'analytics' }"
-              @click="openAnalytics"
-            >Analytics</li>
-          </ul>
-        </li>
-        <li class="mb-2">
-          <div
-            class="py-3 ml-xl-3 ml-lg-3"
-            :class="{ active: activeMenu === 'billing' }"
-            @click="openBilling"
-          >
-            <span class="menuIconBox">
-              <img
-                v-if="(activeMenu === 'billing')"
-                class="dashboardIcon mx-3"
-                src="./../assets/images/bill_voilet.svg"
-              />
-              <img v-else class="dashboardIcon mx-3" src="./../assets/images/bill_white.svg" />
-            </span>
-            <a>billing</a>
-          </div>
-        </li>
-      </ul>
+  <div class="mr-xss-4 mr-xls-3 mr-xxls-5 d-lgs-block d-mds-none d-sms-none d-xss-none sideBarBox">
+    <div class="text-center py-3">
+      <img class="logo" src="./../assets/images/logo.png" />
     </div>
+    <ul class="menuList text-white text-uppercase PNB m-0 mt-4 p-0">
+      <li class="mb-2">
+        <div
+          class="py-3 ml-xxls-4 ml-xls-3 ml-lgs-3"
+          :class="{ active: activeMenu === 'dashboard' }"
+          @click="openDashboard"
+        >
+          <span class="menuIconBox">
+            <img
+              v-if="(activeMenu === 'dashboard')"
+              class="dashboardIcon mx-3"
+              src="./../assets/images/dashboard_voilet.svg"
+            />
+            <img v-else class="dashboardIcon mx-3" src="./../assets/images/dashboard_white.svg" />
+          </span>
+          <a>dashboard</a>
+        </div>
+      </li>
+      <li class="mb-2">
+        <div
+          class="py-3 ml-xxls-4 ml-xls-3 ml-lgs-3"
+          :class="{ active: activeMenu === 'networks' }"
+          @click="openNetworks"
+        >
+          <span class="menuIconBox">
+            <img
+              v-if="(activeMenu === 'networks')"
+              class="dashboardIcon mx-3"
+              src="./../assets/images/globe_voilet.svg"
+            />
+            <img v-else class="dashboardIcon mx-3" src="./../assets/images/globe_white.svg" />
+          </span>
+          <a>networks</a>
+        </div>
+        <ul v-if="activeMenu === ('networks')" class="subList ml-0 my-3 pl-0">
+          <li
+            class="py-2 mr-3 pr-xxls-0 pr-xls-4 pr-lgs-3 pl-lgs-5 pl-xls-5 pl-xxls-1 mb-2 text-center"
+            :class="{ active: activeNetwork === 'backends' }"
+            @click="openBackends "
+          >Backends</li>
+          <li
+            class="py-2 mr-3 pr-xxls-0 pr-xls-2 pr-lgs-3 pl-lgs-5 pl-xls-5 pl-xxls-1 pr-xls-4 text-center"
+            :class="{ active: activeNetwork === 'analytics' }"
+            @click="openAnalytics"
+          >Analytics</li>
+        </ul>
+      </li>
+      <li class="mb-2">
+        <div
+          class="py-3 ml-xxls-4 ml-xls-3 ml-lgs-3"
+          :class="{ active: activeMenu === 'billing' }"
+          @click="openBilling"
+        >
+          <span class="menuIconBox">
+            <img
+              v-if="(activeMenu === 'billing')"
+              class="dashboardIcon mx-3"
+              src="./../assets/images/bill_voilet.svg"
+            />
+            <img v-else class="dashboardIcon mx-3" src="./../assets/images/bill_white.svg" />
+          </span>
+          <a>billing</a>
+        </div>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -82,7 +77,7 @@ export default {
   name: "sideBar",
   data() {
     return {
-      menu: ["Dashboard", "Networks"],
+      menu: ["Dashboard", "Networks"]
     };
   },
   computed: {
@@ -107,7 +102,7 @@ export default {
 .sideBarBox {
   background-color: #622fe6;
   border-radius: 10px;
-  height: 100%;
+  height: 1050px;
 }
 .menuList {
   list-style-type: none;
@@ -170,8 +165,8 @@ export default {
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
 }
-@media (min-width:1200px) and (max-width: 1600px) {
-.logo {
+@media (min-width: 1200px) and (max-width: 1600px) {
+  .logo {
     width: 10vw;
   }
 }
@@ -183,6 +178,15 @@ export default {
 @media (min-width: 768px) and (max-width: 992px) {
   .logo {
     width: 20vw;
+  }
+  .sideBarBox {
+    border-radius: 0px;
+    height: 100%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .logo {
+    width: 40vw;
   }
   .sideBarBox {
     border-radius: 0px;

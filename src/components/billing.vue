@@ -1,38 +1,38 @@
 <template>
-  <div>
+  <div data-aos="fade" data-aos-duration="2000" data-aos-delay="300">
     <div class="my-4 greyText PNB HeadBar">
       <span class="mr-4 active">Overview</span>
       <span>Payment Methods</span>
     </div>
     <b-container fluid class>
       <b-row>
-        <b-col xl="3" lg="6" md="6" class="p-0">
+        <b-col xxls="3" xls="3" lgs="6" mds="6" class="p-0">
           <div
-            class="text-center py-5 mr-4 mb-xl-0 mb-lg-4 mb-md-4 mr-md-3 boxHeight dataContainer"
+            class="text-center py-xss-5 mx-xss-0 mr-sms-4 mb-xls-0 mb-lgs-4 mb-mds-4 mb-sms-0 mb-xss-4 mr-mds-3 boxHeight dataContainer"
           >
             <p class="dataTitle PNR greyText mb-0">Current Usage</p>
             <p class="currentUsage PNB m-0">{{currentUsage}} TB</p>
           </div>
         </b-col>
-        <b-col xl="3" lg="6" md="6" class="p-0">
+        <b-col xxls="3" xls="3" lgs="6" mds="6" class="p-0">
           <div
-            class="text-center py-5 ml-xl-2 mr-xl-3 ml-lg-4 mr-lg-0 mb-xl-0 mb-lg-4 mb-md-4 ml-md-3 boxHeight dataContainer"
+            class="text-center py-xss-5 ml-xls-2 mr-xls-3 ml-lgs-4 mr-lgs-0 mb-xls-0 mb-lgs-4 mb-mds-4 mb-sms-0 mb-xss-4 ml-mds-3 boxHeight dataContainer"
           >
             <p class="dataTitle PNR greyText mb-0">Charges this Month</p>
             <p class="chargesThisMonth PNB m-0">$ {{chargesThisMonth}}</p>
           </div>
         </b-col>
-        <b-col xl="3" lg="6" md="6" class="p-0">
+        <b-col xxls="3" xls="3" lgs="6" mds="6" class="p-0">
           <div
-            class="text-center py-5 ml-xl-3 mr-xl-2 ml-lg-0 mr-lg-4 mt-xl-0 mt-lg-4 mt-md-2 mr-md-3 boxHeight dataContainer"
+            class="text-center py-xss-5 ml-xls-3 mr-xls-2 ml-lgs-0 mr-lgs-3 mt-xls-0 mt-lgs-4 mt-mds-2 mb-sms-0 mb-xss-4 mr-mds-3 boxHeight dataContainer"
           >
             <p class="dataTitle PNR greyText mb-0">Remaining Credits</p>
             <p class="remainingCredits PNB m-0">$ {{remainingCredits}}</p>
           </div>
         </b-col>
-        <b-col xl="3" lg="6" md="6" class="p-0">
+        <b-col xxls="3" xls="3" lgs="6" mds="6" class="p-0">
           <div
-            class="text-center py-5 ml-4 mt-xl-0 mt-lg-4 mt-md-2 ml-md-3 boxHeight dataContainer"
+            class="text-center py-xss-5 ml-xss-0 ml-sms-4 mt-xls-0 mt-lgs-4 mt-mds-2 ml-mds-3 ml-lgs-4 boxHeight dataContainer"
           >
             <p class="dataTitle PNR greyText mb-1">Payment Methods</p>
             <img class="paypalIcon mx-3" src="./../assets/images/paypal.svg" />
@@ -40,13 +40,13 @@
         </b-col>
       </b-row>
     </b-container>
-    <p class="PNB mb-0 blackText py-4 recentInvoice">
+    <p class="PNB mb-0 blackText py-xss-4 recentInvoice">
       Recent Invoices
       <span>({{recentInvoice}})</span>
     </p>
     <div class="tableContainer">
       <div class="p-3 tableBar d-flex">
-        <div class="d-flex justify-content-between py-1 px-3 searchContainer">
+        <div class="d-flex justify-content-between py-xss-1 px-3 searchContainer">
           <input
             type="text"
             class="mr-2 px-1 searchInput PNR greyText"
@@ -74,28 +74,31 @@
           </template>
         </v-select>
       </div>
-      <div class="p-3">
+      <div class="p-3 mb-4 overFlow">
         <table>
           <thead class="bg-light">
             <tr>
               <th
                 v-for="(invoice,index) in invoicesTitle"
                 :key="index"
-                class="PNB blackText py-2 tableData"
+                class="PNB blackText py-xss-2 tableData"
               >{{invoice}}</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(invoceData,index) in filterInvoice" :key="index">
-              <td class="PNR greyText py-2 tableData">{{invoceData.invoice}}</td>
-              <td class="PNR greyText py-2 tableData">$ {{invoceData.total}}</td>
-              <td class="PNR greyText py-2 tableData">$ {{invoceData.balance}}</td>
-              <td class="PNR greyText py-2 tableData">{{invoceData.dueDate}}</td>
-              <td class="PNR greyText py-2 tableData text-center">
-                <div v-if="invoceData.status=== 'paid' " class="paidInvoice PNR py-1">INVOICE PAID</div>
-                <div v-else class="unpaidInvoice PNR py-1">INVOICE UNPAID</div>
+              <td class="PNR greyText py-xss-2 tableData">{{invoceData.invoice}}</td>
+              <td class="PNR greyText py-xss-2 tableData">$ {{invoceData.total}}</td>
+              <td class="PNR greyText py-xss-2 tableData">$ {{invoceData.balance}}</td>
+              <td class="PNR greyText py-xss-2 tableData">{{invoceData.dueDate}}</td>
+              <td class="PNR greyText py-xss-2 tableData text-center">
+                <div
+                  v-if="invoceData.status=== 'paid' "
+                  class="paidInvoice PNR py-xss-1"
+                >INVOICE PAID</div>
+                <div v-else class="unpaidInvoice PNR py-xss-1">INVOICE UNPAID</div>
               </td>
-              <td class="PNR greyText py-2 tableData">
+              <td class="PNR greyText py-xss-2 tableData">
                 <span class>
                   <b-icon
                     icon="cloud-download"
@@ -445,6 +448,37 @@ tr .tableData:first-child {
   }
   tr .tableData:nth-child(5) {
     width: 24%;
+    padding: 0px 20px;
+  }
+  tr .tableData:nth-child(6) {
+    width: 12%;
+    padding-left: 20px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .overFlow {
+    overflow-x: auto;
+  }
+  table {
+    width: 200%;
+  }
+  tr .tableData:nth-child(1) {
+    width: 10%;
+  }
+  tr .tableData:nth-child(2) {
+    width: 15%;
+    padding: 0px 20px;
+  }
+  tr .tableData:nth-child(3) {
+    width: 16%;
+    padding: 0px 20px;
+  }
+  tr .tableData:nth-child(4) {
+    width: 24%;
+    padding: 0px 20px;
+  }
+  tr .tableData:nth-child(5) {
+    width: 23%;
     padding: 0px 20px;
   }
   tr .tableData:nth-child(6) {

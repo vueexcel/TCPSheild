@@ -9,6 +9,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 library.add(faChevronDown, faSearch);
 
@@ -24,7 +26,7 @@ import "vue-select/dist/vue-select.css";
 import { LayoutPlugin } from "bootstrap-vue";
 
 Vue.use(LayoutPlugin, {
-  breakpoints: ["xs", "sm", "lg", "xl", "xxl"]
+  breakpoints: ["xss", "sms","mds", "lgs", "xls", "xxls"]
 });
 
 Vue.use(VueApexCharts);
@@ -32,6 +34,9 @@ Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
 
 new Vue({
+  created() {
+    AOS.init();
+  },
   router,
   store,
   render: h => h(App)
