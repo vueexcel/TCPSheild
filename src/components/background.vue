@@ -1,12 +1,12 @@
 <template>
-  <div class="appBackground p-xl-5 p-lg-4 p-md-4  p-sm-0">
+  <div class="appBackground p-xls-5 p-lgs-4 p-mds-4 p-sms-0">
     <img class="triangle" src="./../assets/images/triangle.png" />
     <b-container fluid class="bv-example-row">
       <b-row>
-        <b-col xl="2" lg="3">
+        <b-col xls="2" lgs="3" class="pl-xls-0 pl-xxl-3">
           <sideBar />
         </b-col>
-        <b-col xl="10" lg="9" class="p-xl-0 p-lg-0 pr-lg-3 col-lg-9 ">
+        <b-col xls="10" lgs="9" class="p-xls-0 p-lgs-0 pr-lgs-3">
           <div>
             <topBar />
           </div>
@@ -44,7 +44,7 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  height: inherit;
+  height: 1120px;
   position: relative;
 }
 .triangle {
@@ -52,5 +52,38 @@ export default {
   position: absolute;
   top: 0;
   right: 0;
+}
+@media (min-width: 1200px) and (max-width: 1600px) {
+  .appBackground {
+    background: url("./../assets/images/backgroundTCPShield.png");
+    /* background-color: black; */
+    background-size: contain;
+    width: 100%;
+    /* height: 200vh; */
+  }
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+  .logo {
+    width: 13vw;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .appBackground {
+    background: url("./../assets/images/backgroundTCPShield.png");
+    /* background-color: black; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: inherit;
+  }
+}
+@media screen and (max-width: 576px) {
+  .logo {
+    width: 40vw;
+  }
+  .sideBarBox {
+    border-radius: 0px;
+    height: 100%;
+  }
 }
 </style>

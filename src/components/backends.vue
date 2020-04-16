@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <b-container fluid class>
+  <div data-aos="fade" data-aos-duration="2000" data-aos-delay="300">
+    <b-container fluid>
       <b-row>
-        <b-col xl="6" lg="6" class="pr-md-0 pr-lg-3">
-          <b-row class="mr-xl-4 mr-lg-4 mr-md-0">
-            <b-col xl="12" lg="12" class="p-0 mb-4 stepOuterBox bg-white">
+        <b-col xls="6" lgs="6" class="pr-mds-0 pr-lgs-3">
+          <b-row class="mr-xls-4 mr-lgs-4 mr-mds-0">
+            <b-col xls="12" lgs="12" class="p-0 mb-4 stepOuterBox bg-white">
               <div>
                 <div class="p-3 stepInnerBox">
                   <p class="mb-0 PNB voiletText stepHeading">Step 1</p>
@@ -21,12 +21,16 @@
                 </div>
               </div>
             </b-col>
-            <b-col xl="12" lg="12" class="p-0 stepOuterBox bg-white mb-4 mb-lg-0 mt-lg-3 mt-md-2">
+            <b-col
+              xls="12"
+              lgs="12"
+              class="p-0 stepOuterBox bg-white mb-xss-4 mb-lgs-0 mt-lgs-3 mt-mds-2"
+            >
               <div class="p-3 stepInnerBox">
                 <p class="mb-0 PNB voiletText stepHeading">Step 2</p>
                 <p class="mb-0 PNR greyText stepDescription">Download Plugins</p>
               </div>
-              <b-col xl="6" lg="12" sm="6" class="p-0">
+              <b-col xls="6" lgs="12" sms="6" class="p-0">
                 <div class="pt-3 px-3">
                   <div
                     v-for="(downloadItem,index) in downloadItems"
@@ -40,7 +44,7 @@
             </b-col>
           </b-row>
         </b-col>
-        <b-col xl="6" lg="6" class="p-0 stepOuterBox bg-white mt-md-2 mt-lg-0">
+        <b-col xls="6" lgs="6" class="p-0 stepOuterBox bg-white mt-mds-2 mt-lgs-0">
           <div class="p-3 stepInnerBox">
             <p class="mb-0 PNB voiletText stepHeading">Step 3</p>
             <p class="mb-0 PNR greyText stepDescription">Point your DNS to TCPShield</p>
@@ -68,7 +72,7 @@
     </b-container>
     <div>
       <p class="PNB mb-0 blackText BackendHeading py-4">Backend IP's</p>
-      <div class="bg-white p-3 tableContainer">
+      <div class="bg-white p-3 mb-4 tableContainer">
         <table>
           <thead class="bg-light">
             <tr>
@@ -287,10 +291,23 @@ input:checked + .slider:before {
 .closeIcon:hover {
   color: #e72f6c;
 }
+@media (min-width: 1200px) and (max-width: 1600px) {
+  tr .tableData:nth-child(1) {
+    width: 38%;
+  }
+  tr .tableData:nth-child(2) {
+    width: 38%;
+    padding: 0px 12px;
+  }
+  tr .tableData:nth-child(3) {
+    width: 14%;
+    padding: 0px 12px;
+  }
+}
 @media (min-width: 992px) and (max-width: 1200px) {
   .copyContainer {
-  width: 100%;
-}
+    width: 100%;
+  }
   tr .tableData:nth-child(1) {
     width: 35%;
   }
@@ -313,6 +330,28 @@ input:checked + .slider:before {
   }
   tr .tableData:nth-child(3) {
     width: 20%;
+    padding: 0px 12px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .copyContainer {
+    width: 100%;
+  }
+  .tableContainer {
+    overflow-x: scroll;
+  }
+  table {
+    width: 200%;
+  }
+  tr .tableData:nth-child(1) {
+    width: 17%;
+  }
+  tr .tableData:nth-child(2) {
+    width: 29%;
+    padding: 0px 12px;
+  }
+  tr .tableData:nth-child(3) {
+    width: 15%;
     padding: 0px 12px;
   }
 }

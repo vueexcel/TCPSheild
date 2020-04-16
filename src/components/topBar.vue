@@ -1,18 +1,18 @@
 <template>
   <div>
     <div class="bg-light d-flex justify-content-between topBar">
-      <div class="d-md-block d-sm-block d-block d-lg-none" v-b-toggle.sidebar>
-        <b-icon icon="list" class="greyText my-sm-4 mx-sm-3" font-scale="1.75"></b-icon>
+      <div class="d-mds-block d-sms-block d-xss-block d-lgs-none" v-b-toggle.sidebar>
+        <b-icon icon="list" class="greyText my-xss-4 mx-xss-2 mx-sms-3" font-scale="1.75"></b-icon>
       </div>
       <b-sidebar id="sidebar" class="mr-5" width="220px" no-header shadow>
-        <div class="mr-sm-0 sideBarBox">
+        <div class="mr-sms-0 sideBarBox">
           <div class="text-center py-3">
             <img class="logo" src="./../assets/images/logo.png" />
           </div>
           <ul class="menuList text-white text-uppercase PNB m-0 mt-4 p-0">
             <li class="mb-2">
               <div
-                class="py-3 ml-xl-4 ml-lg-3 ml-sm-3"
+                class="py-3 ml-xl-4 ml-lgs-3 ml-sms-3 ml-3"
                 :class="{ active: activeMenu === 'dashboard' }"
                 @click="openDashboard"
               >
@@ -33,7 +33,7 @@
             </li>
             <li class="mb-2">
               <div
-                class="py-3 ml-xl-4 ml-lg-3 ml-sm-3"
+                class="py-3 ml-xl-4 ml-lgs-3 ml-sms-3 ml-3"
                 :class="{ active: activeMenu === 'networks' }"
                 @click="openNetworks"
               >
@@ -49,12 +49,12 @@
               </div>
               <ul v-if="activeMenu === ('networks')" class="subList ml-0 my-3 pl-0">
                 <li
-                  class="py-2 mr-3 pr-xl-2 pr-lg-0 pl-lg-4 pl-xl-0 mb-2 text-center"
+                  class="py-2 mr-3 pr-xl-2 pr-lgs-0 pl-lgs-4 pl-xl-0 mb-2 text-center"
                   :class="{ active: activeNetwork === 'backends' }"
                   @click="openBackends "
                 >Backends</li>
                 <li
-                  class="py-2 mr-3 pr-xl-2 pr-lg-0 pl-lg-4 pl-xl-0 text-center"
+                  class="py-2 mr-3 pr-xl-2 pr-lgs-0 pl-lgs-4 pl-xl-0 text-center"
                   :class="{ active: activeNetwork === 'analytics' }"
                   @click="openAnalytics"
                 >Analytics</li>
@@ -62,7 +62,7 @@
             </li>
             <li class="mb-2">
               <div
-                class="py-3 ml-xl-4 ml-lg-3 ml-sm-3"
+                class="py-3 ml-xl-4 ml-lgs-3 ml-sms-3 ml-3"
                 :class="{ active: activeMenu === 'billing' }"
                 @click="openBilling"
               >
@@ -80,7 +80,7 @@
           </ul>
         </div>
       </b-sidebar>
-      <div class="py-2 px-4 mx-4 my-3 d-flex justify-content-between dropdown">
+      <div class="py-2 px-4 ml-0 mr-2 mx-sms-4 my-3 d-flex justify-content-between dropdown">
         <p class="PNT m-0 greyText selection">Selection</p>
         <font-awesome-icon
           icon="chevron-down"
@@ -89,34 +89,34 @@
           class="mt-1"
         />
       </div>
-      <div class="d-flex align-items-center mx-lg-5 mx-sm-3">
+      <div class="d-flex align-items-center mx-lgs-5 mx-sms-3">
         <div class="notificationBox">
           <b-icon icon="bell" class="rounded-circle greyText bell" style="font-weight:bold"></b-icon>
           <div class="notificationCircle"></div>
         </div>
         <b-avatar
-          class="ml-3"
+          class="ml-2 ml-sms-3"
           variant="light"
-          rounded="lg"
+          rounded="lgs"
           size="42px"
           text="AC"
           v-bind:src="userImg"
         ></b-avatar>
-        <p class="PNT greyText px-3 m-0 userName">Hello {{user}}</p>
+        <p class="PNT d-none d-sms-block greyText px-3 m-0 userName">Hello {{user}}</p>
         <font-awesome-icon
           icon="chevron-down"
           size="1x"
           :style="{ color: '#a7aab3' }"
-          class="mt-1"
+          class="mt-1 mx-2 mx-sms-0"
         />
       </div>
     </div>
     <div class="my-4">
-      <div v-if="activeMenu === 'dashboard'">
+      <div v-if="activeMenu === 'dashboard'"  data-aos="fade" data-aos-duration="2000" data-aos-delay="300">
         <p class="PNB mb-0 blackText mainHeading">Good morning, John Smith</p>
         <p class="PNR mb-0 greyText dataHeading">You have 1503 players across 2 networks</p>
       </div>
-      <div v-if="activeNetwork === 'backends'">
+      <div v-if="activeNetwork === 'backends'"  data-aos="fade" data-aos-duration="2000" data-aos-delay="300">
         <p class="PNB mb-0 blackText mainHeading">Backend Management</p>
         <p
           class="PNR mb-0 greyText dataHeading"
@@ -203,4 +203,9 @@ export default {
 .dataHeading {
   font-size: 0.875rem;
 }
+/* @media screen and (max-width: 576px) {
+  #sidebar{
+    width:320px !important;
+  }
+} */
 </style>

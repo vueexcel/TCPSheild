@@ -1,11 +1,11 @@
 <template>
   <div>
-    <b-container fluid class="px-0">
+    <b-container fluid class="px-0" data-aos="fade" data-aos-duration="2000" data-aos-delay="300">
       <b-row>
-        <b-col xl="9" lg="12" md="12" sm="12">
+        <b-col xxls="9"  xls="12" lgs="12" mds="12" sms="12">
           <b-row class>
-            <b-col xl="4" lg="6" sm="6" class="p-0" v-for="(chart,index) in charts" :key="index">
-              <div class="mb-2 mx-3 bg-white chartBox">
+            <b-col xls="4" lgs="6" sms="6" class="p-0" v-for="(chart,index) in charts" :key="index">
+              <div class="mb-sms-2 mb-xss-4 mx-3 bg-white chartBox">
                 <div class="d-flex justify-content-between px-3 py-2">
                   <p class="voiletText PNB m-0 chartTitle">{{chart.title}}</p>
                   <p class="mb-0">
@@ -22,7 +22,7 @@
                 ></apexcharts>
               </div>
             </b-col>
-            <b-col xl="4" lg="6" md="6" class="my-xl-0 my-lg-4 my-md-4">
+            <b-col xls="4" lgs="6" mds="6" class="my-xls-0 my-lgs-4 my-mds-4">
               <div class="d-flex justify-content-center align-items-center addNewServerBox">
                 <div class="text-center">
                   <b-icon icon="plus-circle" font-scale="3" class="rounded-circle p-2 addIcon"></b-icon>
@@ -32,10 +32,10 @@
             </b-col>
           </b-row>
         </b-col>
-        <b-col xl="3" lg="12" md="12" class="mt-xl-0 mt-lg-2">
+        <b-col xxls="3" xls="12" lgs="12" mds="12" class="mt-xls-0 mt-lgs-2">
           <b-row>
-            <b-col xl="12" lg="6" md="6">
-              <div class="sideBox my-md-2 my-lg-0">
+            <b-col xxls="12" xls="4" lgs="6" mds="6">
+              <div class="sideBox mt-xss-4 mb-xss-0 my-mds-2 my-lgs-0 mt-xls-4 mt-xxls-0">
                 <p class="PNB p-3 m-0 sideHeading blackText">Support</p>
                 <div class="p-3">
                   <p
@@ -59,8 +59,8 @@
                 </div>
               </div>
             </b-col>
-            <b-col xl="12" lg="6" md="6">
-              <div class="sideBox my-xl-4 mb-lg-4 my-md-2 my-lg-0">
+            <b-col xxls="12" xls="4" lgs="6" mds="6">
+              <div class="sideBox my-xss-4 my-sms-0 mt-xls-4 mb-lgs-4 mb-mds-2 mt-mds-2 my-lgs-0">
                 <p class="PNB p-3 m-0 sideHeading blackText">API</p>
                 <div class="p-3">
                   <div class="d-flex justify-content-between">
@@ -91,8 +91,8 @@
                 </div>
               </div>
             </b-col>
-            <b-col xl="12" lg="16" md="6">
-              <div class="sideBox my-md-2 my-lg-0">
+            <b-col xxls="12" xls="4" lgs="16" mds="6">
+              <div class="sideBox mb-xss-4 mb-sms-0 mt-mds-2 my-lgs-0 mt-xls-4 mt-xxls-0">
                 <p class="PNB p-3 m-0 sideHeading blackText">Blog</p>
                 <div class="p-3">
                   <p class="greyText PNT sideDescription">
