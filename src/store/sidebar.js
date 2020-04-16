@@ -7,25 +7,25 @@ const state = {
 
 const mutations = {
   openDashboard() {
-    router.push("/");
+    router.push("/").catch(err => {err});
     state.activeMenu = "dashboard";
     state.activeNetwork = "";
   },
   openNetworks() {
-    router.push("/backends");
+    router.push("/backends").catch(err => {err});
     state.activeMenu = "networks";
     state.activeNetwork = "backends";
   },
   openBackends() {
-    router.push("/backends");
+    router.push("/backends").catch(err => {err});
     state.activeNetwork = "backends";
   },
   openAnalytics() {
-    router.push("/analytics");
+    router.push("/analytics").catch(err => {err});
     state.activeNetwork = "analytics";
   },
   openBilling() {
-    router.push("/billing");
+    router.push("/billing").catch(err => {err});
     state.activeMenu = "billing";
     state.activeNetwork = "";
   }

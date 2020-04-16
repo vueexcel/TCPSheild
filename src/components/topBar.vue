@@ -95,14 +95,14 @@
           <div class="notificationCircle"></div>
         </div>
         <b-avatar
-          class="ml-2 ml-sms-3"
+          class="ml-xss-2 ml-sms-3"
           variant="light"
           rounded="lgs"
           size="42px"
           text="AC"
           v-bind:src="userImg"
         ></b-avatar>
-        <p class="PNT d-none d-sms-block greyText px-3 m-0 userName">Hello {{user}}</p>
+        <p class="PNT d-xss-none d-sms-block greyText px-3 m-0 userName">Hello {{user}}</p>
         <font-awesome-icon
           icon="chevron-down"
           size="1x"
@@ -112,11 +112,11 @@
       </div>
     </div>
     <div class="my-4">
-      <div v-if="activeMenu === 'dashboard'"  data-aos="fade" data-aos-duration="2000" data-aos-delay="300">
+      <div v-if="activeMenu === 'dashboard'">
         <p class="PNB mb-0 blackText mainHeading">Good morning, John Smith</p>
         <p class="PNR mb-0 greyText dataHeading">You have 1503 players across 2 networks</p>
       </div>
-      <div v-if="activeNetwork === 'backends'"  data-aos="fade" data-aos-duration="2000" data-aos-delay="300">
+      <div v-if="activeNetwork === 'backends'">
         <p class="PNB mb-0 blackText mainHeading">Backend Management</p>
         <p
           class="PNR mb-0 greyText dataHeading"

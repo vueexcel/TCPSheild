@@ -40,7 +40,7 @@ export default {
 <style scoped>
 .appBackground {
   background: url("./../assets/images/backgroundTCPShield.png");
-  /* background-color: black; */
+  background-color: black;
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -56,34 +56,29 @@ export default {
 @media (min-width: 1200px) and (max-width: 1600px) {
   .appBackground {
     background: url("./../assets/images/backgroundTCPShield.png");
-    /* background-color: black; */
-    background-size: contain;
-    width: 100%;
-    /* height: 200vh; */
+    background-size: cover;
+    height: 1370px;
   }
 }
 @media (min-width: 992px) and (max-width: 1200px) {
-  .logo {
-    width: 13vw;
+  .appBackground {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 1905px;
   }
 }
 @media (min-width: 768px) and (max-width: 992px) {
   .appBackground {
-    background: url("./../assets/images/backgroundTCPShield.png");
-    /* background-color: black; */
     background-size: cover;
     background-repeat: no-repeat;
-    width: 100%;
-    height: inherit;
+    height: 1845px;
   }
 }
 @media screen and (max-width: 576px) {
-  .logo {
-    width: 40vw;
-  }
-  .sideBarBox {
-    border-radius: 0px;
-    height: 100%;
+  .appBackground {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 2500px;
   }
 }
 </style>

@@ -39,12 +39,12 @@
         </div>
         <ul v-if="activeMenu === ('networks')" class="subList ml-0 my-3 pl-0">
           <li
-            class="py-2 mr-3 pr-xxls-0 pr-xls-4 pr-lgs-3 pl-lgs-5 pl-xls-5 pl-xxls-1 mb-2 text-center"
+            class="py-2 mr-3 pr-xxls-0 pr-xls-4 pr-lgs-3 pl-lgs-5 pl-xls-5 pl-xxls-0 mb-2 text-center"
             :class="{ active: activeNetwork === 'backends' }"
             @click="openBackends "
           >Backends</li>
           <li
-            class="py-2 mr-3 pr-xxls-0 pr-xls-2 pr-lgs-3 pl-lgs-5 pl-xls-5 pl-xxls-1 pr-xls-4 text-center"
+            class="py-2 mr-3 pr-xxls-0 pr-xls-2 pr-lgs-3 pl-lgs-5 pl-xls-5 pl-xxls-0 pr-xls-4 text-center"
             :class="{ active: activeNetwork === 'analytics' }"
             @click="openAnalytics"
           >Analytics</li>

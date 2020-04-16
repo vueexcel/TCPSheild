@@ -1,12 +1,26 @@
 <template>
-  <div data-aos="fade" data-aos-duration="2000" data-aos-delay="300">
-    <div class="my-4 greyText PNB HeadBar">
+  <div>
+    <div
+      class="my-4 greyText PNB HeadBar"
+      data-aos="fade"
+      data-aos-duration="1500"
+      data-aos-delay="300"
+    >
       <span class="mr-4 active">Overview</span>
       <span>Payment Methods</span>
     </div>
     <b-container fluid class>
       <b-row>
-        <b-col xxls="3" xls="3" lgs="6" mds="6" class="p-0">
+        <b-col
+          xxls="3"
+          xls="3"
+          lgs="6"
+          mds="6"
+          class="p-0"
+          data-aos="fade"
+          data-aos-duration="1500"
+          data-aos-delay="300"
+        >
           <div
             class="text-center py-xss-5 mx-xss-0 mr-sms-4 mb-xls-0 mb-lgs-4 mb-mds-4 mb-sms-0 mb-xss-4 mr-mds-3 boxHeight dataContainer"
           >
@@ -14,7 +28,16 @@
             <p class="currentUsage PNB m-0">{{currentUsage}} TB</p>
           </div>
         </b-col>
-        <b-col xxls="3" xls="3" lgs="6" mds="6" class="p-0">
+        <b-col
+          xxls="3"
+          xls="3"
+          lgs="6"
+          mds="6"
+          class="p-0"
+          data-aos="fade"
+          data-aos-duration="1500"
+          data-aos-delay="300"
+        >
           <div
             class="text-center py-xss-5 ml-xls-2 mr-xls-3 ml-lgs-4 mr-lgs-0 mb-xls-0 mb-lgs-4 mb-mds-4 mb-sms-0 mb-xss-4 ml-mds-3 boxHeight dataContainer"
           >
@@ -22,7 +45,16 @@
             <p class="chargesThisMonth PNB m-0">$ {{chargesThisMonth}}</p>
           </div>
         </b-col>
-        <b-col xxls="3" xls="3" lgs="6" mds="6" class="p-0">
+        <b-col
+          xxls="3"
+          xls="3"
+          lgs="6"
+          mds="6"
+          class="p-0"
+          data-aos="fade"
+          data-aos-duration="1500"
+          data-aos-delay="300"
+        >
           <div
             class="text-center py-xss-5 ml-xls-3 mr-xls-2 ml-lgs-0 mr-lgs-3 mt-xls-0 mt-lgs-4 mt-mds-2 mb-sms-0 mb-xss-4 mr-mds-3 boxHeight dataContainer"
           >
@@ -30,7 +62,16 @@
             <p class="remainingCredits PNB m-0">$ {{remainingCredits}}</p>
           </div>
         </b-col>
-        <b-col xxls="3" xls="3" lgs="6" mds="6" class="p-0">
+        <b-col
+          xxls="3"
+          xls="3"
+          lgs="6"
+          mds="6"
+          class="p-0"
+          data-aos="fade"
+          data-aos-duration="1500"
+          data-aos-delay="300"
+        >
           <div
             class="text-center py-xss-5 ml-xss-0 ml-sms-4 mt-xls-0 mt-lgs-4 mt-mds-2 ml-mds-3 ml-lgs-4 boxHeight dataContainer"
           >
@@ -40,11 +81,16 @@
         </b-col>
       </b-row>
     </b-container>
-    <p class="PNB mb-0 blackText py-xss-4 recentInvoice">
+    <p
+      class="PNB mb-0 blackText py-xss-4 recentInvoice"
+      data-aos="fade"
+      data-aos-duration="1500"
+      data-aos-delay="300"
+    >
       Recent Invoices
       <span>({{recentInvoice}})</span>
     </p>
-    <div class="tableContainer">
+    <div class="tableContainer" data-aos="fade" data-aos-duration="1500" data-aos-delay="300">
       <div class="p-3 tableBar d-flex">
         <div class="d-flex justify-content-between py-xss-1 px-3 searchContainer">
           <input
@@ -65,11 +111,10 @@
           @input="sortedInvoice(sortType)"
           placeholder="Select"
           class="style-chooser"
-          clearable="false"
         >
           <template #open-indicator="{ attributes }">
             <span v-bind="attributes">
-              <font-awesome-icon icon="chevron-down" size="1" :style="{ color: '#a7aab3' }" class />
+              <font-awesome-icon icon="chevron-down" size="1x" :style="{ color: '#a7aab3' }" class />
             </span>
           </template>
         </v-select>
