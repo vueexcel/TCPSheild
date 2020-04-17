@@ -13,7 +13,8 @@ const router = new Router({
     { path: "/", component: dashboard },
     { path: "/backends", component: backends },
     { path: "/analytics", component: analytics },
-    { path: "/billing", component: billing }
-  ]
+    { path: "/billing", component: billing },
+  ],
 });
+
 export default router;

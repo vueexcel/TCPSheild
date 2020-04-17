@@ -1,10 +1,20 @@
 <template>
   <div>
-    <b-container fluid class="px-0" data-aos="fade" data-aos-duration="2000" data-aos-delay="300">
+    <b-container fluid class="px-0">
       <b-row>
-        <b-col xxls="9"  xls="12" lgs="12" mds="12" sms="12">
+        <b-col xxls="9" xls="12" lgs="12" mds="12" sms="12">
           <b-row class>
-            <b-col xls="4" lgs="6" sms="6" class="p-0" v-for="(chart,index) in charts" :key="index">
+            <b-col
+              xls="4"
+              lgs="6"
+              sms="6"
+              class="p-0"
+              v-for="(chart,index) in charts"
+              :key="index"
+              data-aos="fade"
+              data-aos-duration="1500"
+              data-aos-delay="300"
+            >
               <div class="mb-sms-2 mb-xss-4 mx-3 bg-white chartBox">
                 <div class="d-flex justify-content-between px-3 py-2">
                   <p class="voiletText PNB m-0 chartTitle">{{chart.title}}</p>
@@ -22,7 +32,15 @@
                 ></apexcharts>
               </div>
             </b-col>
-            <b-col xls="4" lgs="6" mds="6" class="my-xls-0 my-lgs-4 my-mds-4">
+            <b-col
+              xls="4"
+              lgs="6"
+              mds="6"
+              class="my-xls-0 my-lgs-4 my-mds-4"
+              data-aos="fade"
+              data-aos-duration="1500"
+              data-aos-delay="300"
+            >
               <div class="d-flex justify-content-center align-items-center addNewServerBox">
                 <div class="text-center">
                   <b-icon icon="plus-circle" font-scale="3" class="rounded-circle p-2 addIcon"></b-icon>
@@ -34,7 +52,15 @@
         </b-col>
         <b-col xxls="3" xls="12" lgs="12" mds="12" class="mt-xls-0 mt-lgs-2">
           <b-row>
-            <b-col xxls="12" xls="4" lgs="6" mds="6">
+            <b-col
+              xxls="12"
+              xls="4"
+              lgs="6"
+              mds="6"
+              data-aos="fade"
+              data-aos-duration="1500"
+              data-aos-delay="300"
+            >
               <div class="sideBox mt-xss-4 mb-xss-0 my-mds-2 my-lgs-0 mt-xls-4 mt-xxls-0">
                 <p class="PNB p-3 m-0 sideHeading blackText">Support</p>
                 <div class="p-3">
@@ -59,7 +85,15 @@
                 </div>
               </div>
             </b-col>
-            <b-col xxls="12" xls="4" lgs="6" mds="6">
+            <b-col
+              xxls="12"
+              xls="4"
+              lgs="6"
+              mds="6"
+              data-aos="fade"
+              data-aos-duration="1500"
+              data-aos-delay="300"
+            >
               <div class="sideBox my-xss-4 my-sms-0 mt-xls-4 mb-lgs-4 mb-mds-2 mt-mds-2 my-lgs-0">
                 <p class="PNB p-3 m-0 sideHeading blackText">API</p>
                 <div class="p-3">
@@ -91,7 +125,15 @@
                 </div>
               </div>
             </b-col>
-            <b-col xxls="12" xls="4" lgs="16" mds="6">
+            <b-col
+              xxls="12"
+              xls="4"
+              lgs="16"
+              mds="6"
+              data-aos="fade"
+              data-aos-duration="1500"
+              data-aos-delay="300"
+            >
               <div class="sideBox mb-xss-4 mb-sms-0 mt-mds-2 my-lgs-0 mt-xls-4 mt-xxls-0">
                 <p class="PNB p-3 m-0 sideHeading blackText">Blog</p>
                 <div class="p-3">

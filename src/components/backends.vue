@@ -1,10 +1,17 @@
 <template>
-  <div data-aos="fade" data-aos-duration="2000" data-aos-delay="300">
+  <div>
     <b-container fluid>
       <b-row>
         <b-col xls="6" lgs="6" class="pr-mds-0 pr-lgs-3">
           <b-row class="mr-xls-4 mr-lgs-4 mr-mds-0">
-            <b-col xls="12" lgs="12" class="p-0 mb-4 stepOuterBox bg-white">
+            <b-col
+              xls="12"
+              lgs="12"
+              class="p-0 mb-4 stepOuterBox bg-white"
+              data-aos="fade"
+              data-aos-duration="1500"
+              data-aos-delay="300"
+            >
               <div>
                 <div class="p-3 stepInnerBox">
                   <p class="mb-0 PNB voiletText stepHeading">Step 1</p>
@@ -25,6 +32,9 @@
               xls="12"
               lgs="12"
               class="p-0 stepOuterBox bg-white mb-xss-4 mb-lgs-0 mt-lgs-3 mt-mds-2"
+              data-aos="fade"
+              data-aos-duration="1500"
+              data-aos-delay="300"
             >
               <div class="p-3 stepInnerBox">
                 <p class="mb-0 PNB voiletText stepHeading">Step 2</p>
@@ -44,7 +54,14 @@
             </b-col>
           </b-row>
         </b-col>
-        <b-col xls="6" lgs="6" class="p-0 stepOuterBox bg-white mt-mds-2 mt-lgs-0">
+        <b-col
+          xls="6"
+          lgs="6"
+          class="p-0 stepOuterBox bg-white mt-mds-2 mt-lgs-0"
+          data-aos="fade"
+          data-aos-duration="1500"
+          data-aos-delay="300"
+        >
           <div class="p-3 stepInnerBox">
             <p class="mb-0 PNB voiletText stepHeading">Step 3</p>
             <p class="mb-0 PNR greyText stepDescription">Point your DNS to TCPShield</p>
@@ -70,7 +87,7 @@
         </b-col>
       </b-row>
     </b-container>
-    <div>
+    <div data-aos="fade" data-aos-duration="1500" data-aos-delay="300">
       <p class="PNB mb-0 blackText BackendHeading py-4">Backend IP's</p>
       <div class="bg-white p-3 mb-4 tableContainer">
         <table>
@@ -173,6 +190,9 @@ export default {
   width: 100%;
   border: none;
   font-size: 14px;
+}
+.copyInput:focus {
+  outline: none;
 }
 .copyBtn {
   font-size: 0.75rem;

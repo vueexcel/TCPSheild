@@ -1,17 +1,20 @@
 <template>
-  <div  data-aos="fade" data-aos-duration="2000" data-aos-delay="300">
+  <div>
     <b-container fluid class>
       <b-row>
-        <b-col sms="12" mds="12" lgs="12" xls="12" xxls="9">
+        <b-col xxls="9" xls="12" lgs="12" mds="12" sms="12">
           <b-row>
             <b-col
               xls="4"
               lgs="6"
               mds="6"
               sms="6"
-              class="p-0 chartMargin mb-xls-4 mb-lgs-3 mb-mds-4 mb-sms-4 mb-4  mt-xls-0 mt-lgs-3"
+              class="p-0 chartMargin mb-xls-4 mb-lgs-3 mb-mds-4 mb-sms-4 mb-4 mt-xls-0 mt-lgs-3"
               v-for="(areaChart,index) in areaCharts"
               :key="index"
+              data-aos="fade"
+              data-aos-duration="1500"
+              data-aos-delay="300"
             >
               <div class="px-2 pt-2 dataContainer">
                 <apexcharts
@@ -28,7 +31,10 @@
               lgs="6"
               mds="6"
               sms="6"
-              class="p-0 mb-xss-4 mb-xxls-0  mb-sms-0 mb-lgs-3 mb-xls-0 mb-mds-4 mb-sms-4 mt-xls-0 mt-lgs-3"
+              class="p-0 mb-xss-4 mb-xxls-0 mb-sms-0 mb-lgs-3 mb-xls-0 mb-mds-4 mb-sms-4 mt-xls-0 mt-lgs-3"
+              data-aos="fade"
+              data-aos-duration="1500"
+              data-aos-delay="300"
             >
               <div
                 class="text-center py-5 mr-xls-3 ml-xls-0 mr-lgs-0 ml-lgs-3 ml-mds-2 boxHeight dataContainer"
@@ -42,9 +48,14 @@
               lgs="6"
               mds="6"
               sms="6"
-              class="p-0 mb-xss-4 mb-xxls-0  mb-sms-0 mb-lgs-3 mb-xls-0 mb-mds-4 mb-sms-4 mt-xls-0 mt-lgs-3"
+              class="p-0 mb-xss-4 mb-xxls-0 mb-sms-0 mb-lgs-3 mb-xls-0 mb-mds-4 mb-sms-4 mt-xls-0 mt-lgs-3"
+              data-aos="fade"
+              data-aos-duration="1500"
+              data-aos-delay="300"
             >
-              <div class="text-center py-5 mx-xls-2 ml-lgs-0 mr-lgs-3 mr-mds-2 boxHeight dataContainer">
+              <div
+                class="text-center py-5 mx-xls-2 ml-lgs-0 mr-lgs-3 mr-mds-2 boxHeight dataContainer"
+              >
                 <p class="dataTitle PNR greyText mb-0">Unique new players</p>
                 <p class="uniqueNewPlayers m-0">{{uniqueNewPlayers}}</p>
               </div>
@@ -54,7 +65,10 @@
               lgs="6"
               mds="6"
               sms="6"
-              class="p-0 mb-xss-4 mb-xxls-0  mb-lgs-3 mb-xls-0 mb-mds-0 mb-sms-4 mt-xls-0 mt-lgs-3"
+              class="p-0 mb-xss-4 mb-xxls-0 mb-lgs-3 mb-xls-0 mb-mds-0 mb-sms-4 mt-xls-0 mt-lgs-3"
+              data-aos="fade"
+              data-aos-duration="1500"
+              data-aos-delay="300"
             >
               <div
                 class="text-center ml-xls-3 ml-lgs-3 mr-xls-0 mr-lgs-0 ml-mds-2 px-2 pt-2 barChartBox dataContainer"
@@ -65,8 +79,20 @@
             </b-col>
           </b-row>
         </b-col>
-        <b-col xxls="3" xls="4" lgs="12" mds="12" class="p-0 mt-xxls-0 mt-xls-4 mt-lgs-4">
-          <div class="dataContainer mr-xls-3 mr-xxls-0 ml-xxls-4 ml-xls-0 ml-lgs-0" style="height:100%">
+        <b-col
+          xxls="3"
+          xls="4"
+          lgs="12"
+          mds="12"
+          class="p-0 mt-xxls-0 mt-xls-4 mt-lgs-4"
+          data-aos="fade"
+          data-aos-duration="1500"
+          data-aos-delay="300"
+        >
+          <div
+            class="dataContainer mr-xls-3 mr-xxls-0 ml-xxls-4 ml-xls-0 ml-lgs-0"
+            style="height:100%"
+          >
             <p class="PNB mb-0 blackText px-3 py-2 playerLocation">Player Locations</p>
             <div id="world-map" style="height:170px;" class="px-3"></div>
             <b-row class="mt-4 px-4">
@@ -92,7 +118,15 @@
         </b-col>
       </b-row>
       <b-row class>
-        <b-col xls="6" lgs="12" mds="12" class="p-0">
+        <b-col
+          xls="6"
+          lgs="12"
+          mds="12"
+          class="p-0"
+          data-aos="fade"
+          data-aos-duration="1500"
+          data-aos-delay="300"
+        >
           <div class="mr-xls-3 mr-lgs-0">
             <p class="PNB mb-0 blackText py-4 topHeading">Top 10 Players</p>
             <div class="dataContainer p-3">
@@ -113,7 +147,14 @@
             </div>
           </div>
         </b-col>
-        <b-col xls="6" lgs="12" class="p-0">
+        <b-col
+          xls="6"
+          lgs="12"
+          class="p-0"
+          data-aos="fade"
+          data-aos-duration="1500"
+          data-aos-delay="300"
+        >
           <div class="ml-xls-3 ml-lgs-0 mb-4 mb-sms-0">
             <p class="PNB mb-0 blackText py-4 topHeading">Top 10 Countries</p>
             <div class="dataContainer p-3">
@@ -144,6 +185,14 @@ window.jQuery = require("jquery");
 var $ = window.jQuery;
 require("jvectormap");
 require("./../js/lib/jquery-jvectormap-continents-mill.js");
+import greenMarker from "./../assets/images/greenMarker.png";
+import redMarker from "./../assets/images/redMarker.png";
+import purpleMarker from "./../assets/images/purpleMarker.png";
+import blueMarker from "./../assets/images/blueMarker.png";
+import pinkMarker from "./../assets/images/pinkMarker.png";
+import voiletMarker from "./../assets/images/voiletMarker.png";
+import yellowMarker from "./../assets/images/yellowMarker.png";
+import cyanMarker from "./../assets/images/cyanMarker.png";
 
 import VueApexCharts from "vue-apexcharts";
 export default {
@@ -618,51 +667,45 @@ export default {
       ],
       plants: [
         {
-          name: "KBR",
+          name: "Asia",
           coords: [35.06737, 116.034738],
-          status: "closed",
-          offsets: [0, 5]
+          status: "asia"
         },
         {
-          name: "MZFR",
+          name: "Africa",
           coords: [3.817963, 30.08030245],
-          status: "closed",
-          offsets: [0, 2]
+          status: "africa"
         },
         {
-          name: "KRB",
+          name: "Australia",
           coords: [-22.378094, 140.108203],
-          status: "activeUntil2018"
+          status: "australia"
         },
 
         {
-          name: "KWL",
+          name: "Eastern Europe",
           coords: [51.824713, 38.086025],
-          status: "closed",
-          offsets: [0, -2]
+          status: "easternEurope"
         },
         {
-          name: "HDR",
+          name: "Western Europe",
           coords: [46.092372, 2.945867],
-          status: "closed",
-          offsets: [0, -2]
+          status: "westernEurope"
         },
         {
-          name: "KKN",
+          name: "Northern Europe",
           coords: [62.077448, 12.217676],
-          status: "closed",
-          offsets: [0, -2]
+          status: "northernEurope"
         },
         {
-          name: "GKN",
-          coords: [59.582248, -123.624918],
-          status: "activeUntil2022"
+          name: "North America",
+          coords: [55.508221, -113.319935],
+          status: "northAmerica"
         },
         {
-          name: "KKB",
+          name: "South America",
           coords: [-15.948465, -53.199599],
-          status: "closed",
-          offsets: [0, -5]
+          status: "southAmerica"
         }
       ]
     };
@@ -693,26 +736,19 @@ export default {
             {
               attribute: "image",
               scale: {
-                closed: "./../assets/images/yellow.png",
-                activeUntil2018: "http://jvectormap.com/img/icon-np-2.png",
-                activeUntil2022: "http://jvectormap.com/img/icon-np-2.png"
+                asia: greenMarker,
+                australia: redMarker,
+                africa: purpleMarker,
+                easternEurope: blueMarker,
+                westernEurope: pinkMarker,
+                northernEurope: voiletMarker,
+                southAmerica: yellowMarker,
+                northAmerica: cyanMarker
               },
               values: this.plants.reduce(function(p, c, i) {
                 p[i] = c.status;
-                console.log(p);
                 return p;
-              }, {}),
-              legend: {
-                horizontal: true,
-                title: "Nuclear power station status",
-                labelRender: function(v) {
-                  return {
-                    closed: "Closed",
-                    activeUntil2018: "Scheduled for shut down<br> before 2018",
-                    activeUntil2022: "Scheduled for shut down<br> before 2022"
-                  }[v];
-                }
-              }
+              }, {})
             }
           ]
         },
@@ -723,49 +759,6 @@ export default {
             stroke: "none"
           }
         }
-        // markers: [
-        //   {
-        //     latLng: [35.06737, 116.034738],
-        //     name: "Asia",
-        //     status: "marker",
-        //     style: { r: 5, fill: "#ce2fe6" }
-        //   },
-        //   {
-        //     latLng: [3.817963, 30.08030245],
-        //     name: "Africa",
-        //     style: { r: 5, fill: "#ce2fe6" }
-        //   },
-        //   {
-        //     latLng: [-22.378094, 140.108203],
-        //     name: "Australia",
-        //     style: { r: 5, fill: "#e62f2f" }
-        //   },
-        //   {
-        //     latLng: [51.824713, 38.086025],
-        //     name: "Eastern Europe",
-        //     style: { r: 5, fill: "#27b6fa" }
-        //   },
-        //   {
-        //     latLng: [46.092372, 2.945867],
-        //     name: "Western Europe",
-        //     style: { r: 5, fill: "#ff2792" }
-        //   },
-        //   {
-        //     latLng: [62.077448, 12.217676],
-        //     name: "Northern Europe",
-        //     style: { r: 5, fill: "#622fe6" }
-        //   },
-        //   {
-        //     latLng: [59.582248, -123.624918],
-        //     name: "North America",
-        //     style: { r: 5, fill: "#27ffde" }
-        //   },
-        //   {
-        //     latLng: [-15.948465, -53.199599],
-        //     name: "South America",
-        //     style: { r: 5, fill: "#fac627" }
-        //   }
-        // ]
       });
     }
   }
@@ -821,6 +814,10 @@ export default {
 #world-map >>> .jvectormap-container svg {
   height: 180px !important;
 }
+
+#world-map >>> .jvectormap-container > svg > g > .jvectormap-marker {
+  width: 12px !important;
+}
 .progressBar {
   background-color: #dcdcdc;
 }
@@ -859,6 +856,7 @@ export default {
   > .apexcharts-legend {
   padding: 0 !important;
 }
+
 .topHeading {
   font-size: 1.125rem;
 }
@@ -936,7 +934,7 @@ tr .tableData:first-child {
   }
 }
 @media screen and (max-width: 576px) {
-   .chartMargin:nth-child(1) > div {
+  .chartMargin:nth-child(1) > div {
     margin-right: 0vw;
   }
   .chartMargin:nth-child(2) > div {
