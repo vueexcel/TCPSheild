@@ -95,6 +95,7 @@
             <tr>
               <th class="PNB blackText py-2 tableData">Domain</th>
               <th class="PNB blackText py-2 tableData">Backends</th>
+              <th class="PNB blackText py-2 tableData">Premium Mitigation</th>
               <th class="PNB blackText py-2 text-center tableData">
                 <span class="mr-2">Forge Support</span>
                 <span>
@@ -106,21 +107,30 @@
           </thead>
           <tbody>
             <tr v-for="(dataItem,index) in dataItems" :key="index">
-              <td class="PNR greyText py-2 tableData">{{dataItem.domain}}</td>
+              <td class="PNR greyText py-2 tableData" @click="openEditDomain(dataItem.domain)">
+                <p contenteditable="true" class="m-0">{{dataItem.domain}}</p>
+              </td>
               <td class="PNR greyText py-2 tableData">{{dataItem.backends}}</td>
               <td class="PNR greyText py-2 text-center tableData">
                 <label class="switch m-0">
-                  <input type="checkbox" checked />
+                  <input type="checkbox" :checked="dataItem.premiumMitigation" />
+                  <span class="slider round"></span>
+                </label>
+              </td>
+              <td class="PNR greyText py-2 text-center tableData">
+                <label class="switch m-0">
+                  <input type="checkbox" :checked="dataItem.forgeSupport" />
                   <span class="slider round"></span>
                 </label>
               </td>
               <td class="text-center tableData">
-                <a class="p-2" @click="edit(row,index)">
+                <a class="p-2" @click="deleteRow(index)">
                   <b-icon icon="x-circle" font-scale="2.8" class="rounded-circle py-2 closeIcon"></b-icon>
                 </a>
               </td>
             </tr>
             <tr>
+              <td class="PNR greyText tableData py-2"></td>
               <td class="PNR greyText tableData py-2"></td>
               <td class="PNR greyText tableData py-2"></td>
               <td class="PNR greyText tableData py-2"></td>
@@ -138,32 +148,21 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 export default {
   name: "backends",
   components: {},
   data() {
-    return {
-      downloadItems: ["BUNGEE", "SPIGOT", "LILYPAD"],
-      headItems: ["Domain", "Backends", "Forge Support", ""],
-      dataItems: [
-        {
-          domain: "*.minesuperior.com",
-          backends: "100.0.0.1:25565, 172.16.0.1:25572"
-        },
-        {
-          domain: "*.minesuperior.com",
-          backends: "100.0.0.1:25565, 172.16.0.1:25572"
-        },
-        {
-          domain: "*.minesuperior.com",
-          backends: "100.0.0.1:25565, 172.16.0.1:25572"
-        },
-        {
-          domain: "*.minesuperior.com",
-          backends: "100.0.0.1:25565, 172.16.0.1:25572"
-        }
-      ]
-    };
+    return {};
+  },
+  computed: {
+    ...mapState("backend", ["downloadItems", "headItems", "dataItems"])
+  },
+  methods: {
+    ...mapActions({
+      openEditDomain: "backend/openEditDomain",
+      deleteRow: "backend/deleteRow"
+    })
   }
 };
 </script>
@@ -232,10 +231,10 @@ tr .tableData {
   font-size: 0.75rem;
 }
 tr .tableData:nth-child(1) {
-  width: 40%;
+  width: 35%;
 }
 tr .tableData:nth-child(2) {
-  width: 40%;
+  width: 35%;
   padding: 0px 12px;
 }
 tr .tableData:nth-child(3) {
@@ -243,6 +242,10 @@ tr .tableData:nth-child(3) {
   padding: 0px 12px;
 }
 tr .tableData:nth-child(4) {
+  width: 10%;
+  padding: 0px 12px;
+}
+tr .tableData:nth-child(5) {
   width: 5%;
 }
 thead tr:first-child .tableData {

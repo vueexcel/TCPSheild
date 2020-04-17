@@ -4,7 +4,7 @@
       <div class="d-mds-block d-sms-block d-xss-block d-lgs-none" v-b-toggle.sidebar>
         <b-icon icon="list" class="greyText my-xss-4 mx-xss-2 mx-sms-3" font-scale="1.75"></b-icon>
       </div>
-      <b-sidebar id="sidebar" class="mr-5" width="220px" no-header shadow>
+      <b-sidebar id="sidebar" class="mr-5 d-lgs-none" width="220px" no-header shadow>
         <div class="mr-sms-0 sideBarBox">
           <div class="text-center py-3">
             <img class="logo" src="./../assets/images/logo.png" />
@@ -80,14 +80,19 @@
           </ul>
         </div>
       </b-sidebar>
-      <div class="py-2 px-4 ml-0 mr-2 mx-sms-4 my-3 d-flex justify-content-between dropdown">
-        <p class="PNT m-0 greyText selection">Selection</p>
-        <font-awesome-icon
-          icon="chevron-down"
-          size="1x"
-          :style="{ color: '#a7aab3' }"
-          class="mt-1"
-        />
+      <div class="py-2 px-4 ml-0 mr-2 mx-sms-4 my-3">
+        <v-select
+          label="Select"
+          :options="selectionOptions"
+          placeholder="Selection"
+          class="style-chooser"
+        >
+          <template #open-indicator="{ attributes }">
+            <span v-bind="attributes">
+              <font-awesome-icon icon="chevron-down" size="1x" :style="{ color: '#a7aab3' }" class />
+            </span>
+          </template>
+        </v-select>
       </div>
       <div class="d-flex align-items-center mx-lgs-5 mx-sms-3">
         <div class="notificationBox">
@@ -103,12 +108,25 @@
           v-bind:src="userImg"
         ></b-avatar>
         <p class="PNT d-xss-none d-sms-block greyText px-3 m-0 userName">Hello {{user}}</p>
-        <font-awesome-icon
+        <b-dropdown no-caret offset="-60" variant="white" size="sm" class="p-0">
+          <template v-slot:button-content>
+            <font-awesome-icon
+              icon="chevron-down"
+              size="1x"
+              :style="{ color: '#a7aab3' }"
+              class="mt-1 mx-2 mx-sms-0"
+            />
+          </template>
+          <b-dropdown-item href="#" size="sm">Setting</b-dropdown-item>
+          <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+          <b-dropdown-item href="#">Something</b-dropdown-item>
+        </b-dropdown>
+        <!-- <font-awesome-icon
           icon="chevron-down"
           size="1x"
           :style="{ color: '#a7aab3' }"
           class="mt-1 mx-2 mx-sms-0"
-        />
+        />-->
       </div>
     </div>
     <div class="my-4">
@@ -143,7 +161,8 @@ export default {
   data() {
     return {
       user: "Xenon",
-      userImg: "https://placekitten.com/300/300"
+      userImg: "https://placekitten.com/300/300",
+      selectionOptions: ["Lorem Ipsum", " Letraset sheets"]
     };
   },
   computed: {
@@ -165,17 +184,58 @@ export default {
 .topBar {
   border-radius: 10px;
 }
-.dropdown {
-  width: 290px;
-  border: 1px solid #eaeaea;
-  border-radius: 40px;
-}
-.selection {
-  font-size: 1rem;
-}
 .chevron-down {
   font-size: 250% !important;
   padding: 4px 10px;
+}
+.style-chooser {
+  width: 290px;
+}
+.style-chooser >>> .vs__search::placeholder {
+  font-size: 1rem;
+  color: #a7aab3;
+  background: #fff;
+}
+.style-chooser >>> .vs__selected {
+  padding: 4px 8px;
+  margin: 0px 12px;
+  font-size: 1rem;
+  color: #a7aab3;
+}
+.style-chooser >>> .vs__search {
+  margin: 0;
+  padding: 4px 4px 4px 24px;
+  color: #a7aab3;
+}
+.style-chooser >>> .vs__dropdown-toggle {
+  background: #fff;
+  padding: 3px 0px;
+  border: 1px solid #eaeaea;
+  border-radius: 40px;
+  font-size: 1rem;
+}
+.style-chooser >>> .vs__dropdown-menu {
+  background: #fff;
+  border-radius: 0px;
+  font-size: 1rem;
+  margin-top: 4px;
+  padding: 0;
+}
+.style-chooser >>> .vs__dropdown-option {
+  color: #a7aab3;
+  padding: 4px 24px;
+}
+.style-chooser >>> .vs__dropdown-option:hover {
+  color: #fff;
+}
+.style-chooser >>> .vs__actions {
+  padding: 0px 24px 0px 0px;
+}
+.style-chooser >>> .vs__clear {
+  display: none;
+}
+.style-chooser >>> .vs__open-indicator {
+  fill: #a7aab3;
 }
 .notificationBox {
   position: relative;
@@ -196,6 +256,12 @@ export default {
 }
 .userName {
   font-size: 1rem;
+}
+.dropdown >>> .dropdown-menu > li > .dropdown-item {
+  padding: 4px 16px;
+  font-size: 0.8rem;
+  font-family: "Proxima Nova Regular";
+  color: #525f6b;
 }
 .mainHeading {
   font-size: 1.125rem;

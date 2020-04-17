@@ -817,6 +817,7 @@ export default {
 
 #world-map >>> .jvectormap-container > svg > g > .jvectormap-marker {
   width: 12px !important;
+  width: -moz-min-content;
 }
 .progressBar {
   background-color: #dcdcdc;

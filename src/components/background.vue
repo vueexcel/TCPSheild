@@ -3,14 +3,14 @@
     <img class="triangle" src="./../assets/images/triangle.png" />
     <b-container fluid class="bv-example-row">
       <b-row>
-        <b-col xls="2" lgs="3" class="pl-xls-0 pl-xxl-3">
+        <b-col xls="2" lgs="3" class="pl-xls-0 pl-xxl-3" style="position:fixed">
           <sideBar />
         </b-col>
-        <b-col xls="10" lgs="9" class="p-xls-0 p-lgs-0 pr-lgs-3">
+        <b-col xls="10" lgs="9" offset-xls="2" offset-lgs="3" class="p-xls-0 p-lgs-0 pr-lgs-3">
           <div>
             <topBar />
           </div>
-          <router-view></router-view>
+          <router-view class="margin-top:550px;"></router-view>
         </b-col>
       </b-row>
     </b-container>
@@ -40,7 +40,7 @@ export default {
 <style scoped>
 .appBackground {
   background: url("./../assets/images/backgroundTCPShield.png");
-  background-color: black;
+  /* background-color: black; */
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -55,7 +55,6 @@ export default {
 }
 @media (min-width: 1200px) and (max-width: 1600px) {
   .appBackground {
-    background: url("./../assets/images/backgroundTCPShield.png");
     background-size: cover;
     height: 1370px;
   }
