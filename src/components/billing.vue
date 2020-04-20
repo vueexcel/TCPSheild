@@ -177,7 +177,7 @@ export default {
   },
   mounted() {
     this.dataToSHow = this.invoicesData;
-    console.log(this.dataToSHow , "gfjdhg",this.invoicesData);
+    this.sortedInvoice("none")
   },
   computed: {
     ...mapState("billing", [

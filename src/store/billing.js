@@ -50,7 +50,7 @@ const state = {
 
 const getters = {
   filterInvoice(state) {
-      console.log("kgfjhdj0",state.dataToSHow)
+    console.log("kgfjhdj0", state.dataToSHow);
     return state.dataToSHow.filter((invoiceData) => {
       return invoiceData.invoice.match(state.searchInvoice);
     });
