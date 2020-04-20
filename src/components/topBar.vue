@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="bg-light d-flex justify-content-between topBar">
+    <div class="bg-white d-flex justify-content-between topBar">
       <div class="d-mds-block d-sms-block d-xss-block d-lgs-none" v-b-toggle.sidebar>
         <b-icon icon="list" class="greyText my-xss-4 mx-xss-2 mx-sms-3" font-scale="1.75"></b-icon>
       </div>
@@ -80,7 +80,7 @@
           </ul>
         </div>
       </b-sidebar>
-      <div class="py-2 px-4 ml-0 mr-2 mx-sms-4 my-3">
+      <div class="py-2 px-3 ml-0 mr-2 mx-sms-4 my-2">
         <v-select
           label="Select"
           :options="selectionOptions"
@@ -95,10 +95,15 @@
         </v-select>
       </div>
       <div class="d-flex align-items-center mx-lgs-5 mx-sms-3">
-        <div class="notificationBox">
-          <b-icon icon="bell" class="rounded-circle greyText bell" style="font-weight:bold"></b-icon>
-          <div class="notificationCircle"></div>
-        </div>
+        <b-dropdown no-caret offset="-60" variant="white" size="sm" class="p-0">
+          <template v-slot:button-content>
+            <div class="notificationBox">
+              <b-icon icon="bell" class="rounded-circle greyText bell" style="font-weight:bold"></b-icon>
+              <div class="notificationCircle"></div>
+            </div>
+          </template>
+          <b-dropdown-item href="#" size="sm">Notification</b-dropdown-item>
+        </b-dropdown>
         <b-avatar
           class="ml-xss-2 ml-sms-3"
           variant="light"
@@ -110,12 +115,7 @@
         <p class="PNT d-xss-none d-sms-block greyText px-3 m-0 userName">Hello {{user}}</p>
         <b-dropdown no-caret offset="-60" variant="white" size="sm" class="p-0">
           <template v-slot:button-content>
-            <font-awesome-icon
-              icon="chevron-down"
-              size="1x"
-              :style="{ color: '#a7aab3' }"
-              class="mt-1 mx-2 mx-sms-0"
-            />
+            <font-awesome-icon icon="chevron-down" size="1x" :style="{ color: '#a7aab3' }" class />
           </template>
           <b-dropdown-item href="#" size="sm">Setting</b-dropdown-item>
           <b-dropdown-item href="#">Sign Out</b-dropdown-item>
@@ -127,28 +127,6 @@
           :style="{ color: '#a7aab3' }"
           class="mt-1 mx-2 mx-sms-0"
         />-->
-      </div>
-    </div>
-    <div class="my-4">
-      <div v-if="activeMenu === 'dashboard'">
-        <p class="PNB mb-0 blackText mainHeading">Good morning, John Smith</p>
-        <p class="PNR mb-0 greyText dataHeading">You have 1503 players across 2 networks</p>
-      </div>
-      <div v-if="activeNetwork === 'backends'">
-        <p class="PNB mb-0 blackText mainHeading">Backend Management</p>
-        <p
-          class="PNR mb-0 greyText dataHeading"
-        >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
-      </div>
-      <div v-if="activeNetwork === 'analytics'">
-        <p class="PNB mb-0 blackText mainHeading">Network Statistics</p>
-        <p class="PNR mb-0 greyText dataHeading">5 Servers and 60.000 players online</p>
-      </div>
-      <div v-if="activeMenu === 'billing'">
-        <p class="PNB mb-0 blackText mainHeading">Billing Dashboard</p>
-        <p
-          class="PNR mb-0 greyText dataHeading"
-        >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
       </div>
     </div>
   </div>
@@ -256,6 +234,12 @@ export default {
 }
 .userName {
   font-size: 1rem;
+}
+.dropdown >>> .btn {
+  padding: 0px;
+}
+.dropdown >>> .btn:focus {
+  box-shadow: 0 0 0 0rem;
 }
 .dropdown >>> .dropdown-menu > li > .dropdown-item {
   padding: 4px 16px;

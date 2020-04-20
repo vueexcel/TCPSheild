@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div class="my-4" data-aos="fade" data-aos-duration="1500" data-aos-delay="300">
+      <p class="PNB mb-0 blackText mainHeading">Backend Management</p>
+      <p
+        class="PNR mb-0 greyText dataHeading"
+      >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+    </div>
     <b-container fluid>
       <b-row>
         <b-col xls="6" lgs="6" class="pr-mds-0 pr-lgs-3">
