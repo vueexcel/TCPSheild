@@ -1,5 +1,9 @@
 <template>
   <div>
+    <div class="my-4" data-aos="fade" data-aos-duration="1500" data-aos-delay="300">
+      <p class="PNB mb-0 blackText mainHeading">Good morning, John Smith</p>
+      <p class="PNR mb-0 greyText dataHeading">You have 1503 players across 2 networks</p>
+    </div>
     <b-container fluid class="px-0">
       <b-row>
         <b-col xxls="9" xls="12" lgs="12" mds="12" sms="12">

@@ -1,13 +1,19 @@
 <template>
-  <div>
+  <div data-aos="fade" data-aos-duration="1500" data-aos-delay="300">
+    <div class="my-4">
+      <p class="PNB mb-0 blackText mainHeading">Billing Dashboard</p>
+      <p
+        class="PNR mb-0 greyText dataHeading"
+      >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+    </div>
     <div
       class="my-4 greyText PNB HeadBar"
       data-aos="fade"
       data-aos-duration="1500"
       data-aos-delay="300"
     >
-      <span class="mr-4 active">Overview</span>
-      <span>Payment Methods</span>
+      <span :class="[paymemtActive ? '' : 'active']" class="mr-4">Overview</span>
+      <span :class="[paymemtActive ? 'active' : '']" @click="openPaymentMethod">Payment Methods</span>
     </div>
     <b-container fluid class>
       <b-row>
@@ -163,102 +169,68 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions } from "vuex";
 export default {
   name: "billing",
   data() {
-    return {
-      currentUsage: 1.581,
-      chargesThisMonth: 23.2,
-      remainingCredits: 155.77,
-      recentInvoice: 3,
-      sortOptions: ["Invoice", "Total", "Balance", "Date"],
-      sortType: "",
-      invoicesTitle: [
-        "Invoice",
-        "Total",
-        "Balance",
-        "Due Date",
-        "Status",
-        "Action"
-      ],
-      invoicesData: [
-        {
-          invoice: "inv",
-          total: "65.00",
-          balance: "0.00",
-          dueDate: "March 01,2020",
-          status: "paid"
-        },
-        {
-          invoice: "kinv",
-          total: "500.00",
-          balance: "250.00",
-          dueDate: "December 30,2020",
-          status: "unpaid"
-        },
-        {
-          invoice: "anv",
-          total: "805.60",
-          balance: "1000.00",
-          dueDate: "February 08,2020",
-          status: "unpaid"
-        },
-        {
-          invoice: "ifnv",
-          total: "161.05",
-          balance: "125.00",
-          dueDate: "May 22,2020",
-          status: "paid"
-        }
-      ],
-      searchInvoice: "",
-      dataToSHow: [],
-      attributes: {
-        ref: "openIndicator",
-        role: "presentation",
-        class: "vs__open-indicator"
-      }
-    };
+    return {};
   },
   mounted() {
     this.dataToSHow = this.invoicesData;
-  },
-  methods: {
-    sortedInvoice(sortType) {
-      if (sortType === "Invoice") {
-        var sortedArr = this.invoicesData.slice().sort(function(a, b) {
-          if (a.invoice < b.invoice) {
-            return -1;
-          }
-        });
-        this.dataToSHow = sortedArr;
-      } else if (sortType === "Date") {
-        sortedArr = this.invoicesData.slice().sort(function(a, b) {
-          return new Date(a.dueDate) - new Date(b.dueDate);
-        });
-        this.dataToSHow = sortedArr;
-      } else if (sortType === "Total") {
-        sortedArr = this.invoicesData.slice().sort(function(a, b) {
-          return a.total - b.total;
-        });
-        this.dataToSHow = sortedArr;
-      } else if (sortType === "Balance") {
-        sortedArr = this.invoicesData.slice().sort(function(a, b) {
-          return a.balance - b.balance;
-        });
-        this.dataToSHow = sortedArr;
-      } else {
-        this.dataToSHow = this.invoicesData;
-      }
-    }
+    this.sortedInvoice("none")
   },
   computed: {
-    filterInvoice() {
-      return this.dataToSHow.filter(invoiceData => {
-        return invoiceData.invoice.match(this.searchInvoice);
-      });
-    }
+    ...mapState("billing", [
+      "paymemtActive",
+      "currentUsage",
+      "chargesThisMonth",
+      "remainingCredits",
+      "recentInvoice",
+      "sortOptions",
+      "sortType",
+      "invoicesTitle",
+      "invoicesData",
+      "searchInvoice",
+      " dataToSHow"
+    ]),
+    ...mapGetters("billing", ["filterInvoice"])
+  },
+  methods: {
+    ...mapActions({
+      openPaymentMethod: "billing/openPaymentMethod",
+      sortedInvoice: "billing/sortedInvoice"
+    })
   }
+
+  // methods: {
+  //   sortedInvoice(sortType) {
+  //     if (sortType === "Invoice") {
+  //       var sortedArr = this.invoicesData.slice().sort(function(a, b) {
+  //         if (a.invoice < b.invoice) {
+  //           return -1;
+  //         }
+  //       });
+  //       this.dataToSHow = sortedArr;
+  //     } else if (sortType === "Date") {
+  //       sortedArr = this.invoicesData.slice().sort(function(a, b) {
+  //         return new Date(a.dueDate) - new Date(b.dueDate);
+  //       });
+  //       this.dataToSHow = sortedArr;
+  //     } else if (sortType === "Total") {
+  //       sortedArr = this.invoicesData.slice().sort(function(a, b) {
+  //         return a.total - b.total;
+  //       });
+  //       this.dataToSHow = sortedArr;
+  //     } else if (sortType === "Balance") {
+  //       sortedArr = this.invoicesData.slice().sort(function(a, b) {
+  //         return a.balance - b.balance;
+  //       });
+  //       this.dataToSHow = sortedArr;
+  //     } else {
+  //       this.dataToSHow = this.invoicesData;
+  //     }
+  //   }
+  // }
 };
 </script>
 
