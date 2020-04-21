@@ -3,14 +3,14 @@
     <img class="triangle" src="./../assets/images/triangle.png" />
     <b-container fluid class="bv-example-row">
       <b-row>
-        <b-col xls="2" lgs="3" class="pl-xls-0 pl-xxl-3" style="position:fixed">
+        <b-col xls="2" lgs="3" class="pl-xls-0 pl-xxls-3" style="position:fixed">
           <sideBar />
         </b-col>
         <b-col xls="10" lgs="9" offset-xls="2" offset-lgs="3" class="p-xls-0 p-lgs-0 pr-lgs-3">
           <div>
             <topBar />
           </div>
-          <router-view class="margin-top:550px;"></router-view>
+          <router-view ></router-view>
         </b-col>
       </b-row>
     </b-container>

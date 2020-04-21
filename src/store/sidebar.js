@@ -25,7 +25,7 @@ const mutations = {
     state.activeNetwork = "analytics";
   },
   openBilling() {
-    router.push("/billing").catch(err => {err});
+    router.push("/overview").catch(err => {err});
     state.activeMenu = "billing";
     state.activeNetwork = "";
   }

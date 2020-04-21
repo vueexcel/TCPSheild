@@ -73,13 +73,13 @@
             <p class="mb-0 PNR greyText stepDescription">Point your DNS to TCPShield</p>
           </div>
           <div class="p-3">
-            <p class="stepDescription PNR greyText mb-4">
+            <p class="stepDescription PNR greyText mb-3">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
               sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
               dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
               aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
             </p>
-            <ul class="pl-0 py-2 step3List stepDescription PNR greyText">
+            <ul class="pl-0 py-2 mb-0 step3List stepDescription PNR greyText">
               <li>1. Log into your DNS Manager</li>
               <li>2. Go to DNS Management</li>
               <li>3. Create a new CNAME record where the name is the current subdomain(s) your players log in with</li>
@@ -89,6 +89,30 @@
                 <span class="voiletText PNB">ALL DONE!</span> (Changes can take up to 24h to propagate)
               </li>
             </ul>
+          </div>
+          <div class="row premiumRow mx-3 mb-3">
+            <b-col xxls="9" xls="9" lgs="9" mds="9" sm="9" class="premiumBox my-1 p-0">
+              <div class="py-1 px-2">
+                <p class="voiletText PNB mb-0 premiumHeading">
+                  Premium mitigation
+                  <span>
+                    <img class="mitigationIcon mx-2" src="./../assets/images/premiumMitigation.svg" />
+                  </span>
+                </p>
+                <p class="greyText stepDescription PNR mb-0">
+                  Toggle to enable the Cloudflare Spectrum network to deliver
+                  <br />lower latency to your players. Billed at $0.025/gb
+                </p>
+              </div>
+            </b-col>
+            <b-col xxls="3" xls="3" lgs="3" mds="3" sm="3" class="p-0">
+              <div class="d-flex justify-content-center align-items-center h-100">
+                <label class="switch m-0">
+                  <input type="checkbox" :checked="premiumMitigation" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </b-col>
           </div>
         </b-col>
       </b-row>
@@ -101,7 +125,6 @@
             <tr>
               <th class="PNB blackText py-2 tableData">Domain</th>
               <th class="PNB blackText py-2 tableData">Backends</th>
-              <th class="PNB blackText py-2 tableData">Premium Mitigation</th>
               <th class="PNB blackText py-2 text-center tableData">
                 <span class="mr-2">Forge Support</span>
                 <span>
@@ -116,12 +139,8 @@
               <td class="PNR greyText py-2 tableData" @click="openEditDomain(dataItem.domain)">
                 <p contenteditable="true" class="m-0">{{dataItem.domain}}</p>
               </td>
-              <td class="PNR greyText py-2 tableData">{{dataItem.backends}}</td>
-              <td class="PNR greyText py-2 text-center tableData">
-                <label class="switch m-0">
-                  <input type="checkbox" :checked="dataItem.premiumMitigation" />
-                  <span class="slider round"></span>
-                </label>
+              <td class="PNR greyText py-2 tableData">
+                <p contenteditable="true" class="m-0">{{dataItem.backends}}</p>
               </td>
               <td class="PNR greyText py-2 text-center tableData">
                 <label class="switch m-0">
@@ -139,9 +158,8 @@
               <td class="PNR greyText tableData py-2"></td>
               <td class="PNR greyText tableData py-2"></td>
               <td class="PNR greyText tableData py-2"></td>
-              <td class="PNR greyText tableData py-2"></td>
               <td class="text-center tableData">
-                <a class="p-2" @click="edit(row,index)">
+                <a class="p-2" @click="addRow">
                   <b-icon icon="plus-circle" font-scale="2.8" class="rounded-circle py-2 addIcon"></b-icon>
                 </a>
               </td>
@@ -162,12 +180,18 @@ export default {
     return {};
   },
   computed: {
-    ...mapState("backend", ["downloadItems", "headItems", "dataItems"])
+    ...mapState("backend", [
+      "downloadItems",
+      "headItems",
+      "dataItems",
+      "premiumMitigation"
+    ])
   },
   methods: {
     ...mapActions({
       openEditDomain: "backend/openEditDomain",
-      deleteRow: "backend/deleteRow"
+      deleteRow: "backend/deleteRow",
+      addRow: "backend/addRow"
     })
   }
 };
@@ -218,6 +242,20 @@ export default {
 .step3List li {
   padding: 10px 20px;
 }
+.premiumRow {
+  background-color: #f5f8fa;
+  border-radius: 10px;
+}
+.premiumBox {
+  border-right: 1px solid #c7c7c7;
+}
+.premiumHeading {
+  font-size: 1.3rem;
+}
+.mitigationIcon {
+  width: 25px;
+  height: 25px;
+}
 .BackendHeading {
   font-size: 1.125rem;
 }
@@ -237,10 +275,10 @@ tr .tableData {
   font-size: 0.75rem;
 }
 tr .tableData:nth-child(1) {
-  width: 35%;
+  width: 40%;
 }
 tr .tableData:nth-child(2) {
-  width: 35%;
+  width: 40%;
   padding: 0px 12px;
 }
 tr .tableData:nth-child(3) {
@@ -248,10 +286,6 @@ tr .tableData:nth-child(3) {
   padding: 0px 12px;
 }
 tr .tableData:nth-child(4) {
-  width: 10%;
-  padding: 0px 12px;
-}
-tr .tableData:nth-child(5) {
   width: 5%;
 }
 thead tr:first-child .tableData {
