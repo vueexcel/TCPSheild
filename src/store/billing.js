@@ -1,11 +1,13 @@
+import router from "../router";
+
 const state = {
-  paymemtActive: false,
+  paymemtActive: true,
   currentUsage: 1.581,
   chargesThisMonth: 23.2,
   remainingCredits: 155.77,
   recentInvoice: 3,
   sortOptions: ["Invoice", "Total", "Balance", "Date"],
-  sortType: "",
+  sortType: "Total",
   invoicesTitle: [
     "Invoice",
     "Total",
@@ -49,8 +51,14 @@ const state = {
 };
 
 const getters = {
+   searchInvoices: (state) => {
+    return state.searchInvoice;
+},
+sortTypes: (state) => {
+  return state.sortType;
+}
+,
   filterInvoice(state) {
-    console.log("kgfjhdj0", state.dataToSHow);
     return state.dataToSHow.filter((invoiceData) => {
       return invoiceData.invoice.match(state.searchInvoice);
     });
@@ -59,7 +67,16 @@ const getters = {
 
 const mutations = {
   openPaymentMethod(state) {
+    router.push("/paymentModal").catch((err) => {
+      err;
+    });
     state.paymemtActive = true;
+  },
+  openOverview(state) {
+    router.push("/overview").catch((err) => {
+      err;
+    });
+    state.paymemtActive = false;
   },
 };
 
@@ -67,8 +84,10 @@ const actions = {
   openPaymentMethod({ commit }) {
     commit("openPaymentMethod");
   },
-  sortedInvoice({ commit }, sortType) {
-    commit("sortedInvoice");
+  openOverview({ commit }) {
+    commit("openOverview");
+  },
+  sortedInvoice(sortType) {
     if (sortType === "Invoice") {
       var sortedArr = state.invoicesData.slice().sort(function(a, b) {
         if (a.invoice < b.invoice) {

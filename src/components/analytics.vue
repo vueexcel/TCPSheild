@@ -669,7 +669,7 @@ export default {
           value: 45
         }
       ],
-      plants: [
+      continents: [
         {
           name: "Asia",
           coords: [35.06737, 116.034738],
@@ -726,7 +726,7 @@ export default {
       $("#world-map").vectorMap({
         map: "continents_mill",
         normalizeFunction: "polynomial",
-        markers: this.plants.map(function(h) {
+        markers: this.continents.map(function(h) {
           return { name: h.name, latLng: h.coords };
         }),
         markerStyle: {
@@ -749,7 +749,7 @@ export default {
                 southAmerica: yellowMarker,
                 northAmerica: cyanMarker
               },
-              values: this.plants.reduce(function(p, c, i) {
+              values: this.continents.reduce(function(p, c, i) {
                 p[i] = c.status;
                 return p;
               }, {})
