@@ -1,13 +1,13 @@
 import router from "../router";
 
 const state = {
-  paymemtActive: true,
+  paymemtActive: false,
   currentUsage: 1.581,
   chargesThisMonth: 23.2,
   remainingCredits: 155.77,
   recentInvoice: 3,
   sortOptions: ["Invoice", "Total", "Balance", "Date"],
-  sortType: "Total",
+  sortType: "",
   invoicesTitle: [
     "Invoice",
     "Total",
@@ -46,21 +46,14 @@ const state = {
       status: "paid",
     },
   ],
-  searchInvoice: "",
+  searchInvoices: "",
   dataToSHow: [],
 };
 
 const getters = {
-   searchInvoices: (state) => {
-    return state.searchInvoice;
-},
-sortTypes: (state) => {
-  return state.sortType;
-}
-,
   filterInvoice(state) {
     return state.dataToSHow.filter((invoiceData) => {
-      return invoiceData.invoice.match(state.searchInvoice);
+      return invoiceData.invoice.match(state.searchInvoices);
     });
   },
 };
@@ -78,6 +71,39 @@ const mutations = {
     });
     state.paymemtActive = false;
   },
+  sortedInvoice(state) {
+    if (state.sortType === "Invoice") {
+      var sortedArr = state.invoicesData.slice().sort(function(a, b) {
+        if (a.invoice < b.invoice) {
+          return -1;
+        }
+      });
+      state.dataToSHow = sortedArr;
+    } else if (state.sortType === "Date") {
+      sortedArr = state.invoicesData.slice().sort(function(a, b) {
+        return new Date(a.dueDate) - new Date(b.dueDate);
+      });
+      state.dataToSHow = sortedArr;
+    } else if (state.sortType === "Total") {
+      sortedArr = state.invoicesData.slice().sort(function(a, b) {
+        return a.total - b.total;
+      });
+      state.dataToSHow = sortedArr;
+    } else if (state.sortType === "Balance") {
+      sortedArr = state.invoicesData.slice().sort(function(a, b) {
+        return a.balance - b.balance;
+      });
+      state.dataToSHow = sortedArr;
+    } else {
+      state.dataToSHow = state.invoicesData;
+    }
+  },
+  setSortType (state, value) {
+    state.sortType = value
+  },
+  searchName (state, name){
+    state.searchInvoices = name;
+  }
 };
 
 const actions = {
@@ -87,33 +113,9 @@ const actions = {
   openOverview({ commit }) {
     commit("openOverview");
   },
-  sortedInvoice(sortType) {
-    if (sortType === "Invoice") {
-      var sortedArr = state.invoicesData.slice().sort(function(a, b) {
-        if (a.invoice < b.invoice) {
-          return -1;
-        }
-      });
-      state.dataToSHow = sortedArr;
-    } else if (sortType === "Date") {
-      sortedArr = state.invoicesData.slice().sort(function(a, b) {
-        return new Date(a.dueDate) - new Date(b.dueDate);
-      });
-      state.dataToSHow = sortedArr;
-    } else if (sortType === "Total") {
-      sortedArr = state.invoicesData.slice().sort(function(a, b) {
-        return a.total - b.total;
-      });
-      state.dataToSHow = sortedArr;
-    } else if (sortType === "Balance") {
-      sortedArr = state.invoicesData.slice().sort(function(a, b) {
-        return a.balance - b.balance;
-      });
-      state.dataToSHow = sortedArr;
-    } else {
-      state.dataToSHow = state.invoicesData;
-    }
-  },
+  sortedInvoice({commit} , sortType){
+    commit("sortedInvoice", sortType);
+  }
 };
 
 export default {

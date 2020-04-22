@@ -34,11 +34,12 @@ const mutations = {
   openEditDomain(payload) {
     console.log(payload);
   },
-  deleteRow(index){
-    console.log(index);
+  deleteRow(state, index) {
+    state.dataItems.splice(index, 1);
+    console.log(index,state.dataItems)
   },
-  addRow() {
-    state.dataItems.push("state.dummyRow");
+  addRow(state) {
+    state.dataItems.push(state.dummyRow);
   },
 };
 const actions = {
@@ -48,8 +49,6 @@ const actions = {
   },
   deleteRow({ commit }, index) {
     commit("deleteRow", index);
-    console.log("???", index);
-    state.dataItems.splice(index, 1);
   },
   addRow({ commit }) {
     commit("addRow");

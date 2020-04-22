@@ -35,36 +35,6 @@ export default {
       openOverview: "billing/openOverview"
     })
   }
-
-  // methods: {
-  //   sortedInvoice(sortType) {
-  //     if (sortType === "Invoice") {
-  //       var sortedArr = this.invoicesData.slice().sort(function(a, b) {
-  //         if (a.invoice < b.invoice) {
-  //           return -1;
-  //         }
-  //       });
-  //       this.dataToSHow = sortedArr;
-  //     } else if (sortType === "Date") {
-  //       sortedArr = this.invoicesData.slice().sort(function(a, b) {
-  //         return new Date(a.dueDate) - new Date(b.dueDate);
-  //       });
-  //       this.dataToSHow = sortedArr;
-  //     } else if (sortType === "Total") {
-  //       sortedArr = this.invoicesData.slice().sort(function(a, b) {
-  //         return a.total - b.total;
-  //       });
-  //       this.dataToSHow = sortedArr;
-  //     } else if (sortType === "Balance") {
-  //       sortedArr = this.invoicesData.slice().sort(function(a, b) {
-  //         return a.balance - b.balance;
-  //       });
-  //       this.dataToSHow = sortedArr;
-  //     } else {
-  //       this.dataToSHow = this.invoicesData;
-  //     }
-  //   }
-  // }
 };
 </script>
 

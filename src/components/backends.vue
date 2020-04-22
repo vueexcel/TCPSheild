@@ -149,7 +149,7 @@
                 </label>
               </td>
               <td class="text-center tableData">
-                <a class="p-2" @click="deleteRow(index)">
+                <a class="p-2" @click="deleteRow( index)">
                   <b-icon icon="x-circle" font-scale="2.8" class="rounded-circle py-2 closeIcon"></b-icon>
                 </a>
               </td>

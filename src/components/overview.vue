@@ -80,7 +80,6 @@
     >
       Recent Invoices
       <span>({{recentInvoice}})</span>
-      {{searchInvoice}}{{sortType}}
     </p>
     <div class="tableContainer" data-aos="fade" data-aos-duration="1500" data-aos-delay="300">
       <div class="p-3 tableBar d-flex">
@@ -99,8 +98,8 @@
         <v-select
           label="Select"
           :options="sortOptions"
-          v-model="sortType"
-          @input="sortedInvoice(sortType)"
+          v-model="type"
+          @input="sortedInvoice()"
           placeholder="Select"
           class="style-chooser"
         >
@@ -155,7 +154,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from "vuex";
+import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 export default {
   name: "overview",
   data() {
@@ -175,32 +174,37 @@ export default {
       "sortOptions",
       "invoicesTitle",
       "invoicesData",
-      " dataToSHow"
+      " dataToSHow",
+      "sortType" ,
+      "searchInvoices"    
     ]),
-    ...mapGetters("billing", ["filterInvoice", "searchInvoices", "sortTypes"]),
+    ...mapGetters("billing", ["filterInvoice"]),
     searchInvoice: {
       get() {
         return this.searchInvoices;
       },
       set(newName) {
-          return newName;
+          this.searchName(newName)
       }
     },
-    sortType: {
-      get() {
-        return this.sortTypes;
+    type: {
+      get () {
+        return this.sortType
       },
-      set(newType) {
-        console.log(newType);
-        return newType;
+      set (new_type) {
+        this.setSortType(new_type)
       }
     }
   },
   methods: {
+    ...mapMutations({
+      setSortType: "billing/setSortType",
+      searchName:"billing/searchName"
+    }),
     ...mapActions({
       openPaymentMethod: "billing/openPaymentMethod",
       sortedInvoice: "billing/sortedInvoice",
-      openOverview: "billing/openOverview"
+      openOverview: "billing/openOverview",
     })
   }
 };
