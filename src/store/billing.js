@@ -65,10 +65,13 @@ const mutations = {
     });
     state.paymemtActive = true;
   },
-  openOverview(state) {
+  openOverview() {
     router.push("/overview").catch((err) => {
       err;
     });
+    
+  },
+  activeOverview(state){
     state.paymemtActive = false;
   },
   sortedInvoice(state) {
@@ -112,9 +115,13 @@ const actions = {
   },
   openOverview({ commit }) {
     commit("openOverview");
+    commit("activeOverview")
   },
   sortedInvoice({commit} , sortType){
     commit("sortedInvoice", sortType);
+  },
+  activeOverview({commit}){
+    commit("activeOverview")
   }
 };
 

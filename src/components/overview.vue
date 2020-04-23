@@ -13,7 +13,7 @@
           data-aos-delay="300"
         >
           <div
-            class="text-center py-xss-5 mx-xss-0 mr-sms-4 mb-xls-0 mb-lgs-4 mb-mds-4 mb-sms-0 mb-xss-4 mr-mds-3 boxHeight dataContainer"
+            class="text-center py-xss-5 mx-xss-0 mr-sms-4 mr-mds-3 mr-xls-4 mb-xls-0 mb-lgs-4 mb-mds-4 mb-sms-0 mb-xss-4  boxHeight dataContainer"
           >
             <p class="dataTitle PNR greyText mb-0">Current Usage</p>
             <p class="currentUsage PNB m-0">{{currentUsage}} TB</p>

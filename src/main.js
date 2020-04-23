@@ -24,11 +24,12 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import "vue-select/dist/vue-select.css";
 import { LayoutPlugin } from "bootstrap-vue";
+import contenteditable from 'vue-contenteditable'
 
 Vue.use(LayoutPlugin, {
   breakpoints: ["xss", "sms","mds", "lgs", "xls", "xxls"]
 });
-
+Vue.use(contenteditable)
 Vue.use(VueApexCharts);
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);

@@ -91,7 +91,7 @@
             </ul>
           </div>
           <div class="row premiumRow mx-3 mb-3">
-            <b-col xxls="9" xls="9" lgs="9" mds="9" sm="9" class="premiumBox my-1 p-0">
+            <b-col xxls="9" xls="9" lgs="12" mds="9" sms="12" class="premiumBox my-1 p-0">
               <div class="py-1 px-2">
                 <p class="voiletText PNB mb-0 premiumHeading">
                   Premium mitigation
@@ -105,8 +105,10 @@
                 </p>
               </div>
             </b-col>
-            <b-col xxls="3" xls="3" lgs="3" mds="3" sm="3" class="p-0">
-              <div class="d-flex justify-content-center align-items-center h-100">
+            <b-col xxls="3" xls="3" lgs="12" mds="3" sms="12" class="p-0">
+              <div
+                class="d-flex justify-content-xls-center justify-content-lgs-start justify-content-mds-center align-items-center h-100 px-3 pb-3 pt-xss-1 pt-mds-3 pt-lgs-1 pt-xls-3"
+              >
                 <label class="switch m-0">
                   <input type="checkbox" :checked="premiumMitigation" />
                   <span class="slider round"></span>
@@ -136,12 +138,16 @@
           </thead>
           <tbody>
             <tr v-for="(dataItem,index) in dataItems" :key="index">
-              <td class="PNR greyText py-2 tableData" @click="openEditDomain(dataItem.domain)">
-                <p contenteditable="true" class="m-0">{{dataItem.domain}}</p>
-              </td>
-              <td class="PNR greyText py-2 tableData">
-                <p contenteditable="true" class="m-0">{{dataItem.backends}}</p>
-              </td>
+              <td
+                contenteditable="true"
+                @keydown.enter.prevent
+                class="PNR greyText py-2 tableData"
+              >{{dataItem.domain}}</td>
+              <td
+                contenteditable="true"
+                @keydown.enter.prevent
+                class="PNR greyText py-2 tableData"
+              >{{dataItem.backends}}</td>
               <td class="PNR greyText py-2 text-center tableData">
                 <label class="switch m-0">
                   <input type="checkbox" :checked="dataItem.forgeSupport" />
@@ -149,7 +155,7 @@
                 </label>
               </td>
               <td class="text-center tableData">
-                <a class="p-2" @click="deleteRow( index)">
+                <a class="p-2" @click="deleteRow( dataItem)">
                   <b-icon icon="x-circle" font-scale="2.8" class="rounded-circle py-2 closeIcon"></b-icon>
                 </a>
               </td>
@@ -370,6 +376,9 @@ input:checked + .slider:before {
 @media (min-width: 992px) and (max-width: 1200px) {
   .copyContainer {
     width: 100%;
+  }
+  .premiumBox {
+    border-right: none;
   }
   tr .tableData:nth-child(1) {
     width: 35%;

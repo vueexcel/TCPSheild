@@ -1,95 +1,114 @@
 <template>
   <div>
-    <div class="bg-white d-flex justify-content-between topBar">
-      <div class="d-mds-block d-sms-block d-xss-block d-lgs-none" v-b-toggle.sidebar>
+    <div
+      class="bg-white d-flex justify-content-between topBar"
+      @click.self="closeSelectionDropdown"
+    >
+      <div
+        class="d-mds-block d-sms-block d-xss-block d-lgs-none"
+        v-b-toggle.sidebar
+        @click="closeSelectionDropdown"
+      >
         <b-icon icon="list" class="greyText my-xss-4 mx-xss-2 mx-sms-3" font-scale="1.75"></b-icon>
       </div>
       <b-sidebar id="sidebar" class="mr-5 d-lgs-none" width="220px" no-header shadow>
-        <div class="mr-sms-0 sideBarBox">
-          <div class="text-center py-3">
-            <img class="logo" src="./../assets/images/logo.png" />
+        <template v-slot:default="{ hide }">
+          <div @click="closeSelectionDropdown" class="mr-sms-0 sideBarBox">
+            <div class="py-3 d-flex justify-content-center">
+              <div>
+                <img class="logo" src="./../assets/images/logo.png" />
+              </div>
+              <div class="sidebarCloseIconBox">
+                <b-icon
+                  icon="x-circle"
+                  class="text-white sidebarCloseIcon ml-4"
+                  font-scale="1.25"
+                  @click="hide"
+                ></b-icon>
+              </div>
+            </div>
+            <ul class="menuList text-white text-uppercase PNB m-0 mt-4 p-0">
+              <li class="mb-2">
+                <div
+                  class="py-3 ml-xl-4 ml-lgs-3 ml-sms-3 ml-3"
+                  :class="{ active: activeMenu === 'dashboard' }"
+                  @click="openDashboard"
+                >
+                  <span class="menuIconBox">
+                    <img
+                      v-if="(activeMenu === 'dashboard')"
+                      class="dashboardIcon mx-3"
+                      src="./../assets/images/dashboard_voilet.svg"
+                    />
+                    <img
+                      v-else
+                      class="dashboardIcon mx-3"
+                      src="./../assets/images/dashboard_white.svg"
+                    />
+                  </span>
+                  <a>dashboard</a>
+                </div>
+              </li>
+              <li class="mb-2">
+                <div
+                  class="py-3 ml-xl-4 ml-lgs-3 ml-sms-3 ml-3"
+                  :class="{ active: activeMenu === 'networks' }"
+                  @click="openNetworks"
+                >
+                  <span class="menuIconBox">
+                    <img
+                      v-if="(activeMenu === 'networks')"
+                      class="dashboardIcon mx-3"
+                      src="./../assets/images/globe_voilet.svg"
+                    />
+                    <img v-else class="dashboardIcon mx-3" src="./../assets/images/globe_white.svg" />
+                  </span>
+                  <a>networks</a>
+                </div>
+                <ul v-if="activeMenu === ('networks')" class="subList ml-0 my-3 pl-0">
+                  <li
+                    class="py-2 mr-3 pr-xl-2 pr-lgs-0 pl-lgs-4 pl-xl-0 mb-2 text-center"
+                    :class="{ active: activeNetwork === 'backends' }"
+                    @click="openBackends "
+                  >Backends</li>
+                  <li
+                    class="py-2 mr-3 pr-xl-2 pr-lgs-0 pl-lgs-4 pl-xl-0 text-center"
+                    :class="{ active: activeNetwork === 'analytics' }"
+                    @click="openAnalytics"
+                  >Analytics</li>
+                </ul>
+              </li>
+              <li class="mb-2">
+                <div
+                  class="py-3 ml-xl-4 ml-lgs-3 ml-sms-3 ml-3"
+                  :class="{ active: activeMenu === 'billing' }"
+                  @click="openBilling"
+                >
+                  <span class="menuIconBox">
+                    <img
+                      v-if="(activeMenu === 'billing')"
+                      class="dashboardIcon mx-3"
+                      src="./../assets/images/bill_voilet.svg"
+                    />
+                    <img v-else class="dashboardIcon mx-3" src="./../assets/images/bill_white.svg" />
+                  </span>
+                  <a>billing</a>
+                </div>
+              </li>
+            </ul>
           </div>
-          <ul class="menuList text-white text-uppercase PNB m-0 mt-4 p-0">
-            <li class="mb-2">
-              <div
-                class="py-3 ml-xl-4 ml-lgs-3 ml-sms-3 ml-3"
-                :class="{ active: activeMenu === 'dashboard' }"
-                @click="openDashboard"
-              >
-                <span class="menuIconBox">
-                  <img
-                    v-if="(activeMenu === 'dashboard')"
-                    class="dashboardIcon mx-3"
-                    src="./../assets/images/dashboard_voilet.svg"
-                  />
-                  <img
-                    v-else
-                    class="dashboardIcon mx-3"
-                    src="./../assets/images/dashboard_white.svg"
-                  />
-                </span>
-                <a>dashboard</a>
-              </div>
-            </li>
-            <li class="mb-2">
-              <div
-                class="py-3 ml-xl-4 ml-lgs-3 ml-sms-3 ml-3"
-                :class="{ active: activeMenu === 'networks' }"
-                @click="openNetworks"
-              >
-                <span class="menuIconBox">
-                  <img
-                    v-if="(activeMenu === 'networks')"
-                    class="dashboardIcon mx-3"
-                    src="./../assets/images/globe_voilet.svg"
-                  />
-                  <img v-else class="dashboardIcon mx-3" src="./../assets/images/globe_white.svg" />
-                </span>
-                <a>networks</a>
-              </div>
-              <ul v-if="activeMenu === ('networks')" class="subList ml-0 my-3 pl-0">
-                <li
-                  class="py-2 mr-3 pr-xl-2 pr-lgs-0 pl-lgs-4 pl-xl-0 mb-2 text-center"
-                  :class="{ active: activeNetwork === 'backends' }"
-                  @click="openBackends "
-                >Backends</li>
-                <li
-                  class="py-2 mr-3 pr-xl-2 pr-lgs-0 pl-lgs-4 pl-xl-0 text-center"
-                  :class="{ active: activeNetwork === 'analytics' }"
-                  @click="openAnalytics"
-                >Analytics</li>
-              </ul>
-            </li>
-            <li class="mb-2">
-              <div
-                class="py-3 ml-xl-4 ml-lgs-3 ml-sms-3 ml-3"
-                :class="{ active: activeMenu === 'billing' }"
-                @click="openBilling"
-              >
-                <span class="menuIconBox">
-                  <img
-                    v-if="(activeMenu === 'billing')"
-                    class="dashboardIcon mx-3"
-                    src="./../assets/images/bill_voilet.svg"
-                  />
-                  <img v-else class="dashboardIcon mx-3" src="./../assets/images/bill_white.svg" />
-                </span>
-                <a>billing</a>
-              </div>
-            </li>
-          </ul>
-        </div>
+        </template>
       </b-sidebar>
       <div
-        v-if="openSelectionDropdown"
-        class="selectionDropdown w-50 px-2"
+        v-if="selectionDropdown"
+        class="selectionDropdown px-2"
         data-aos="fade"
         data-aos-duration="500"
         data-aos-delay="200"
       >
         <div class="my-4 greyText PNB HeadBar">
-          <span :class="[networkActive ? 'active' : '']" class="mr-4">Networks</span>
-          <span :class="[networkActive ? '' : 'active']">Servers</span>
+          <span :class="[networkActive ? 'active' : '']" class="mr-4" @click="openNetwork">Networks</span>
+          <span :class="[networkActive ? '' : 'active']" @click="openServer">Servers</span>
         </div>
         <table class="mb-3">
           <thead class="bg-light">
@@ -102,7 +121,12 @@
           <tbody>
             <tr v-for="(networkData,index) in networksData" :key="index">
               <td class="PNR greyText py-2 tableData">
-                <p class="m-0">{{networkData.name}}</p>
+                <p class="m-0">
+                  <span class="mr-2">
+                    <img :src="getImgUrl(networkData)" />
+                  </span>
+                  <span>{{networkData.name}}</span>
+                </p>
               </td>
               <td class="PNR greyText py-2 tableData">
                 <p class="m-0">{{networkData.domain}}</p>
@@ -123,14 +147,15 @@
             size="1x"
             :style="{ color: '#a7aab3' }"
             :class="[arrowRotation ? 'openRotate' : 'closeRotate']"
-            @click="openDropdown"
+            @click="openSelectionDropdown"
+            class="ml-2"
           />
         </span>
       </div>
-      <div class="d-flex align-items-center mx-lgs-5 mx-sms-3">
+      <div class="d-flex align-items-center mx-lgs-5 mx-sms-3" @click="closeSelectionDropdown">
         <b-dropdown no-caret offset="-60" variant="white" size="sm" class="p-0">
           <template v-slot:button-content>
-            <div class="notificationBox">
+            <div @click="closeSelectionDropdown" class="notificationBox">
               <b-icon icon="bell" class="rounded-circle greyText bell" style="font-weight:bold"></b-icon>
               <div class="notificationCircle"></div>
             </div>
@@ -146,9 +171,11 @@
           v-bind:src="userImg"
         ></b-avatar>
         <p class="PNT d-xss-none d-sms-block greyText px-3 m-0 userName">Hello {{user}}</p>
-        <b-dropdown no-caret offset="-60" variant="white" size="sm" class="p-0">
+        <b-dropdown no-caret offset="-115" variant="white" size="sm" class="p-0 mx-xss-2 mx-sms-0">
           <template v-slot:button-content>
-            <font-awesome-icon icon="chevron-down" size="1x" :style="{ color: '#a7aab3' }" class />
+            <div @click="closeSelectionDropdown">
+              <font-awesome-icon icon="chevron-down" size="1x" :style="{ color: '#a7aab3' }" />
+            </div>
           </template>
           <b-dropdown-item href="#" size="sm">Setting</b-dropdown-item>
           <b-dropdown-item href="#">Sign Out</b-dropdown-item>
@@ -174,7 +201,7 @@ export default {
       "selectionOptions",
       "networksData",
       "networkActive",
-      "openSelectionDropdown",
+      "selectionDropdown",
       "arrowRotation"
     ])
   },
@@ -185,8 +212,19 @@ export default {
       openBackends: "sidebar/openBackends",
       openAnalytics: "sidebar/openAnalytics",
       openBilling: "sidebar/openBilling",
-      openDropdown: "topbar/openDropdown"
-    })
+      openSelectionDropdown: "topbar/openSelectionDropdown",
+      closeSelectionDropdown: "topbar/closeSelectionDropdown",
+      openNetwork: "topbar/openNetwork",
+      openServer: "topbar/openServer"
+    }),
+    getImgUrl(networksData) {
+      var images = require.context(
+        "./../assets/images/networkImg/",
+        true,
+        /\.png$/
+      );
+      return images("./" + networksData.img + ".png");
+    }
   }
 };
 </script>
@@ -200,6 +238,7 @@ export default {
   position: absolute;
   top: 78%;
   left: 1%;
+  width: 50%;
   z-index: 1;
   border-radius: 10px;
   border: 1px solid #ced1d6;
@@ -207,11 +246,11 @@ export default {
 }
 .openRotate {
   transform: rotate(-180deg);
-  transition: transform .5s;
+  transition: transform 0.5s;
 }
 .closeRotate {
   transform: rotate(0deg);
-  transition: transform .5s;
+  transition: transform 0.5s;
 }
 .HeadBar {
   font-size: 1rem;
@@ -223,7 +262,15 @@ export default {
   color: #622fe6;
   border-bottom: 3px solid #622fe6;
 }
-
+.sidebarCloseIconBox {
+  position: relative;
+  width: 36px;
+}
+.sidebarCloseIcon {
+  position: absolute;
+  right: 0%;
+  top: 34%;
+}
 .tableContainer {
   border-radius: 10px;
 }
@@ -235,7 +282,7 @@ tr {
   border: none;
   background-color: #ffffff;
 }
-tr:hover {
+tbody > tr:hover {
   background-color: #eaeaea;
 }
 tr .tableData {
@@ -319,4 +366,19 @@ tr .tableData {
     width:320px !important;
   }
 } */
+@media (min-width: 992px) and (max-width: 1200px) {
+  .selectionDropdown {
+    width: 75%;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .selectionDropdown {
+    width: 75%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .selectionDropdown {
+    width: 100%;
+  }
+}
 </style>

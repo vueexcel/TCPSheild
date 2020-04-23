@@ -1,5 +1,8 @@
 <template>
-  <div class="mr-xss-4 mr-xls-3 mr-xxls-5 d-lgs-block d-mds-none d-sms-none d-xss-none sideBarBox">
+  <div
+    class="mr-xss-4 mr-xls-3 mr-xxls-5 d-lgs-block d-mds-none d-sms-none d-xss-none sideBarBox"
+    @click="closeSelectionDropdown"
+  >
     <div class="text-center py-3">
       <img class="logo" src="./../assets/images/logo.png" />
     </div>
@@ -54,7 +57,7 @@
         <div
           class="py-3 ml-xxls-4 ml-xls-3 ml-lgs-3"
           :class="{ active: activeMenu === 'billing' }"
-          @click="openBilling"
+          @click="openBilling() ; activeOverview();"
         >
           <span class="menuIconBox">
             <img
@@ -89,7 +92,9 @@ export default {
       openNetworks: "sidebar/openNetworks",
       openBackends: "sidebar/openBackends",
       openAnalytics: "sidebar/openAnalytics",
-      openBilling: "sidebar/openBilling"
+      openBilling: "sidebar/openBilling",
+      activeOverview: "billing/activeOverview",
+      closeSelectionDropdown: "topbar/closeSelectionDropdown"
     })
   }
 };

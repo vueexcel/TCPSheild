@@ -24,11 +24,13 @@ const state = {
       forgeSupport: true,
     },
   ],
-  dummyRow: {
-    domain: "",
-    backends: "",
-    forgeSupport: true,
-  },
+  dummyRow: [
+    {
+      domain: "test1",
+      backends: "test1",
+      forgeSupport: false,
+    },
+  ],
 };
 const mutations = {
   openEditDomain(payload) {
@@ -36,10 +38,11 @@ const mutations = {
   },
   deleteRow(state, index) {
     state.dataItems.splice(index, 1);
-    console.log(index,state.dataItems)
+    // console.log(index.backends);
   },
   addRow(state) {
-    state.dataItems.push(state.dummyRow);
+    state.dataItems = state.dataItems.concat(state.dummyRow);
+    // state.dataItems.push( state.dummyRow);
   },
 };
 const actions = {
