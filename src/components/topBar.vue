@@ -80,19 +80,52 @@
           </ul>
         </div>
       </b-sidebar>
-      <div class="py-2 px-3 ml-0 mr-2 mx-sms-4 my-2">
-        <v-select
-          label="Select"
-          :options="selectionOptions"
-          placeholder="Selection"
-          class="style-chooser"
-        >
-          <template #open-indicator="{ attributes }">
-            <span v-bind="attributes">
-              <font-awesome-icon icon="chevron-down" size="1x" :style="{ color: '#a7aab3' }" class />
-            </span>
-          </template>
-        </v-select>
+      <div
+        v-if="openSelectionDropdown"
+        class="selectionDropdown w-50 px-2"
+        data-aos="fade"
+        data-aos-duration="500"
+        data-aos-delay="200"
+      >
+        <div class="my-4 greyText PNB HeadBar">
+          <span :class="[networkActive ? 'active' : '']" class="mr-4">Networks</span>
+          <span :class="[networkActive ? '' : 'active']">Servers</span>
+        </div>
+        <table class="mb-3">
+          <thead class="bg-light">
+            <tr class="text-uppercase">
+              <th class="PNB blackText py-1 tableData">Name</th>
+              <th class="PNB blackText py-1 tableData">Domains</th>
+              <th class="PNB blackText py-1 tableData">Last Modified</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(networkData,index) in networksData" :key="index">
+              <td class="PNR greyText py-2 tableData">
+                <p class="m-0">{{networkData.name}}</p>
+              </td>
+              <td class="PNR greyText py-2 tableData">
+                <p class="m-0">{{networkData.domain}}</p>
+              </td>
+              <td class="PNR greyText py-2 tableData">
+                <p class="m-0">{{networkData.date}}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="py-2 px-3 ml-3 mr-2 mx-sms-4 my-3 d-flex justify-content-between selectionBar">
+        <div class="greyText">Selection</div>
+        <span>
+          <font-awesome-icon
+            icon="chevron-down"
+            size="1x"
+            :style="{ color: '#a7aab3' }"
+            :class="[arrowRotation ? 'openRotate' : 'closeRotate']"
+            @click="openDropdown"
+          />
+        </span>
       </div>
       <div class="d-flex align-items-center mx-lgs-5 mx-sms-3">
         <b-dropdown no-caret offset="-60" variant="white" size="sm" class="p-0">
@@ -121,12 +154,6 @@
           <b-dropdown-item href="#">Sign Out</b-dropdown-item>
           <b-dropdown-item href="#">Something</b-dropdown-item>
         </b-dropdown>
-        <!-- <font-awesome-icon
-          icon="chevron-down"
-          size="1x"
-          :style="{ color: '#a7aab3' }"
-          class="mt-1 mx-2 mx-sms-0"
-        />-->
       </div>
     </div>
   </div>
@@ -137,14 +164,19 @@ import { mapState, mapActions } from "vuex";
 export default {
   name: "topBar",
   data() {
-    return {
-      user: "Xenon",
-      userImg: "https://placekitten.com/300/300",
-      selectionOptions: ["Lorem Ipsum", " Letraset sheets"]
-    };
+    return {};
   },
   computed: {
-    ...mapState("sidebar", ["activeMenu", "activeNetwork"])
+    ...mapState("sidebar", ["activeMenu", "activeNetwork"]),
+    ...mapState("topbar", [
+      "user",
+      "userImg",
+      "selectionOptions",
+      "networksData",
+      "networkActive",
+      "openSelectionDropdown",
+      "arrowRotation"
+    ])
   },
   methods: {
     ...mapActions({
@@ -152,7 +184,8 @@ export default {
       openNetworks: "sidebar/openNetworks",
       openBackends: "sidebar/openBackends",
       openAnalytics: "sidebar/openAnalytics",
-      openBilling: "sidebar/openBilling"
+      openBilling: "sidebar/openBilling",
+      openDropdown: "topbar/openDropdown"
     })
   }
 };
@@ -161,59 +194,87 @@ export default {
 <style scoped>
 .topBar {
   border-radius: 10px;
+  position: relative;
+}
+.selectionDropdown {
+  position: absolute;
+  top: 78%;
+  left: 1%;
+  z-index: 1;
+  border-radius: 10px;
+  border: 1px solid #ced1d6;
+  background-color: #ffffff;
+}
+.openRotate {
+  transform: rotate(-180deg);
+  transition: transform .5s;
+}
+.closeRotate {
+  transform: rotate(0deg);
+  transition: transform .5s;
+}
+.HeadBar {
+  font-size: 1rem;
+}
+.HeadBar > span {
+  padding: 4px 0px;
+}
+.HeadBar > .active {
+  color: #622fe6;
+  border-bottom: 3px solid #622fe6;
+}
+
+.tableContainer {
+  border-radius: 10px;
+}
+table {
+  border: none;
+  width: 100%;
+}
+tr {
+  border: none;
+  background-color: #ffffff;
+}
+tr:hover {
+  background-color: #eaeaea;
+}
+tr .tableData {
+  border: 1px solid #eaeaea;
+  font-size: 0.75rem;
+}
+tr .tableData:nth-child(1) {
+  width: 40%;
+  padding: 0px 12px;
+}
+tr .tableData:nth-child(2) {
+  width: 30%;
+  padding: 0px 12px;
+}
+tr .tableData:nth-child(3) {
+  width: 30%;
+  padding: 0px 12px;
+}
+thead tr:first-child .tableData {
+  border-top: none;
+}
+tbody tr:last-child .tableData {
+  border-bottom: none;
+}
+tr .tableData {
+  border-right: none;
+  border-left: none;
 }
 .chevron-down {
   font-size: 250% !important;
   padding: 4px 10px;
 }
-.style-chooser {
+.selectionBar {
   width: 290px;
-}
-.style-chooser >>> .vs__search::placeholder {
-  font-size: 1rem;
-  color: #a7aab3;
-  background: #fff;
-}
-.style-chooser >>> .vs__selected {
-  padding: 4px 8px;
-  margin: 0px 12px;
-  font-size: 1rem;
-  color: #a7aab3;
-}
-.style-chooser >>> .vs__search {
-  margin: 0;
-  padding: 4px 4px 4px 24px;
-  color: #a7aab3;
-}
-.style-chooser >>> .vs__dropdown-toggle {
   background: #fff;
   padding: 3px 0px;
   border: 1px solid #eaeaea;
   border-radius: 40px;
   font-size: 1rem;
-}
-.style-chooser >>> .vs__dropdown-menu {
-  background: #fff;
-  border-radius: 0px;
-  font-size: 1rem;
-  margin-top: 4px;
-  padding: 0;
-}
-.style-chooser >>> .vs__dropdown-option {
-  color: #a7aab3;
-  padding: 4px 24px;
-}
-.style-chooser >>> .vs__dropdown-option:hover {
-  color: #fff;
-}
-.style-chooser >>> .vs__actions {
-  padding: 0px 24px 0px 0px;
-}
-.style-chooser >>> .vs__clear {
-  display: none;
-}
-.style-chooser >>> .vs__open-indicator {
-  fill: #a7aab3;
 }
 .notificationBox {
   position: relative;
