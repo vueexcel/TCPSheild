@@ -19,12 +19,13 @@
                 <img class="logo" src="./../assets/images/logo.png" />
               </div>
               <div class="sidebarCloseIconBox">
-                <b-icon
-                  icon="x-circle"
-                  class="text-white sidebarCloseIcon ml-4"
-                  font-scale="1.25"
+                <font-awesome-icon
+                  icon="times"
+                  size="lg"
+                  :style="{ color: '#fff' }"
                   @click="hide"
-                ></b-icon>
+                  class="sidebarCloseIcon"
+                />
               </div>
             </div>
             <ul class="menuList text-white text-uppercase PNB m-0 mt-4 p-0">
@@ -268,7 +269,7 @@ export default {
 }
 .sidebarCloseIcon {
   position: absolute;
-  right: 0%;
+  right: 20%;
   top: 34%;
 }
 .tableContainer {

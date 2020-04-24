@@ -43,7 +43,6 @@ export default {
 <style scoped>
 .appBackground {
   background: url("./../assets/images/backgroundTCPShield.png");
-  /* background-color: black; */
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;

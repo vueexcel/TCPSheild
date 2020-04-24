@@ -1,5 +1,5 @@
 const state = {
-  premiumMitigation: true,
+  premiumMitigations: true,
   downloadItems: ["BUNGEE", "SPIGOT", "LILYPAD"],
   headItems: ["Domain", "Backends", "Forge Support", ""],
   dataItems: [
@@ -24,13 +24,11 @@ const state = {
       forgeSupport: true,
     },
   ],
-  dummyRow: [
-    {
-      domain: "test1",
-      backends: "test1",
-      forgeSupport: false,
-    },
-  ],
+  dummyRow: {
+    domain: "",
+    backends: "",
+    forgeSupport: false,
+  },
 };
 const mutations = {
   openEditDomain(payload) {
@@ -38,12 +36,18 @@ const mutations = {
   },
   deleteRow(state, index) {
     state.dataItems.splice(index, 1);
-    // console.log(index.backends);
   },
   addRow(state) {
-    state.dataItems = state.dataItems.concat(state.dummyRow);
-    // state.dataItems.push( state.dummyRow);
+    state.dataItems.push( state.dummyRow);
+    state.dummyRow= {
+      domain: "",
+      backends: "",
+      forgeSupport: false,
+    }
   },
+  setPremiumMitigation(value){
+    state.premiumMitigations = value
+  }
 };
 const actions = {
   openEditDomain({ commit }, payload) {
