@@ -10,7 +10,9 @@
           <div>
             <topBar />
           </div>
-          <router-view ></router-view>
+          <div @click="closeSelectionDropdown">
+            <router-view></router-view>
+          </div>
         </b-col>
       </b-row>
     </b-container>
@@ -31,7 +33,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      openDashboard: "sidebar/openDashboard"
+      openDashboard: "sidebar/openDashboard",
+      closeSelectionDropdown: "topbar/closeSelectionDropdown"
     })
   }
 };
@@ -40,7 +43,6 @@ export default {
 <style scoped>
 .appBackground {
   background: url("./../assets/images/backgroundTCPShield.png");
-  /* background-color: black; */
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;

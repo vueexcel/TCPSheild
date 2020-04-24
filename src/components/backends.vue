@@ -91,7 +91,7 @@
             </ul>
           </div>
           <div class="row premiumRow mx-3 mb-3">
-            <b-col xxls="9" xls="9" lgs="9" mds="9" sm="9" class="premiumBox my-1 p-0">
+            <b-col xxls="9" xls="9" lgs="12" mds="9" sms="12" class="premiumBox my-1 p-0">
               <div class="py-1 px-2">
                 <p class="voiletText PNB mb-0 premiumHeading">
                   Premium mitigation
@@ -105,10 +105,12 @@
                 </p>
               </div>
             </b-col>
-            <b-col xxls="3" xls="3" lgs="3" mds="3" sm="3" class="p-0">
-              <div class="d-flex justify-content-center align-items-center h-100">
+            <b-col xxls="3" xls="3" lgs="12" mds="3" sms="12" class="p-0">
+              <div
+                class="d-flex justify-content-xls-center justify-content-lgs-start justify-content-mds-center align-items-center h-100 px-3 pb-3 pt-xss-1 pt-mds-3 pt-lgs-1 pt-xls-3"
+              >
                 <label class="switch m-0">
-                  <input type="checkbox" :checked="premiumMitigation" />
+                  <input type="checkbox" v-model="premiumMitigation" />
                   <span class="slider round"></span>
                 </label>
               </div>
@@ -136,20 +138,25 @@
           </thead>
           <tbody>
             <tr v-for="(dataItem,index) in dataItems" :key="index">
-              <td class="PNR greyText py-2 tableData" @click="openEditDomain(dataItem.domain)">
-                <p contenteditable="true" class="m-0">{{dataItem.domain}}</p>
+              <td class="PNR greyText tableData">
+                <input type="text" placeholder="Enter domain" v-model="dataItem.domain" />
               </td>
-              <td class="PNR greyText py-2 tableData">
-                <p contenteditable="true" class="m-0">{{dataItem.backends}}</p>
+              <td class="PNR greyText tableData">
+                <input
+                  type="text"
+                  placeholder="Enter backend"
+                  v-model="dataItem.backends"
+                  class="px-3"
+                />
               </td>
-              <td class="PNR greyText py-2 text-center tableData">
+              <td class="PNR greyText text-center tableData">
                 <label class="switch m-0">
-                  <input type="checkbox" :checked="dataItem.forgeSupport" />
+                  <input type="checkbox" v-model="dataItem.forgeSupport" />
                   <span class="slider round"></span>
                 </label>
               </td>
               <td class="text-center tableData">
-                <a class="p-2" @click="deleteRow( index)">
+                <a class="p-2" @click="deleteRow(index)">
                   <b-icon icon="x-circle" font-scale="2.8" class="rounded-circle py-2 closeIcon"></b-icon>
                 </a>
               </td>
@@ -172,7 +179,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapMutations } from "vuex";
 export default {
   name: "backends",
   components: {},
@@ -184,14 +191,25 @@ export default {
       "downloadItems",
       "headItems",
       "dataItems",
-      "premiumMitigation"
-    ])
+      "premiumMitigations"
+    ]),
+    premiumMitigation: {
+      get() {
+        return this.premiumMitigations;
+      },
+      set(value) {
+        this.setPremiumMitigation(value);
+      }
+    }
   },
   methods: {
     ...mapActions({
       openEditDomain: "backend/openEditDomain",
       deleteRow: "backend/deleteRow",
       addRow: "backend/addRow"
+    }),
+    ...mapMutations({
+      setPremiumMitigation: "backend/setPremiumMitigation"
     })
   }
 };
@@ -279,7 +297,10 @@ tr .tableData:nth-child(1) {
 }
 tr .tableData:nth-child(2) {
   width: 40%;
-  padding: 0px 12px;
+  padding: 0px 0px;
+}
+thead tr .tableData:nth-child(2) {
+  padding: 0px 16px;
 }
 tr .tableData:nth-child(3) {
   width: 10%;
@@ -300,7 +321,16 @@ tr .tableData:last-child {
 tr .tableData:first-child {
   border-left: none;
 }
-
+.tableData input {
+  width: 100%;
+  border: none;
+  padding: 12px 0px;
+  color: #a7aab3;
+}
+.tableData input::placeholder {
+  font-family: "Proxima Nova Regular";
+  color: #a7aab3;
+}
 .switch {
   position: relative;
   display: inline-block;
@@ -370,6 +400,9 @@ input:checked + .slider:before {
 @media (min-width: 992px) and (max-width: 1200px) {
   .copyContainer {
     width: 100%;
+  }
+  .premiumBox {
+    border-right: none;
   }
   tr .tableData:nth-child(1) {
     width: 35%;
