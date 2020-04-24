@@ -153,7 +153,10 @@
           />
         </span>
       </div>
-      <div class="d-flex align-items-center mx-lgs-5 mx-sms-3" @click="closeSelectionDropdown">
+      <div
+        class="d-flex align-items-center mx-lgs-5 mx-sms-3 right rightNavItemsBox"
+        @click="closeSelectionDropdown"
+      >
         <b-dropdown no-caret offset="-60" variant="white" size="sm" class="p-0">
           <template v-slot:button-content>
             <div @click="closeSelectionDropdown" class="notificationBox">
@@ -323,6 +326,9 @@ tr .tableData {
   border: 1px solid #eaeaea;
   border-radius: 40px;
   font-size: 1rem;
+}
+.rightNavItemsBox {
+  user-select: none;
 }
 .notificationBox {
   position: relative;

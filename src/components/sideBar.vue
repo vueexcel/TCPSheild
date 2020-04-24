@@ -108,6 +108,7 @@ export default {
   background-color: #622fe6;
   border-radius: 10px;
   height: 1050px;
+  user-select: none;
 }
 .menuList {
   list-style-type: none;
